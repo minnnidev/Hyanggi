@@ -19,7 +19,7 @@
 		AB09C7E52BAB34BD007A0815 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E42BAB34BD007A0815 /* Then */; };
 		AB09C7E82BAB34C5007A0815 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E72BAB34C5007A0815 /* SnapKit */; };
 		AB09C7EA2BAB34C5007A0815 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E92BAB34C5007A0815 /* SnapKit-Dynamic */; };
-		AB09C7EE2BAB3899007A0815 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7ED2BAB3899007A0815 /* dummy.swift */; };
+		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		AB09C7DB2BAB3479007A0815 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		AB09C7ED2BAB3899007A0815 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
+		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 		AB09C7D32BAB3379007A0815 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7ED2BAB3899007A0815 /* dummy.swift */,
+				AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -238,9 +238,9 @@
 			files = (
 				AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */,
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
-				AB09C7EE2BAB3899007A0815 /* dummy.swift in Sources */,
 				AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
+				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
