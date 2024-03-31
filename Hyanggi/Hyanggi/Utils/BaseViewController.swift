@@ -22,7 +22,7 @@ class BaseViewController: UIViewController {
     }
 
     func setUI() {
-
+        
     }
 
     func setLayout() {
