@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
         flowLayout.scrollDirection = .horizontal
 
         $0.collectionViewLayout = flowLayout
+        $0.backgroundColor = .backgroundColor
         $0.showsHorizontalScrollIndicator = false
     }
 
@@ -49,7 +50,7 @@ class HomeViewController: BaseViewController {
         testPapersCollectionView.dataSource = self
         testPapersCollectionView.delegate = self
 
-        testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: "TestPaperCell")
+        testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
     override func setLayout() {
