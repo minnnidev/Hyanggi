@@ -14,6 +14,7 @@ class DetailViewController: BaseViewController {
     private let sentenceLabel = UILabel()
     private let contentTextView = UITextView()
     private let imageView = UIImageView()
+    private let dateLabel = UILabel()
     private let wishButton = UIButton()
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
@@ -66,6 +67,11 @@ class DetailViewController: BaseViewController {
             $0.backgroundColor = .systemGray4
         }
 
+        dateLabel.do {
+            $0.text = "2024.04.01"
+            $0.font = .systemFont(ofSize: 15)
+        }
+
         wishButton.do {
             $0.setTitle("위시리스트에 담기", for: .normal)
             $0.setTitleColor(.white, for: .normal)
@@ -89,7 +95,7 @@ class DetailViewController: BaseViewController {
             $0.top.bottom.equalToSuperview()
         }
 
-        [brandNameLabel, perfumeNameLabel, sentenceLabel, contentTextView, imageView, wishButton].forEach {
+        [brandNameLabel, perfumeNameLabel, sentenceLabel, contentTextView, imageView, dateLabel, wishButton].forEach {
             contentView.addSubview($0)
         }
 
@@ -122,8 +128,13 @@ class DetailViewController: BaseViewController {
             $0.height.equalTo(imageView.snp.width)
         }
 
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(5)
+            $0.leading.equalTo(brandNameLabel)
+        }
+
         wishButton.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(30)
+            $0.top.equalTo(dateLabel.snp.bottom).offset(30)
             $0.leading.equalTo(brandNameLabel)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(60)
