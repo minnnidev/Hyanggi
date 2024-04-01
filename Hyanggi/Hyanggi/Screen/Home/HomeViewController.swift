@@ -75,7 +75,8 @@ class HomeViewController: BaseViewController {
 
     private func presentWriteVC() {
         let writeVC = WriteViewController()
-        present(writeVC, animated: true)
+        let naviVC = UINavigationController(rootViewController: writeVC)
+        present(naviVC, animated: true)
     }
 }
 

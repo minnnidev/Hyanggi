@@ -7,11 +7,48 @@
 
 import UIKit
 
-class WriteViewController: UIViewController {
+class WriteViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        setNavigationBar()
+    }
+
+    // MARK: - Settings
+
+    private func setNavigationBar() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.topItem?.title = "향기 추가"
+
+        let completeButton = UIBarButtonItem(title: "완료",
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(tappedCompleteButton))
+
+        let dismissButton = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(tappedDismissButton))
+
+        navigationItem.rightBarButtonItems = [completeButton]
+        navigationItem.leftBarButtonItems = [dismissButton]
+    }
+
+    // MARK: - Actions
+
+    @objc private func tappedDismissButton() {
+        dismissVC()
+    }
+
+    @objc private func tappedCompleteButton() {
+        // Create Logic
+        dismissVC()
+    }
+
+    // MARK: - Methods
+
+    private func dismissVC() {
+        dismiss(animated: true)
     }
 }
