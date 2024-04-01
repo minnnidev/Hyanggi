@@ -21,15 +21,12 @@ class DetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setNavigationBar()
+
     }
 
     // MARK: - Settings
 
-    private func setNavigationBar() {
-        navigationController?.navigationBar.tintColor = .black
-
+    override func setNavigationBar() {
         let ellipsisButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"),
                                              style: .plain,
                                              target: self,

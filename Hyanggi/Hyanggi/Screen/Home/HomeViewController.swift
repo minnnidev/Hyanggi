@@ -24,13 +24,14 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setNavigationBar()
         setCollectionView()
     }
 
     // MARK: - Settings
 
-    private func setNavigationBar() {
+    override func setNavigationBar() {
+        super.setNavigationBar()
+
         navigationController?.navigationBar.topItem?.title = "향기"
 
         let plusButton = UIBarButtonItem(image: UIImage(systemName: "plus"),
@@ -41,11 +42,10 @@ class HomeViewController: BaseViewController {
                                          style: .plain,
                                          target: self,
                                          action: nil)
+
         navigationItem.rightBarButtonItems = [plusButton, wishButton]
-
-        navigationController?.navigationBar.tintColor = .black
     }
-
+    
     private func setCollectionView() {
         testPapersCollectionView.dataSource = self
         testPapersCollectionView.delegate = self

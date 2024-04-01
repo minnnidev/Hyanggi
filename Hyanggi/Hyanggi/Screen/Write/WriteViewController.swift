@@ -12,13 +12,13 @@ class WriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setNavigationBar()
     }
 
     // MARK: - Settings
 
-    private func setNavigationBar() {
-        navigationController?.navigationBar.tintColor = .black
+    override func setNavigationBar() {
+        super.setNavigationBar()
+
         navigationController?.navigationBar.topItem?.title = "향기 추가"
 
         let completeButton = UIBarButtonItem(title: "완료",
@@ -34,7 +34,7 @@ class WriteViewController: BaseViewController {
         navigationItem.rightBarButtonItems = [completeButton]
         navigationItem.leftBarButtonItems = [dismissButton]
     }
-
+    
     // MARK: - Actions
 
     @objc private func tappedDismissButton() {
