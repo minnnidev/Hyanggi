@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController {
         let plusButton = UIBarButtonItem(image: UIImage(systemName: "plus"),
                                          style: .plain,
                                          target: self,
-                                         action: nil)
+                                         action: #selector(tappedPlusButton))
         let wishButton = UIBarButtonItem(image: UIImage(systemName: "heart"),
                                          style: .plain,
                                          target: self,
@@ -63,6 +63,19 @@ class HomeViewController: BaseViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-80)
             $0.leading.trailing.equalToSuperview()
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func tappedPlusButton() {
+        presentWriteVC()
+    }
+
+    // MARK: - Methods
+
+    private func presentWriteVC() {
+        let writeVC = WriteViewController()
+        present(writeVC, animated: true)
     }
 }
 
