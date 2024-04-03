@@ -18,11 +18,13 @@
 		AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */; };
 		AB09C7E52BAB34BD007A0815 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E42BAB34BD007A0815 /* Then */; };
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
+		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55C62BBA75D7006B69F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB7C55C52BBA75D7006B69F0 /* SnapKit */; };
 		AB7C55CC2BBA7BB8006B69F0 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
+		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,10 +53,12 @@
 		AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +161,7 @@
 		AB09C7DA2BAB345B007A0815 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7DB2BAB3479007A0815 /* DetailViewController.swift */,
+				AB43B1A42BBD9EEE00CC57EA /* View */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -165,8 +169,7 @@
 		AB09C7DD2BAB348A007A0815 /* Write */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */,
-				AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */,
+				AB43B1A52BBD9F5900CC57EA /* View */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -177,6 +180,25 @@
 				AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		AB43B1A42BBD9EEE00CC57EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABADCB752BBD9CDC000F4127 /* DetailView.swift */,
+				AB09C7DB2BAB3479007A0815 /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB43B1A52BBD9F5900CC57EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */,
+				AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */,
+				AB43B1A62BBD9F7000CC57EA /* WriteView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AB7C55BF2BB989DB006B69F0 /* Extension */ = {
@@ -281,7 +303,9 @@
 				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
 				AB7C55CC2BBA7BB8006B69F0 /* DefaultTextField.swift in Sources */,
+				AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
+				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
