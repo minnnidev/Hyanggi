@@ -35,6 +35,12 @@ final class SearchViewController: BaseViewController {
         navigationItem.title = "검색"
     }
 
+    override func setViews() {
+        searchBar.do {
+            $0.searchBarStyle = .minimal
+        }
+    }
+
     override func setConstraints() {
         [searchBar, searchCollectionView].forEach {
             view.addSubview($0)
