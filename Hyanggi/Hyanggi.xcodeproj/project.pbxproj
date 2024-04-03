@@ -22,6 +22,7 @@
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55C62BBA75D7006B69F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB7C55C52BBA75D7006B69F0 /* SnapKit */; };
 		AB7C55CC2BBA7BB8006B69F0 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */; };
+		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */,
+				ABADCB712BBD93ED000F4127 /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */,
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
 				AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */,
+				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
 				AB7C55CC2BBA7BB8006B69F0 /* DefaultTextField.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
