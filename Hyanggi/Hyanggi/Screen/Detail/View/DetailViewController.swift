@@ -27,6 +27,11 @@ class DetailViewController: BaseViewController {
                                              style: .plain,
                                              target: self,
                                              action: nil)
-        navigationItem.rightBarButtonItems = [ellipsisButton]
+        let wishButton = UIBarButtonItem(image: UIImage(systemName: "heart"),
+                                         style: .plain,
+                                         target: self,
+                                         action: nil)
+        
+        navigationItem.rightBarButtonItems = [ellipsisButton, wishButton]
     }
 }

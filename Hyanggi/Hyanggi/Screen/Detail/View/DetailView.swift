@@ -55,7 +55,7 @@ class DetailView: BaseView {
         }
 
         wishButton.do {
-            $0.setTitle("위시리스트에 담기", for: .normal)
+            $0.setTitle("삭제하기", for: .normal)
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
             $0.backgroundColor = .black
