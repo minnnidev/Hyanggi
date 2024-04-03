@@ -86,7 +86,10 @@ class WriteTextField: BaseView {
 
     private func setPickerToolBar() {
         let toolBar = UIToolbar()
-        toolBar.sizeToFit()
+        toolBar.frame = CGRect(x: 0,
+                               y: 0,
+                               width: UIScreen.main.bounds.width,
+                               height: 44)
 
         let doneButton = UIBarButtonItem(title: "done",
                                          style: .done,
