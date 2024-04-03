@@ -20,6 +20,7 @@
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
 		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
+		AB43B1AC2BBDB83600CC57EA /* SearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionView.swift */; };
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55C62BBA75D7006B69F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB7C55C52BBA75D7006B69F0 /* SnapKit */; };
@@ -56,6 +57,7 @@
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		AB43B1AB2BBDB83600CC57EA /* SearchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionView.swift; sourceTree = "<group>"; };
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
@@ -155,7 +157,7 @@
 		AB09C7D72BAB3430007A0815 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7D82BAB3457007A0815 /* SearchViewController.swift */,
+				AB43B1AA2BBDB82200CC57EA /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -199,6 +201,15 @@
 				AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */,
 				AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */,
 				AB43B1A62BBD9F7000CC57EA /* WriteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB43B1AA2BBDB82200CC57EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB09C7D82BAB3457007A0815 /* SearchViewController.swift */,
+				AB43B1AB2BBDB83600CC57EA /* SearchCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +324,7 @@
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
+				AB43B1AC2BBDB83600CC57EA /* SearchCollectionView.swift in Sources */,
 				AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */,
 				AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */,
 			);
