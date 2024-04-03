@@ -20,4 +20,7 @@ extension UIColor {
     static let backgroundColor = UIColor(red: 249,
                                          green: 249,
                                          blue: 249)
+    static let hyanggiGray = UIColor(red: 206,
+                                     green: 206,
+                                     blue: 206)
 }
