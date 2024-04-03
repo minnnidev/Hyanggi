@@ -1,5 +1,5 @@
 //
-//  DefaultTextField.swift
+//  WriteTextField.swift
 //  Hyanggi
 //
 //  Created by 김민 on 4/1/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-enum TextFieldType {
+enum WriteTextFieldType {
     case date
     case text
 }
@@ -21,9 +21,9 @@ class WriteTextField: BaseView {
     private let datePicker = UIDatePicker()
 
     var fieldName: String
-    var fieldType: TextFieldType
+    var fieldType: WriteTextFieldType
 
-    init(fieldName: String, fieldType: TextFieldType = .text, frame: CGRect = .zero) {
+    init(fieldName: String, fieldType: WriteTextFieldType = .text, frame: CGRect = .zero) {
         self.fieldName = fieldName
         self.fieldType = fieldType
 

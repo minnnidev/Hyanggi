@@ -11,6 +11,12 @@ import Then
 
 class WriteViewController: BaseViewController {
 
+    private let layoutView = WriteView()
+
+    override func loadView() {
+        self.view = layoutView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
