@@ -53,7 +53,7 @@ class HomeViewController: BaseViewController {
         testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
-    override func setLayout() {
+    override func setConstraints() {
         [testPapersCollectionView].forEach {
             view.addSubview($0)
         }

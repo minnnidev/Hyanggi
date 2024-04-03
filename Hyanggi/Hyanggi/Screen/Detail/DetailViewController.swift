@@ -34,7 +34,7 @@ class DetailViewController: BaseViewController {
         navigationItem.rightBarButtonItems = [ellipsisButton]
     }
 
-    override func setView() {
+    override func setViews() {
         brandNameLabel.do {
             $0.text = "딥디크"
             $0.font = .systemFont(ofSize: 30, weight: .bold)
@@ -78,7 +78,7 @@ class DetailViewController: BaseViewController {
         }
     }
 
-    override func setLayout() {
+    override func setConstraints() {
         view.addSubview(scrollView)
 
         scrollView.snp.makeConstraints {
