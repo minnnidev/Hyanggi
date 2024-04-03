@@ -34,7 +34,7 @@ class DetailViewController: BaseViewController {
         navigationItem.rightBarButtonItems = [ellipsisButton]
     }
 
-    override func setUI() {
+    override func setView() {
         brandNameLabel.do {
             $0.text = "딥디크"
             $0.font = .systemFont(ofSize: 30, weight: .bold)
@@ -54,7 +54,7 @@ class DetailViewController: BaseViewController {
             $0.textAlignment = .left
         }
 
-        contentTextView.do { 
+        contentTextView.do {
             $0.text = "향수에 대한 이야기...~ 향수에 대한 이야기...~ 향수에 대한 이야기...~ 향수에 대한 이야기...~"
             $0.font = .systemFont(ofSize: 17)
             $0.backgroundColor = .backgroundColor

@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
 
         setBackgroundColor()
         setNavigationBar()
-        setUI()
+        setView()
         setLayout()
     }
 
@@ -26,11 +26,6 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
 
-    func setUI() {
-        
-    }
-
-    func setLayout() {
-
-    }
+    func setView() { }
+    func setLayout() { }
 }

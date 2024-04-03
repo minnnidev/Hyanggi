@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class WriteViewController: BaseViewController {
 
@@ -34,7 +36,7 @@ class WriteViewController: BaseViewController {
         navigationItem.rightBarButtonItems = [completeButton]
         navigationItem.leftBarButtonItems = [dismissButton]
     }
-    
+
     // MARK: - Actions
 
     @objc private func tappedDismissButton() {

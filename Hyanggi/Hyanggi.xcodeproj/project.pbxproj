@@ -17,12 +17,25 @@
 		AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */; };
 		AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */; };
 		AB09C7E52BAB34BD007A0815 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E42BAB34BD007A0815 /* Then */; };
-		AB09C7E82BAB34C5007A0815 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E72BAB34C5007A0815 /* SnapKit */; };
-		AB09C7EA2BAB34C5007A0815 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E92BAB34C5007A0815 /* SnapKit-Dynamic */; };
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
+		AB7C55C62BBA75D7006B69F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB7C55C52BBA75D7006B69F0 /* SnapKit */; };
+		AB7C55CC2BBA7BB8006B69F0 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB7C55CA2BBA765E006B69F0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AB09C7B92BAB32F3007A0815 /* Hyanggi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyanggi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +52,7 @@
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,8 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB09C7E52BAB34BD007A0815 /* Then in Frameworks */,
-				AB09C7E82BAB34C5007A0815 /* SnapKit in Frameworks */,
-				AB09C7EA2BAB34C5007A0815 /* SnapKit-Dynamic in Frameworks */,
+				AB7C55C62BBA75D7006B69F0 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +129,7 @@
 		AB09C7D32BAB3379007A0815 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */,
+				ABADCB6A2BBD917C000F4127 /* Base */,
 				AB7C55BF2BB989DB006B69F0 /* Extension */,
 			);
 			path = Util;
@@ -151,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */,
+				AB7C55CB2BBA7BB8006B69F0 /* DefaultTextField.swift */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -171,6 +185,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		ABADCB6A2BBD917C000F4127 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +203,7 @@
 				AB09C7B52BAB32F3007A0815 /* Sources */,
 				AB09C7B62BAB32F3007A0815 /* Frameworks */,
 				AB09C7B72BAB32F3007A0815 /* Resources */,
+				AB7C55CA2BBA765E006B69F0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,8 +212,7 @@
 			name = Hyanggi;
 			packageProductDependencies = (
 				AB09C7E42BAB34BD007A0815 /* Then */,
-				AB09C7E72BAB34C5007A0815 /* SnapKit */,
-				AB09C7E92BAB34C5007A0815 /* SnapKit-Dynamic */,
+				AB7C55C52BBA75D7006B69F0 /* SnapKit */,
 			);
 			productName = Hyanggi;
 			productReference = AB09C7B92BAB32F3007A0815 /* Hyanggi.app */;
@@ -222,7 +244,7 @@
 			mainGroup = AB09C7B02BAB32F3007A0815;
 			packageReferences = (
 				AB09C7E32BAB34BD007A0815 /* XCRemoteSwiftPackageReference "Then" */,
-				AB09C7E62BAB34C5007A0815 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AB7C55C42BBA75D7006B69F0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = AB09C7BA2BAB32F3007A0815 /* Products */;
 			projectDirPath = "";
@@ -254,6 +276,7 @@
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
 				AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
+				AB7C55CC2BBA7BB8006B69F0 /* DefaultTextField.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
@@ -484,7 +507,7 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		AB09C7E62BAB34C5007A0815 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		AB7C55C42BBA75D7006B69F0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -500,15 +523,10 @@
 			package = AB09C7E32BAB34BD007A0815 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
 		};
-		AB09C7E72BAB34C5007A0815 /* SnapKit */ = {
+		AB7C55C52BBA75D7006B69F0 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AB09C7E62BAB34C5007A0815 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = AB7C55C42BBA75D7006B69F0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		AB09C7E92BAB34C5007A0815 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AB09C7E62BAB34C5007A0815 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
