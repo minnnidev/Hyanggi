@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
 
     private let testPapersCollectionView = UICollectionView(frame: .zero,
                                                             collectionViewLayout: UICollectionViewLayout()).then {

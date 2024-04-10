@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WriteView: BaseView {
+final class WriteView: BaseView {
     let completeButton = UIBarButtonItem()
     let dismissButton = UIBarButtonItem()
     private let scrollView = UIScrollView(frame: .zero)

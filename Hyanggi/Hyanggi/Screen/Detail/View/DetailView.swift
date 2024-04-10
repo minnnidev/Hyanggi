@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailView: BaseView {
+final class DetailView: BaseView {
 
     let ellipsisButton = UIBarButtonItem()
     let wishButton = UIBarButtonItem()

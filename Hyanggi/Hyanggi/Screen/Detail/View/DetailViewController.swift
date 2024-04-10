@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
 
     private let layoutView = DetailView()
 

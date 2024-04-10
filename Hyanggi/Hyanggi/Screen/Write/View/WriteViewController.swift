@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WriteViewController: BaseViewController {
+final class WriteViewController: BaseViewController {
 
     private let layoutView = WriteView()
 

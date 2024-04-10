@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TestPaperCell: UICollectionViewCell {
+final class TestPaperCell: UICollectionViewCell {
 
     static let identifier = "TestPaperCell"
 
