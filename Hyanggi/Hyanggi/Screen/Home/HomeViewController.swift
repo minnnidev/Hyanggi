@@ -19,6 +19,7 @@ final class HomeViewController: BaseViewController {
         $0.collectionViewLayout = flowLayout
         $0.backgroundColor = .backgroundColor
         $0.showsHorizontalScrollIndicator = false
+        $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 
     override func viewDidLoad() {
