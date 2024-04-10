@@ -11,15 +11,10 @@ import Then
 
 final class HomeViewController: BaseViewController {
 
-    private let testPapersCollectionView = UICollectionView(frame: .zero,
-                                                            collectionViewLayout: UICollectionViewLayout()).then {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
+    let layoutView = HomeView()
 
-        $0.collectionViewLayout = flowLayout
-        $0.backgroundColor = .backgroundColor
-        $0.showsHorizontalScrollIndicator = false
-        $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    override func loadView() {
+        self.view = layoutView
     }
 
     override func viewDidLoad() {
@@ -34,36 +29,14 @@ final class HomeViewController: BaseViewController {
         super.setNavigationBar()
 
         navigationController?.navigationBar.topItem?.title = "향기"
-
-        let plusButton = UIBarButtonItem(image: UIImage(systemName: "plus"),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(tappedPlusButton))
-        let wishButton = UIBarButtonItem(image: UIImage(systemName: "heart"),
-                                         style: .plain,
-                                         target: self,
-                                         action: nil)
-
-        navigationItem.rightBarButtonItems = [plusButton, wishButton]
+        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
     }
     
     private func setCollectionView() {
-        testPapersCollectionView.dataSource = self
-        testPapersCollectionView.delegate = self
+        layoutView.testPapersCollectionView.dataSource = self
+        layoutView.testPapersCollectionView.delegate = self
 
-        testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
-    }
-
-    override func setConstraints() {
-        [testPapersCollectionView].forEach {
-            view.addSubview($0)
-        }
-
-        testPapersCollectionView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(80)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-80)
-            $0.leading.trailing.equalToSuperview()
-        }
+        layoutView.testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
     // MARK: - Actions
@@ -95,7 +68,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: testPapersCollectionView.bounds.height)
+        return CGSize(width: 100, height: layoutView.testPapersCollectionView.bounds.height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

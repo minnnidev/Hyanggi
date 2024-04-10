@@ -11,17 +11,11 @@ import Then
 
 final class SearchViewController: BaseViewController {
 
-    private let searchCollectionView = UICollectionView(frame: .zero,
-                                                            collectionViewLayout: UICollectionViewLayout()).then {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
+    private let layoutView = SearchView()
 
-        $0.collectionViewLayout = flowLayout
-        $0.backgroundColor = .clear
-        $0.showsVerticalScrollIndicator = false
+    override func loadView() {
+        self.view = layoutView
     }
-
-    private let searchBar = UISearchBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,36 +29,11 @@ final class SearchViewController: BaseViewController {
         navigationItem.title = "검색"
     }
 
-    override func setViews() {
-        searchBar.do {
-            $0.searchBarStyle = .minimal
-        }
-    }
-
-    override func setConstraints() {
-        [searchBar, searchCollectionView].forEach {
-            view.addSubview($0)
-        }
-
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(40)
-        }
-
-        searchCollectionView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(20)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
-    }
-
     func setCollectionView() {
-        searchCollectionView.dataSource = self
-        searchCollectionView.delegate = self
+        layoutView.searchCollectionView.dataSource = self
+        layoutView.searchCollectionView.delegate = self
 
-        searchCollectionView.register(SearchCollectionView.self, forCellWithReuseIdentifier: SearchCollectionView.identifier)
+        layoutView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
 }
 
@@ -75,7 +44,7 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionView.identifier, for: indexPath) as? SearchCollectionView else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         return cell
     }
 }

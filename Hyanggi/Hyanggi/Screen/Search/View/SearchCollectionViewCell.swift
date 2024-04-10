@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchCollectionView: UICollectionViewCell {
+final class SearchCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "SearchCollectionView"
 

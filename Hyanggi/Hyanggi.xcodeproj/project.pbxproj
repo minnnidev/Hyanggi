@@ -20,7 +20,9 @@
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
 		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
-		AB43B1AC2BBDB83600CC57EA /* SearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionView.swift */; };
+		AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */; };
+		AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */; };
+		AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB73F2B32BC6807400C38AE4 /* HomeView.swift */; };
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55C62BBA75D7006B69F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB7C55C52BBA75D7006B69F0 /* SnapKit */; };
@@ -57,7 +59,9 @@
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		AB43B1AB2BBDB83600CC57EA /* SearchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionView.swift; sourceTree = "<group>"; };
+		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		AB73F2B32BC6807400C38AE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 			children = (
 				AB09C7C02BAB32F3007A0815 /* HomeViewController.swift */,
 				AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */,
+				AB73F2B32BC6807400C38AE4 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -209,7 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				AB09C7D82BAB3457007A0815 /* SearchViewController.swift */,
-				AB43B1AB2BBDB83600CC57EA /* SearchCollectionView.swift */,
+				AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */,
+				AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,14 +323,16 @@
 				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
 				AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */,
+				AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */,
 				AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */,
 				AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */,
+				AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
-				AB43B1AC2BBDB83600CC57EA /* SearchCollectionView.swift in Sources */,
+				AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */,
 				AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */,
 				AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */,
 			);
