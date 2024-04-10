@@ -21,6 +21,7 @@
 		AB37D2302BC6EB1C00C36245 /* Perfume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D22F2BC6EB1C00C36245 /* Perfume.swift */; };
 		AB37D2572BC6F06400C36245 /* PerfumeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */; };
 		AB37D25A2BC6F08400C36245 /* PerfumeRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */; };
+		AB37D25F2BC6F5D800C36245 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */; };
 		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
 		AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */; };
@@ -65,6 +66,7 @@
 		AB37D22F2BC6EB1C00C36245 /* Perfume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfume.swift; sourceTree = "<group>"; };
 		AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeRepository.swift; sourceTree = "<group>"; };
 		AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeRepositoryType.swift; sourceTree = "<group>"; };
+		AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				AB73F2B82BC6826900C38AE4 /* View */,
+				AB37D25D2BC6F5CC00C36245 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -232,6 +235,14 @@
 				AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */,
 			);
 			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		AB37D25D2BC6F5CC00C36245 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AB43B1A42BBD9EEE00CC57EA /* View */ = {
@@ -374,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */,
+				AB37D25F2BC6F5D800C36245 /* HomeViewModel.swift in Sources */,
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
 				AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */,
 				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,

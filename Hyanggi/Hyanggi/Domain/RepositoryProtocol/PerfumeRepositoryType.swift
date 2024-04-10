@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol PerfumeRepositoryType {
     func addPerfume(_ item: Perfume)
-    func getPerfumes() -> Results<Perfume>
+    func getPerfumes() -> [Perfume]
     func updatePerfume(_ item: Perfume)
     func deletePerfume(_ item: Perfume)
 }

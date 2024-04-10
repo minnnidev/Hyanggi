@@ -12,8 +12,9 @@ class PerfumeRepository: PerfumeRepositoryType {
 
     let realm: Realm
 
-    private init() {
-        self.realm = try! Realm()
+    init() {
+        let config = Realm.Configuration(schemaVersion: 2)
+        self.realm = try! Realm(configuration: config)
     }
 
     func addPerfume(_ item: Perfume) {
@@ -26,8 +27,8 @@ class PerfumeRepository: PerfumeRepositoryType {
         }
     }
     
-    func getPerfumes() -> Results<Perfume> {
-        return realm.objects(Perfume.self)
+    func getPerfumes() -> [Perfume] {
+        return Array(realm.objects(Perfume.self))
     }
     
     func updatePerfume(_ item: Perfume) {

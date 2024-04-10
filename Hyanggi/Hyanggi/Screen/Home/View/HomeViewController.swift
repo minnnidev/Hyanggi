@@ -12,6 +12,7 @@ import Then
 final class HomeViewController: BaseViewController {
 
     private let layoutView = HomeView()
+    private let viewModel = HomeViewModel()
 
     override func loadView() {
         self.view = layoutView
@@ -61,11 +62,12 @@ final class HomeViewController: BaseViewController {
 extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.perfumes.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestPaperCell", for: indexPath) as? TestPaperCell else { return UICollectionViewCell() }
+        cell.binding(viewModel.perfumes[indexPath.row])
         return cell
     }
 }

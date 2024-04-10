@@ -16,13 +16,15 @@ class Perfume: Object {
     @Persisted var content: String
     @Persisted var sentence: String
     @Persisted var image: Data?
+    @Persisted var isLiked: Bool
 
     convenience init(date: String,
                      brandName: String,
                      perfumeName: String,
                      content: String,
                      sentence: String,
-                     image: Data?) {
+                     image: Data?, 
+                     isLiked: Bool) {
         self.init()
         self.date = date
         self.brandName = brandName
@@ -30,5 +32,6 @@ class Perfume: Object {
         self.content = content
         self.sentence = sentence
         self.image = image
+        self.isLiked = isLiked
     }
 }

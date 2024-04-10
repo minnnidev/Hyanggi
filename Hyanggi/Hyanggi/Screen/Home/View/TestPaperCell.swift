@@ -69,4 +69,9 @@ final class TestPaperCell: UICollectionViewCell {
             $0.height.equalTo(imageView.snp.width)
         }
     }
+
+    func binding(_ perfume: Perfume) {
+        brandNameLabel.text = perfume.brandName
+        perfumeNameLabel.text = perfume.perfumeName
+    }
 }
