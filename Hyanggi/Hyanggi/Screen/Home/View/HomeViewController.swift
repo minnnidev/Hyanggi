@@ -29,6 +29,10 @@ final class HomeViewController: BaseViewController {
         super.setNavigationBar()
 
         navigationController?.navigationBar.topItem?.title = "향기"
+
+        layoutView.plusButton.target = self
+        layoutView.plusButton.action = #selector(tappedPlusButton)
+        
         navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
     }
     

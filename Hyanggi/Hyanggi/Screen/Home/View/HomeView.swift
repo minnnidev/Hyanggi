@@ -14,7 +14,6 @@ class HomeView: BaseView {
     let testPapersCollectionView = UICollectionView(frame: .zero,
                                                             collectionViewLayout: UICollectionViewLayout())
 
-
     override func setViews() {
         plusButton.do {
             $0.image = UIImage(systemName: "plus")
