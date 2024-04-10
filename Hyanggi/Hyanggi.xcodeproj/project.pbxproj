@@ -224,7 +224,7 @@
 		AB37D2552BC6EFCD00C36245 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */,
+				AB37D2622BC6FBB000C36245 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -243,6 +243,14 @@
 				AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB37D2622BC6FBB000C36245 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		AB43B1A42BBD9EEE00CC57EA /* View */ = {
