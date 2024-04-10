@@ -152,9 +152,7 @@
 		AB09C7D62BAB3429007A0815 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7C02BAB32F3007A0815 /* HomeViewController.swift */,
-				AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */,
-				AB73F2B32BC6807400C38AE4 /* HomeView.swift */,
+				AB73F2B82BC6826900C38AE4 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -216,6 +214,16 @@
 				AB09C7D82BAB3457007A0815 /* SearchViewController.swift */,
 				AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */,
 				AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB73F2B82BC6826900C38AE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB73F2B32BC6807400C38AE4 /* HomeView.swift */,
+				AB09C7C02BAB32F3007A0815 /* HomeViewController.swift */,
+				AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
