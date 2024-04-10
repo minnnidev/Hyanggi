@@ -103,7 +103,6 @@ final class DetailView: BaseView {
             $0.top.equalTo(sentenceLabel.snp.bottom).offset(30)
             $0.leading.equalTo(brandNameLabel)
             $0.centerX.equalToSuperview()
-//            $0.height.equalTo(100)
         }
 
         imageView.snp.makeConstraints {
