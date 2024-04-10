@@ -52,6 +52,8 @@ final class DetailView: BaseView {
             $0.text = "향수에 대한 이야기...~ 향수에 대한 이야기...~ 향수에 대한 이야기...~ 향수에 대한 이야기...~"
             $0.font = .systemFont(ofSize: 17)
             $0.backgroundColor = .backgroundColor
+            $0.isScrollEnabled = false
+            $0.sizeToFit()
         }
 
         imageView.do {
@@ -101,7 +103,7 @@ final class DetailView: BaseView {
             $0.top.equalTo(sentenceLabel.snp.bottom).offset(30)
             $0.leading.equalTo(brandNameLabel)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(100)
+//            $0.height.equalTo(100)
         }
 
         imageView.snp.makeConstraints {
