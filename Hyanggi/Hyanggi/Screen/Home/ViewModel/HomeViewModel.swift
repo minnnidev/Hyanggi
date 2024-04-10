@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
 class HomeViewModel {
     let repository: PerfumeRepositoryType
-    var perfumes = [Perfume]()
+    var allPerfumes: BehaviorRelay = BehaviorRelay<[Perfume]>(value: [])
 
     init(repository: PerfumeRepositoryType = PerfumeRepository()) {
         self.repository = repository
 
-        perfumes = repository.getPerfumes()
+        allPerfumes.accept(self.repository.getPerfumes())
     }
 }

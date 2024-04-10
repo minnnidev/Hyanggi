@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 import SnapKit
 import Then
 
@@ -13,6 +15,7 @@ final class HomeViewController: BaseViewController {
 
     private let layoutView = HomeView()
     private let viewModel = HomeViewModel()
+    private let disposeBag = DisposeBag()
 
     override func loadView() {
         self.view = layoutView
@@ -22,6 +25,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
 
         setCollectionView()
+        binding()
     }
 
     // MARK: - Settings
@@ -30,24 +34,39 @@ final class HomeViewController: BaseViewController {
         super.setNavigationBar()
 
         navigationController?.navigationBar.topItem?.title = "향기"
-
-        layoutView.plusButton.target = self
-        layoutView.plusButton.action = #selector(tappedPlusButton)
-        
         navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
     }
     
     private func setCollectionView() {
-        layoutView.testPapersCollectionView.dataSource = self
         layoutView.testPapersCollectionView.delegate = self
 
         layoutView.testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
-    // MARK: - Actions
+    private func binding() {
+        viewModel.allPerfumes
+            .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { index, item, cell in
+                cell.binding(item)
+            }
+            .disposed(by: disposeBag)
 
-    @objc private func tappedPlusButton() {
-        presentWriteVC()
+        layoutView.testPapersCollectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] _ in
+                self?.pushToDetailVC()
+            })
+            .disposed(by: disposeBag)
+
+        layoutView.plusButton.rx.tap
+            .bind { [weak self] _ in
+                self?.presentWriteVC()
+            }
+            .disposed(by: disposeBag)
+
+        layoutView.wishButton.rx.tap
+            .bind {
+                print("wish button tapped")
+            }
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Methods
@@ -57,18 +76,11 @@ final class HomeViewController: BaseViewController {
         let naviVC = UINavigationController(rootViewController: writeVC)
         present(naviVC, animated: true)
     }
-}
 
-extension HomeViewController: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.perfumes.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestPaperCell", for: indexPath) as? TestPaperCell else { return UICollectionViewCell() }
-        cell.binding(viewModel.perfumes[indexPath.row])
-        return cell
+    private func pushToDetailVC() {
+        let detailVC = DetailViewController()
+        detailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
@@ -79,11 +91,5 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        detailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
