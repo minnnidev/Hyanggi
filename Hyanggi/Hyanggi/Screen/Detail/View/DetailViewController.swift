@@ -23,15 +23,6 @@ class DetailViewController: BaseViewController {
     // MARK: - Settings
 
     override func setNavigationBar() {
-        let ellipsisButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"),
-                                             style: .plain,
-                                             target: self,
-                                             action: nil)
-        let wishButton = UIBarButtonItem(image: UIImage(systemName: "heart"),
-                                         style: .plain,
-                                         target: self,
-                                         action: nil)
-        
-        navigationItem.rightBarButtonItems = [ellipsisButton, wishButton]
+        navigationItem.rightBarButtonItems = [layoutView.ellipsisButton, layoutView.wishButton]
     }
 }

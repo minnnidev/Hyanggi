@@ -9,17 +9,26 @@ import UIKit
 
 class DetailView: BaseView {
 
+    let ellipsisButton = UIBarButtonItem()
+    let wishButton = UIBarButtonItem()
     private let brandNameLabel = UILabel()
     private let perfumeNameLabel = UILabel()
     private let sentenceLabel = UILabel()
     private let contentTextView = UITextView()
     private let imageView = UIImageView()
     private let dateLabel = UILabel()
-    private let wishButton = UIButton()
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
 
     override func setViews() {
+        ellipsisButton.do {
+            $0.image = UIImage(systemName: "ellipsis")
+        }
+
+        wishButton.do {
+            $0.image = UIImage(systemName: "heart")
+        }
+
         brandNameLabel.do {
             $0.text = "딥디크"
             $0.font = .systemFont(ofSize: 30, weight: .bold)
@@ -53,14 +62,6 @@ class DetailView: BaseView {
             $0.text = "2024.04.01"
             $0.font = .systemFont(ofSize: 15)
         }
-
-        wishButton.do {
-            $0.setTitle("삭제하기", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
-            $0.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
-            $0.backgroundColor = .black
-            $0.layer.cornerRadius = CGFloat(10)
-        }
     }
 
     override func setConstraints() {
@@ -77,7 +78,7 @@ class DetailView: BaseView {
             $0.top.bottom.equalToSuperview()
         }
 
-        [brandNameLabel, perfumeNameLabel, sentenceLabel, contentTextView, imageView, dateLabel, wishButton].forEach {
+        [brandNameLabel, perfumeNameLabel, sentenceLabel, contentTextView, imageView, dateLabel].forEach {
             contentView.addSubview($0)
         }
 
@@ -113,14 +114,7 @@ class DetailView: BaseView {
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(5)
             $0.leading.equalTo(brandNameLabel)
-        }
-
-        wishButton.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(30)
-            $0.leading.equalTo(brandNameLabel)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(60)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-30)
         }
     }
 }

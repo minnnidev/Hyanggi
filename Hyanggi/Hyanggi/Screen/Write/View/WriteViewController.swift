@@ -29,18 +29,13 @@ class WriteViewController: BaseViewController {
 
         navigationController?.navigationBar.topItem?.title = "향기 추가"
 
-        let completeButton = UIBarButtonItem(title: "완료",
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(tappedCompleteButton))
+        layoutView.completeButton.target = self
+        layoutView.completeButton.action = #selector(tappedCompleteButton)
+        layoutView.dismissButton.target = self
+        layoutView.dismissButton.action = #selector(tappedDismissButton)
 
-        let dismissButton = UIBarButtonItem(image: UIImage(systemName: "xmark"),
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(tappedDismissButton))
-
-        navigationItem.rightBarButtonItems = [completeButton]
-        navigationItem.leftBarButtonItems = [dismissButton]
+        navigationItem.rightBarButtonItems = [layoutView.completeButton]
+        navigationItem.leftBarButtonItems = [layoutView.dismissButton]
     }
 
     // MARK: - Actions

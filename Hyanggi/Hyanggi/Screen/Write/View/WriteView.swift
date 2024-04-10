@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 class WriteView: BaseView {
+    let completeButton = UIBarButtonItem()
+    let dismissButton = UIBarButtonItem()
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
     private let dateTextField = WriteTextField(fieldName: "시향 날짜", fieldType: .date)
@@ -20,6 +22,14 @@ class WriteView: BaseView {
     private let sentenceTextField = WriteTextField(fieldName: "이 향수를 한 마디로 표현한다면")
 
     override func setViews() {
+        completeButton.do {
+            $0.title = "완료"
+        }
+
+        dismissButton.do {
+            $0.image = UIImage(systemName: "xmark")
+        }
+
         contentLabel.do {
             $0.text = "향에 대한 기록"
             $0.font = .systemFont(ofSize: 15, weight: .semibold)
