@@ -20,6 +20,7 @@ final class WriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addActions()
     }
 
     // MARK: - Settings
@@ -40,6 +41,11 @@ final class WriteViewController: BaseViewController {
 
     // MARK: - Actions
 
+    private func addActions() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
+        layoutView.scrollView.addGestureRecognizer(recognizer)
+    }
+
     @objc private func tappedDismissButton() {
         dismissVC()
     }
@@ -47,6 +53,10 @@ final class WriteViewController: BaseViewController {
     @objc private func tappedCompleteButton() {
         // Create Logic
         dismissVC()
+    }
+
+    @objc private func tappedView() {
+        self.view.endEditing(true)
     }
 
     // MARK: - Methods

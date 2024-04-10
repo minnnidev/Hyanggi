@@ -12,13 +12,13 @@ import Then
 final class WriteView: BaseView {
     let completeButton = UIBarButtonItem()
     let dismissButton = UIBarButtonItem()
-    private let scrollView = UIScrollView(frame: .zero)
+    let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
     private let dateTextField = WriteTextField(fieldName: "시향 날짜", fieldType: .date)
     private let brandTextField = WriteTextField(fieldName: "브랜드")
     private let nameTextField = WriteTextField(fieldName: "향수 이름")
     private let contentLabel = UILabel()
-    private let contentTextView = UITextView()
+    let contentTextView = UITextView()
     private let sentenceTextField = WriteTextField(fieldName: "이 향수를 한 마디로 표현한다면")
 
     override func setViews() {
