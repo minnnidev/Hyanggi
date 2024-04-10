@@ -11,7 +11,7 @@ import Then
 
 final class HomeViewController: BaseViewController {
 
-    let layoutView = HomeView()
+    private let layoutView = HomeView()
 
     override func loadView() {
         self.view = layoutView
