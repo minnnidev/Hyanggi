@@ -19,6 +19,8 @@
 		AB09C7E52BAB34BD007A0815 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E42BAB34BD007A0815 /* Then */; };
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
 		AB37D2302BC6EB1C00C36245 /* Perfume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D22F2BC6EB1C00C36245 /* Perfume.swift */; };
+		AB37D2572BC6F06400C36245 /* PerfumeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */; };
+		AB37D25A2BC6F08400C36245 /* PerfumeRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */; };
 		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
 		AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */; };
@@ -61,6 +63,8 @@
 		AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AB37D22F2BC6EB1C00C36245 /* Perfume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfume.swift; sourceTree = "<group>"; };
+		AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeRepository.swift; sourceTree = "<group>"; };
+		AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeRepositoryType.swift; sourceTree = "<group>"; };
 		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				AB09C7D02BAB332E007A0815 /* App */,
+				AB37D2552BC6EFCD00C36245 /* Data */,
 				AB37D22C2BC6EAEB00C36245 /* Domain */,
 				AB09C7D12BAB3338007A0815 /* Resource */,
 				AB09C7D22BAB3349007A0815 /* Screen */,
@@ -200,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				AB37D22E2BC6EB0C00C36245 /* Entity */,
+				AB37D2582BC6F07000C36245 /* RepositoryProtocol */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -210,6 +216,22 @@
 				AB37D22F2BC6EB1C00C36245 /* Perfume.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		AB37D2552BC6EFCD00C36245 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AB37D2582BC6F07000C36245 /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */,
+			);
+			path = RepositoryProtocol;
 			sourceTree = "<group>";
 		};
 		AB43B1A42BBD9EEE00CC57EA /* View */ = {
@@ -365,11 +387,13 @@
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
+				AB37D2572BC6F06400C36245 /* PerfumeRepository.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
 				AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */,
 				AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */,
 				AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */,
+				AB37D25A2BC6F08400C36245 /* PerfumeRepositoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
