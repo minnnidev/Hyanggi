@@ -39,7 +39,6 @@ final class HomeViewController: BaseViewController {
     
     private func setCollectionView() {
         layoutView.testPapersCollectionView.delegate = self
-
         layoutView.testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
@@ -57,15 +56,19 @@ final class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         layoutView.plusButton.rx.tap
-            .bind { [weak self] _ in
+            .bind { [weak self] in
                 self?.presentWriteVC()
             }
             .disposed(by: disposeBag)
 
         layoutView.wishButton.rx.tap
-            .bind {
-                print("wish button tapped")
+            .scan(false) { isSelected, _ in !isSelected }
+            .map { isSelected in
+                isSelected ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
             }
+            .subscribe(onNext: { [weak self] newImage in
+                self?.layoutView.wishButton.image = newImage
+            })
             .disposed(by: disposeBag)
     }
 
