@@ -16,7 +16,7 @@ class SearchView: BaseView {
         searchBar.do {
             $0.searchBarStyle = .minimal
         }
-        
+
         searchCollectionView.do {
             let flowLayout = UICollectionViewFlowLayout()
             flowLayout.scrollDirection = .vertical

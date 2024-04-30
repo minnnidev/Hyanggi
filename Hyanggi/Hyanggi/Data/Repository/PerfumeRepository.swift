@@ -38,4 +38,15 @@ class PerfumeRepository: PerfumeRepositoryType {
     func deletePerfume(_ item: Perfume) {
 
     }
+
+    func searchPerfumes(_ query: String) -> [Perfume] {
+        let result = realm.objects(Perfume.self).filter {
+            $0.date.contains(query) ||
+            $0.brandName.contains(query) ||
+            $0.perfumeName.contains(query) ||
+            $0.content.contains(query) ||
+            $0.sentence.contains(query)
+        }
+        return Array(result)
+    }
 }

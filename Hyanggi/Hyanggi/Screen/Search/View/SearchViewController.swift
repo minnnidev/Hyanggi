@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 import SnapKit
 import Then
 
 final class SearchViewController: BaseViewController {
 
     private let layoutView = SearchView()
+    private let viewModel = SearchViewModel()
+    private let disposeBag = DisposeBag()
 
     override func loadView() {
         self.view = layoutView
@@ -21,6 +24,7 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
 
         setCollectionView()
+        bindings()
     }
 
     override func setNavigationBar() {
@@ -29,23 +33,26 @@ final class SearchViewController: BaseViewController {
         navigationItem.title = "검색"
     }
 
-    func setCollectionView() {
-        layoutView.searchCollectionView.dataSource = self
+    private func setCollectionView() {
         layoutView.searchCollectionView.delegate = self
 
         layoutView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
-}
 
-extension SearchViewController: UICollectionViewDataSource {
+    private func bindings() {
+        viewModel.searchResult
+            .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
+                cell.binding(item)
+            }
+            .disposed(by: disposeBag)
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-        return cell
+        layoutView.searchBar.rx.text.orEmpty
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] query in
+                self?.viewModel.searchPerfumes(query)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

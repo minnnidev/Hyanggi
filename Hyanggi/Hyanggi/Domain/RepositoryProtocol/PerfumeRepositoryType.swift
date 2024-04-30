@@ -13,4 +13,5 @@ protocol PerfumeRepositoryType {
     func getPerfumes() -> [Perfume]
     func updatePerfume(_ item: Perfume)
     func deletePerfume(_ item: Perfume)
+    func searchPerfumes(_ query: String) -> [Perfume]
 }

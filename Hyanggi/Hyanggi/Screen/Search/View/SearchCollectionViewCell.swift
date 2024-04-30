@@ -11,7 +11,7 @@ import Then
 
 final class SearchCollectionViewCell: UICollectionViewCell {
 
-    static let identifier = "SearchCollectionView"
+    static let identifier = "SearchCollectionViewCell"
 
     private let titleLabel = UILabel()
     private let sentenceLabel = UILabel()
@@ -71,5 +71,11 @@ final class SearchCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-12)
         }
+    }
+
+    func binding(_ perfume: Perfume) {
+        titleLabel.text = perfume.perfumeName
+        sentenceLabel.text = perfume.sentence
+        contentLabel.text = perfume.content
     }
 }

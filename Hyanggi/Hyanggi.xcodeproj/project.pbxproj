@@ -40,6 +40,7 @@
 		AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
+		ABB986062BE1143100F3F174 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB986052BE1143100F3F174 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +83,7 @@
 		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		ABB986052BE1143100F3F174 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				AB43B1AA2BBDB82200CC57EA /* View */,
+				ABB986042BE1142200F3F174 /* ViewModel */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -320,6 +323,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		ABB986042BE1142200F3F174 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ABB986052BE1143100F3F174 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -422,6 +433,7 @@
 				AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
+				ABB986062BE1143100F3F174 /* SearchViewModel.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB37D2572BC6F06400C36245 /* PerfumeRepository.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
