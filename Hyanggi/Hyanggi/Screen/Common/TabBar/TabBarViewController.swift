@@ -15,7 +15,7 @@ final class TabBarViewController: UITabBarController {
         self.storage = storage
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,9 +28,12 @@ final class TabBarViewController: UITabBarController {
     }
 
     func setTabBarAttributes() {
-        tabBar.backgroundColor = .black
-        tabBar.tintColor = .white
-        tabBar.unselectedItemTintColor = .gray
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .black
+        appearance.stackedLayoutAppearance.selected.iconColor = .white
+        appearance.stackedLayoutAppearance.normal.iconColor = .gray
+        tabBar.standardAppearance = appearance
     }
 
     func setTabBar() {
