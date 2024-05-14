@@ -19,9 +19,6 @@
 		AB09C7E52BAB34BD007A0815 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB09C7E42BAB34BD007A0815 /* Then */; };
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
 		AB37D2302BC6EB1C00C36245 /* Perfume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D22F2BC6EB1C00C36245 /* Perfume.swift */; };
-		AB37D2572BC6F06400C36245 /* PerfumeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */; };
-		AB37D25A2BC6F08400C36245 /* PerfumeRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */; };
-		AB37D25F2BC6F5D800C36245 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */; };
 		AB37D2682BC6FF5B00C36245 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = AB37D2672BC6FF5B00C36245 /* RxBlocking */; };
 		AB37D26A2BC6FF5B00C36245 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB37D2692BC6FF5B00C36245 /* RxBlocking-Dynamic */; };
 		AB37D26C2BC6FF5B00C36245 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB37D26B2BC6FF5B00C36245 /* RxCocoa */; };
@@ -40,7 +37,6 @@
 		AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
-		ABB986062BE1143100F3F174 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB986052BE1143100F3F174 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,9 +66,6 @@
 		AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AB37D22F2BC6EB1C00C36245 /* Perfume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfume.swift; sourceTree = "<group>"; };
-		AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeRepository.swift; sourceTree = "<group>"; };
-		AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeRepositoryType.swift; sourceTree = "<group>"; };
-		AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -83,7 +76,6 @@
 		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		ABB986052BE1143100F3F174 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				AB73F2B82BC6826900C38AE4 /* View */,
-				AB37D25D2BC6F5CC00C36245 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -188,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				AB43B1AA2BBDB82200CC57EA /* View */,
-				ABB986042BE1142200F3F174 /* ViewModel */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -221,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				AB37D22E2BC6EB0C00C36245 /* Entity */,
-				AB37D2582BC6F07000C36245 /* RepositoryProtocol */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -242,26 +231,9 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		AB37D2582BC6F07000C36245 /* RepositoryProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				AB37D2592BC6F08400C36245 /* PerfumeRepositoryType.swift */,
-			);
-			path = RepositoryProtocol;
-			sourceTree = "<group>";
-		};
-		AB37D25D2BC6F5CC00C36245 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AB37D25E2BC6F5D800C36245 /* HomeViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		AB37D2622BC6FBB000C36245 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				AB37D2562BC6F06400C36245 /* PerfumeRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -321,14 +293,6 @@
 				ABADCB712BBD93ED000F4127 /* BaseView.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		ABB986042BE1142200F3F174 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				ABB986052BE1143100F3F174 /* SearchViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */,
-				AB37D25F2BC6F5D800C36245 /* HomeViewModel.swift in Sources */,
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
 				AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */,
 				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,
@@ -433,15 +396,12 @@
 				AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
-				ABB986062BE1143100F3F174 /* SearchViewModel.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
-				AB37D2572BC6F06400C36245 /* PerfumeRepository.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
 				AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */,
 				AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */,
 				AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */,
-				AB37D25A2BC6F08400C36245 /* PerfumeRepositoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

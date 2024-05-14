@@ -13,7 +13,6 @@ import Then
 final class SearchViewController: BaseViewController {
 
     private let layoutView = SearchView()
-    private let viewModel = SearchViewModel()
     private let disposeBag = DisposeBag()
 
     override func loadView() {
@@ -24,7 +23,6 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
 
         setCollectionView()
-        bindings()
     }
 
     override func setNavigationBar() {
@@ -37,22 +35,6 @@ final class SearchViewController: BaseViewController {
         layoutView.searchCollectionView.delegate = self
 
         layoutView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
-    }
-
-    private func bindings() {
-        viewModel.searchResult
-            .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { index, item, cell in
-                cell.binding(item)
-            }
-            .disposed(by: disposeBag)
-
-        layoutView.searchBar.rx.text.orEmpty
-            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] query in
-                self?.viewModel.searchPerfumes(query)
-            })
-            .disposed(by: disposeBag)
     }
 }
 

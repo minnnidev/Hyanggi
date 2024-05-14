@@ -14,8 +14,6 @@ import Then
 final class HomeViewController: BaseViewController {
 
     private let layoutView = HomeView()
-    private let viewModel = HomeViewModel()
-    private let disposeBag = DisposeBag()
 
     override func loadView() {
         self.view = layoutView
@@ -25,7 +23,6 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
 
         setCollectionView()
-        binding()
     }
 
     // MARK: - Settings
@@ -42,35 +39,6 @@ final class HomeViewController: BaseViewController {
         layoutView.testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
-    private func binding() {
-        viewModel.allPerfumes
-            .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { index, item, cell in
-                cell.binding(item)
-            }
-            .disposed(by: disposeBag)
-
-        layoutView.testPapersCollectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] _ in
-                self?.pushToDetailVC()
-            })
-            .disposed(by: disposeBag)
-
-        layoutView.plusButton.rx.tap
-            .bind { [weak self] in
-                self?.presentWriteVC()
-            }
-            .disposed(by: disposeBag)
-
-        layoutView.wishButton.rx.tap
-            .scan(false) { isSelected, _ in !isSelected }
-            .map { isSelected in
-                isSelected ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
-            }
-            .subscribe(onNext: { [weak self] newImage in
-                self?.layoutView.wishButton.image = newImage
-            })
-            .disposed(by: disposeBag)
-    }
 
     // MARK: - Methods
 
