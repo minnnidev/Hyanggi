@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class HomeViewModel: BaseViewModel {
     
+    var perfumes: Observable<[Perfume]> {
+        return storage.perfumeList()
+    }
 }

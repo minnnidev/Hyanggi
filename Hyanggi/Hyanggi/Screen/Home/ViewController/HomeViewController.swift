@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
+import RxCocoa
 
 final class HomeViewController: BaseViewController, ViewModelBindableType {
 
@@ -31,28 +32,36 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
+
+        viewModel.perfumes
+            .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
+                cell.dataBind(elem)
+            }
+            .disposed(by: disposeBag)
+
+        layoutView.testPapersCollectionView.rx
+            .modelSelected(Perfume.self)
+            .subscribe(onNext: { [weak self] perfume in
+                self?.pushDetailViewController(perfume)
+            })
+            .disposed(by: disposeBag)
     }
 
-    // MARK: - Settings
-
     private func setCollectionView() {
-        layoutView.testPapersCollectionView.delegate = self
+        layoutView.testPapersCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
         layoutView.testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)
     }
 
+    private func pushDetailViewController(_ perfume: Perfume) {
+        let detailViewModel = DetailPerfumeViewModel(perfume: perfume,
+                                                     title: "",
+                                                     storage: viewModel.storage)
+        var detailViewController = DetailViewController()
+        detailViewController.bind(viewModel: detailViewModel)
+        detailViewController.hidesBottomBarWhenPushed = true
 
-    // MARK: - Methods
-
-    private func presentWriteVC() {
-        let writeVC = WriteViewController()
-        let naviVC = UINavigationController(rootViewController: writeVC)
-        present(naviVC, animated: true)
-    }
-
-    private func pushToDetailVC() {
-        let detailVC = DetailViewController()
-        detailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

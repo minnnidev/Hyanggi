@@ -28,12 +28,9 @@ final class TabBarViewController: UITabBarController {
     }
 
     func setTabBarAttributes() {
-        let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .black
-        appearance.stackedLayoutAppearance.selected.iconColor = .white
-        appearance.stackedLayoutAppearance.normal.iconColor = .gray
-        tabBar.standardAppearance = appearance
+        tabBar.backgroundColor = .black
+        tabBar.tintColor = .white
+        tabBar.unselectedItemTintColor = .gray
     }
 
     func setTabBar() {

@@ -30,12 +30,10 @@ final class TestPaperCell: UICollectionViewCell {
         contentView.backgroundColor = .white
 
         brandNameLabel.do {
-            $0.text = "딥디크"
             $0.font = .systemFont(ofSize: 15)
         }
 
         perfumeNameLabel.do {
-            $0.text = "오 로즈"
             $0.numberOfLines = 0
             $0.textAlignment = .left
             $0.font = .systemFont(ofSize: 17)
@@ -68,5 +66,10 @@ final class TestPaperCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(imageView.snp.width)
         }
+    }
+
+    func dataBind(_ perfume: Perfume) {
+        brandNameLabel.text = perfume.brandName
+        perfumeNameLabel.text = perfume.perfumeName
     }
 }
