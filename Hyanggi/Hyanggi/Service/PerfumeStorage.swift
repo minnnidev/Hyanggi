@@ -15,7 +15,7 @@ class PerfumeStorage: PerfumeStorageType {
         Perfume(date: "2024.05.14",
                 brandName: "딥디크",
                 perfumeName: "플레르 드 뽀",
-                content: "아 냄시 조아",
+                content: "안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽",
                 sentence: "솜사탕"),
         Perfume(date: "2024.05.13",
                 brandName: "딥디크",

@@ -11,12 +11,12 @@ final class DetailView: BaseView {
 
     let ellipsisButton = UIBarButtonItem()
     let wishButton = UIBarButtonItem()
-    private let brandNameLabel = UILabel()
-    private let perfumeNameLabel = UILabel()
-    private let sentenceLabel = UILabel()
-    private let contentTextView = UITextView()
-    private let imageView = UIImageView()
-    private let dateLabel = UILabel()
+    let brandNameLabel = UILabel()
+    let perfumeNameLabel = UILabel()
+    let sentenceLabel = UILabel()
+    let contentTextView = UITextView()
+    let imageView = UIImageView()
+    let dateLabel = UILabel()
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
 
@@ -42,14 +42,12 @@ final class DetailView: BaseView {
         }
 
         sentenceLabel.do {
-            $0.text = "\"꽃맛이 날 것 같은 솜사탕 냄새\""
             $0.font = .systemFont(ofSize: 20, weight: .semibold)
             $0.numberOfLines = 0
             $0.textAlignment = .left
         }
 
         contentTextView.do {
-            $0.text = "향수에 대한 이야기...~ 향수에 대한 이야기...~ 향수에 대한 이야기...~ 향수에 대한 이야기...~"
             $0.font = .systemFont(ofSize: 17)
             $0.backgroundColor = .backgroundColor
             $0.isScrollEnabled = false
@@ -61,7 +59,6 @@ final class DetailView: BaseView {
         }
 
         dateLabel.do {
-            $0.text = "2024.04.01"
             $0.font = .systemFont(ofSize: 15)
         }
     }
