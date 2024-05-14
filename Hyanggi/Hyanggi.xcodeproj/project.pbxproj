@@ -17,7 +17,6 @@
 		AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */; };
 		AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */; };
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
-		AB37D2302BC6EB1C00C36245 /* Perfume.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37D22F2BC6EB1C00C36245 /* Perfume.swift */; };
 		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
 		AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */; };
@@ -28,6 +27,7 @@
 		AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
+		B4DEA26F6E71E09220BD4C8C /* Pods_Hyanggi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		64F7B10EF05A1B01EEE127EE /* Pods-Hyanggi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.release.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.release.xcconfig"; sourceTree = "<group>"; };
 		AB09C7B92BAB32F3007A0815 /* Hyanggi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyanggi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB09C7BC2BAB32F3007A0815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB09C7BE2BAB32F3007A0815 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		AB37D22F2BC6EB1C00C36245 /* Perfume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfume.swift; sourceTree = "<group>"; };
 		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.debug.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.debug.xcconfig"; sourceTree = "<group>"; };
+		FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyanggi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4DEA26F6E71E09220BD4C8C /* Pods_Hyanggi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +88,8 @@
 			children = (
 				AB09C7BB2BAB32F3007A0815 /* Hyanggi */,
 				AB09C7BA2BAB32F3007A0815 /* Products */,
+				C22777D8E1D78CC3E44B9B8A /* Pods */,
+				E743C049DEBBFCA92BE83082 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,17 +197,8 @@
 		AB37D22C2BC6EAEB00C36245 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				AB37D22E2BC6EB0C00C36245 /* Entity */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		AB37D22E2BC6EB0C00C36245 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				AB37D22F2BC6EB1C00C36245 /* Perfume.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		AB37D2552BC6EFCD00C36245 /* Data */ = {
@@ -277,6 +273,23 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		C22777D8E1D78CC3E44B9B8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */,
+				64F7B10EF05A1B01EEE127EE /* Pods-Hyanggi.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E743C049DEBBFCA92BE83082 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -284,18 +297,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB09C7CD2BAB32F5007A0815 /* Build configuration list for PBXNativeTarget "Hyanggi" */;
 			buildPhases = (
+				FDEC8515DCFD36E6D2D0D6C4 /* [CP] Check Pods Manifest.lock */,
 				AB09C7B52BAB32F3007A0815 /* Sources */,
 				AB09C7B62BAB32F3007A0815 /* Frameworks */,
 				AB09C7B72BAB32F3007A0815 /* Resources */,
 				AB7C55CA2BBA765E006B69F0 /* Embed Frameworks */,
+				687DFA3E833C5FD051FC217E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Hyanggi;
-			packageProductDependencies = (
-			);
 			productName = Hyanggi;
 			productReference = AB09C7B92BAB32F3007A0815 /* Hyanggi.app */;
 			productType = "com.apple.product-type.application";
@@ -324,8 +337,6 @@
 				Base,
 			);
 			mainGroup = AB09C7B02BAB32F3007A0815;
-			packageReferences = (
-			);
 			productRefGroup = AB09C7BA2BAB32F3007A0815 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -347,6 +358,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		687DFA3E833C5FD051FC217E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hyanggi/Pods-Hyanggi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hyanggi/Pods-Hyanggi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hyanggi/Pods-Hyanggi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDEC8515DCFD36E6D2D0D6C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hyanggi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB09C7B52BAB32F3007A0815 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -361,7 +414,6 @@
 				AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */,
 				AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */,
 				AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */,
-				AB37D2302BC6EB1C00C36245 /* Perfume.swift in Sources */,
 				AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
@@ -509,12 +561,14 @@
 		};
 		AB09C7CE2BAB32F5007A0815 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BTX96P3YD4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hyanggi/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -537,12 +591,14 @@
 		};
 		AB09C7CF2BAB32F5007A0815 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64F7B10EF05A1B01EEE127EE /* Pods-Hyanggi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BTX96P3YD4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hyanggi/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

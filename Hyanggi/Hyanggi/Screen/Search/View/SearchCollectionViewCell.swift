@@ -72,10 +72,4 @@ final class SearchCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().offset(-12)
         }
     }
-
-    func binding(_ perfume: Perfume) {
-        titleLabel.text = perfume.perfumeName
-        sentenceLabel.text = perfume.sentence
-        contentLabel.text = perfume.content
-    }
 }

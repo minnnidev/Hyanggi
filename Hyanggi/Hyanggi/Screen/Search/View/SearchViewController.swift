@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import RxSwift
 import SnapKit
 import Then
 
 final class SearchViewController: BaseViewController {
 
     private let layoutView = SearchView()
-    private let disposeBag = DisposeBag()
 
     override func loadView() {
         self.view = layoutView
