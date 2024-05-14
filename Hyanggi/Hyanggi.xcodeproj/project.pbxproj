@@ -25,6 +25,8 @@
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */; };
+		ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA392BF38C3700460A42 /* BaseViewModel.swift */; };
+		ABACBA3D2BF38D5500460A42 /* PerfumeStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
 		B4DEA26F6E71E09220BD4C8C /* Pods_Hyanggi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */; };
@@ -65,6 +67,8 @@
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
+		ABACBA392BF38C3700460A42 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeStorageType.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.debug.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,10 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				AB09C7D02BAB332E007A0815 /* App */,
-				AB37D2552BC6EFCD00C36245 /* Data */,
-				AB37D22C2BC6EAEB00C36245 /* Domain */,
 				AB09C7D12BAB3338007A0815 /* Resource */,
 				AB09C7D22BAB3349007A0815 /* Screen */,
+				ABACBA3B2BF38D1B00460A42 /* Service */,
 				AB09C7D32BAB3379007A0815 /* Util */,
 			);
 			path = Hyanggi;
@@ -194,28 +197,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		AB37D22C2BC6EAEB00C36245 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		AB37D2552BC6EFCD00C36245 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				AB37D2622BC6FBB000C36245 /* Repository */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		AB37D2622BC6FBB000C36245 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		AB43B1A42BBD9EEE00CC57EA /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,11 +245,20 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		ABACBA3B2BF38D1B00460A42 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		ABADCB6A2BBD917C000F4127 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */,
 				ABADCB712BBD93ED000F4127 /* BaseView.swift */,
+				ABACBA392BF38C3700460A42 /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -407,6 +397,7 @@
 			files = (
 				AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */,
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
+				ABACBA3D2BF38D5500460A42 /* PerfumeStorageType.swift in Sources */,
 				AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */,
 				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
@@ -419,6 +410,7 @@
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
+				ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
 				AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */,
 				AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */,

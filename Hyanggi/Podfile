@@ -8,5 +8,7 @@ target 'Hyanggi' do
   # Pods for Hyanggi
   pod 'SnapKit', '~> 5.7.0'
   pod 'Then'
+  pod 'RxSwift', '6.7.1'
+  pod 'RxCocoa', '6.7.1'
 
 end
