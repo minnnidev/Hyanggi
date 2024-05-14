@@ -13,17 +13,12 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         setBackgroundColor()
-        setNavigationBar()
         setViews()
         setConstraints()
     }
 
     func setBackgroundColor() {
         view.backgroundColor = UIColor.backgroundColor
-    }
-
-    func setNavigationBar() {
-        navigationController?.navigationBar.tintColor = .black
     }
 
     func setViews() { }

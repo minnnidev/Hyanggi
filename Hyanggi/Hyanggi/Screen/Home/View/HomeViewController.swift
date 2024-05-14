@@ -8,10 +8,14 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
 
-final class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController, ViewModelBindableType {
+
+    var viewModel: HomeViewModel!
 
     private let layoutView = HomeView()
+    private let disposeBag = DisposeBag()
 
     override func loadView() {
         self.view = layoutView
@@ -23,15 +27,14 @@ final class HomeViewController: BaseViewController {
         setCollectionView()
     }
 
+    func bindViewModel() {
+        viewModel.title
+            .drive(navigationItem.rx.title)
+            .disposed(by: disposeBag)
+    }
+
     // MARK: - Settings
 
-    override func setNavigationBar() {
-        super.setNavigationBar()
-
-        navigationController?.navigationBar.topItem?.title = "향기"
-        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
-    }
-    
     private func setCollectionView() {
         layoutView.testPapersCollectionView.delegate = self
         layoutView.testPapersCollectionView.register(TestPaperCell.self, forCellWithReuseIdentifier: TestPaperCell.identifier)

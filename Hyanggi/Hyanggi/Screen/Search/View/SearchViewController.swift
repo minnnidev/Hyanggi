@@ -8,10 +8,14 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
 
-final class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController, ViewModelBindableType {
+
+    var viewModel: SearchPerfumeViewModel!
 
     private let layoutView = SearchView()
+    private let disposeBag = DisposeBag()
 
     override func loadView() {
         self.view = layoutView
@@ -23,10 +27,10 @@ final class SearchViewController: BaseViewController {
         setCollectionView()
     }
 
-    override func setNavigationBar() {
-        super.setNavigationBar()
-
-        navigationItem.title = "검색"
+    func bindViewModel() {
+        viewModel.title
+            .drive(navigationItem.rx.title)
+            .disposed(by: disposeBag)
     }
 
     private func setCollectionView() {

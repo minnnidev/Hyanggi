@@ -9,11 +9,22 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
 
+    private let storage: PerfumeStorageType
+
+    init(storage: PerfumeStorageType = PerfumeStorage()) {
+        self.storage = storage
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setTabBarAttributes()
         setTabBar()
+        setTabBarAttributes()
     }
 
     func setTabBarAttributes() {
@@ -23,8 +34,17 @@ final class TabBarViewController: UITabBarController {
     }
 
     func setTabBar() {
-        let homeVC = UINavigationController(rootViewController: HomeViewController())
-        let searchVC = UINavigationController(rootViewController: SearchViewController())
+        let homeViewModel = HomeViewModel(title: "향기", storage: storage)
+        var homeViewController = HomeViewController()
+        homeViewController.bind(viewModel: homeViewModel)
+
+        let searchViewModel = SearchPerfumeViewModel(title: "검색", storage: storage)
+        var searchViewController = SearchViewController()
+        searchViewController.bind(viewModel: searchViewModel)
+
+
+        let homeVC = UINavigationController(rootViewController: homeViewController)
+        let searchVC = UINavigationController(rootViewController: searchViewController)
 
         homeVC.tabBarItem = UITabBarItem(title: nil,
                                          image: UIImage(systemName: "house"),
@@ -32,6 +52,7 @@ final class TabBarViewController: UITabBarController {
         searchVC.tabBarItem = UITabBarItem(title: nil,
                                            image: UIImage(systemName: "magnifyingglass"),
                                            selectedImage: UIImage(systemName: "magnifyingglass"))
+
 
         viewControllers = [homeVC, searchVC]
     }

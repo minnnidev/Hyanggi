@@ -20,8 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
 
-//        let vc = HomeViewController()
-//        let naviVC = UINavigationController(rootViewController: vc)
         let rootVC = TabBarViewController()
 
         window.rootViewController = rootVC
