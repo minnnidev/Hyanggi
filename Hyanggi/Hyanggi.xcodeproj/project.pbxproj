@@ -33,6 +33,7 @@
 		ABACBA4B2BF391A200460A42 /* DetailPerfumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA4A2BF391A200460A42 /* DetailPerfumeViewModel.swift */; };
 		ABACBA4D2BF391BD00460A42 /* ComposePerfumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA4C2BF391BD00460A42 /* ComposePerfumeViewModel.swift */; };
 		ABACBA4F2BF3930400460A42 /* PerfumeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA4E2BF3930400460A42 /* PerfumeStorage.swift */; };
+		ABACBA562BF3ACB400460A42 /* Perfume.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA552BF3ACB400460A42 /* Perfume.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
 		B4DEA26F6E71E09220BD4C8C /* Pods_Hyanggi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */; };
@@ -81,6 +82,7 @@
 		ABACBA4A2BF391A200460A42 /* DetailPerfumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerfumeViewModel.swift; sourceTree = "<group>"; };
 		ABACBA4C2BF391BD00460A42 /* ComposePerfumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposePerfumeViewModel.swift; sourceTree = "<group>"; };
 		ABACBA4E2BF3930400460A42 /* PerfumeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeStorage.swift; sourceTree = "<group>"; };
+		ABACBA552BF3ACB400460A42 /* Perfume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfume.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.debug.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				AB09C7D02BAB332E007A0815 /* App */,
 				AB09C7D12BAB3338007A0815 /* Resource */,
 				AB09C7D22BAB3349007A0815 /* Screen */,
+				ABACBA542BF3ACA900460A42 /* Model */,
 				ABACBA3B2BF38D1B00460A42 /* Service */,
 				AB09C7D32BAB3379007A0815 /* Util */,
 			);
@@ -351,6 +354,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		ABACBA542BF3ACA900460A42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABACBA552BF3ACB400460A42 /* Perfume.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		ABADCB6A2BBD917C000F4127 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +514,7 @@
 				ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */,
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
 				ABACBA4D2BF391BD00460A42 /* ComposePerfumeViewModel.swift in Sources */,
+				ABACBA562BF3ACB400460A42 /* Perfume.swift in Sources */,
 				AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */,
 				AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */,
 				AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */,
