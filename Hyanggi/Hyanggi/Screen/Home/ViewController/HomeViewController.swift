@@ -41,8 +41,9 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
 
         layoutView.testPapersCollectionView.rx
             .modelSelected(Perfume.self)
-            .subscribe(onNext: { [weak self] perfume in
-                self?.pushDetailViewController(perfume)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, perfume in
+                vc.pushDetailViewController(perfume)
             })
             .disposed(by: disposeBag)
     }
@@ -65,6 +66,7 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
     }
 }
 
+// TODO: refactor with RxDataSource
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: layoutView.testPapersCollectionView.bounds.height)

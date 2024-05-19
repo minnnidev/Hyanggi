@@ -13,4 +13,5 @@ struct Perfume {
     var perfumeName: String
     var content: String
     var sentence: String
+    var isLiked: Bool
 }

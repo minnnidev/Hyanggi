@@ -16,12 +16,14 @@ class PerfumeStorage: PerfumeStorageType {
                 brandName: "딥디크",
                 perfumeName: "플레르 드 뽀",
                 content: "안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽",
-                sentence: "솜사탕"),
+                sentence: "솜사탕",
+                isLiked: false),
         Perfume(date: "2024.05.13",
                 brandName: "딥디크",
                 perfumeName: "오 로즈",
                 content: "아 냄시 조아",
-                sentence: "솜사탕"),
+                sentence: "솜사탕",
+                isLiked: true),
     ]
 
     private lazy var store = BehaviorSubject<[Perfume]>(value: perfumes)
