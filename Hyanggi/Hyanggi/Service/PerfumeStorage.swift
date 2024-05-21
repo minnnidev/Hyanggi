@@ -21,8 +21,8 @@ class PerfumeStorage: PerfumeStorageType {
         Perfume(date: "2024.05.13",
                 brandName: "딥디크",
                 perfumeName: "오 로즈",
-                content: "아 냄시 조아",
-                sentence: "솜사탕",
+                content: "아 냄새 좋아. 돈 생기면 꼭 사야지 ㅠㅠ",
+                sentence: "그냥 한마디로 솜사탕 냄새다",
                 isLiked: true),
     ]
 

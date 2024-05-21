@@ -14,7 +14,7 @@ enum WriteTextFieldType {
     case text
 }
 
-final class WriteTextField: BaseView {
+final class InputTextField: BaseView {
 
     private let fieldNameLabel = UILabel()
     private let textField = UITextField()

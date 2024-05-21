@@ -38,6 +38,13 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
 
+        layoutView.plusButton.rx.tap
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.presentComposeViewController()
+            }
+            .disposed(by: disposeBag)
+
         viewModel.perfumes
             .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
                 cell.dataBind(elem)
@@ -68,6 +75,17 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         detailViewController.hidesBottomBarWhenPushed = true
 
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+
+    private func presentComposeViewController() {
+        let composeViewModel = ComposePerfumeViewModel(title: "향수 추가",
+                                                       storage: viewModel.storage)
+        var composeViewController = ComposeVIewController()
+        composeViewController.bind(viewModel: composeViewModel)
+        
+        let navVC = UINavigationController(rootViewController: composeViewController)
+
+        present(navVC, animated: true)
     }
 }
 

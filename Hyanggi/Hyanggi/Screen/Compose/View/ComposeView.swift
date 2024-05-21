@@ -9,25 +9,27 @@ import UIKit
 import SnapKit
 import Then
 
-final class WriteView: BaseView {
+final class ComposeView: BaseView {
     let completeButton = UIBarButtonItem()
     let dismissButton = UIBarButtonItem()
     let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
-    private let dateTextField = WriteTextField(fieldName: "시향 날짜", fieldType: .date)
-    private let brandTextField = WriteTextField(fieldName: "브랜드")
-    private let nameTextField = WriteTextField(fieldName: "향수 이름")
+    private let dateTextField = InputTextField(fieldName: "시향 날짜", fieldType: .date)
+    private let brandTextField = InputTextField(fieldName: "브랜드")
+    private let nameTextField = InputTextField(fieldName: "향수 이름")
     private let contentLabel = UILabel()
     let contentTextView = UITextView()
-    private let sentenceTextField = WriteTextField(fieldName: "이 향수를 한 마디로 표현한다면")
+    private let sentenceTextField = InputTextField(fieldName: "이 향수를 한 마디로 표현한다면")
 
     override func setViews() {
         completeButton.do {
             $0.title = "완료"
+            $0.tintColor = .black
         }
 
         dismissButton.do {
             $0.image = UIImage(systemName: "xmark")
+            $0.tintColor = .black
         }
 
         contentLabel.do {

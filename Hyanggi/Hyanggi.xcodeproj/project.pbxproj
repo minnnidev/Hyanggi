@@ -14,17 +14,17 @@
 		AB09C7C92BAB32F5007A0815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB09C7C72BAB32F5007A0815 /* LaunchScreen.storyboard */; };
 		AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7D82BAB3457007A0815 /* SearchViewController.swift */; };
 		AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7DB2BAB3479007A0815 /* DetailViewController.swift */; };
-		AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */; };
+		AB09C7DF2BAB3495007A0815 /* ComposeVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7DE2BAB3494007A0815 /* ComposeVIewController.swift */; };
 		AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */; };
 		AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */; };
-		AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* WriteView.swift */; };
+		AB43B1A72BBD9F7000CC57EA /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* ComposeView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
 		AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */; };
 		AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */; };
 		AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB73F2B32BC6807400C38AE4 /* HomeView.swift */; };
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
-		AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */; };
+		AB7C55CC2BBA7BB8006B69F0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */; };
 		ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA392BF38C3700460A42 /* BaseViewModel.swift */; };
 		ABACBA3D2BF38D5500460A42 /* PerfumeStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */; };
 		ABACBA412BF390BE00460A42 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */; };
@@ -63,17 +63,17 @@
 		AB09C7CA2BAB32F5007A0815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB09C7D82BAB3457007A0815 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AB09C7DB2BAB3479007A0815 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		AB09C7DE2BAB3494007A0815 /* ComposeVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeVIewController.swift; sourceTree = "<group>"; };
 		AB09C7E12BAB34AD007A0815 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		AB43B1A62BBD9F7000CC57EA /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		AB43B1A62BBD9F7000CC57EA /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AB73F2B32BC6807400C38AE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTextField.swift; sourceTree = "<group>"; };
+		AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		ABACBA392BF38C3700460A42 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeStorageType.swift; sourceTree = "<group>"; };
 		ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
@@ -232,8 +232,8 @@
 		AB43B1A52BBD9F5900CC57EA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AB7C55CB2BBA7BB8006B69F0 /* WriteTextField.swift */,
-				AB43B1A62BBD9F7000CC57EA /* WriteView.swift */,
+				AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */,
+				AB43B1A62BBD9F7000CC57EA /* ComposeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 		ABACBA532BF39CB700460A42 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AB09C7DE2BAB3494007A0815 /* WriteViewController.swift */,
+				AB09C7DE2BAB3494007A0815 /* ComposeVIewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -505,7 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABACBA4F2BF3930400460A42 /* PerfumeStorage.swift in Sources */,
-				AB09C7DF2BAB3495007A0815 /* WriteViewController.swift in Sources */,
+				AB09C7DF2BAB3495007A0815 /* ComposeVIewController.swift in Sources */,
 				ABACBA472BF3917200460A42 /* HomeViewModel.swift in Sources */,
 				ABACBA4B2BF391A200460A42 /* DetailPerfumeViewModel.swift in Sources */,
 				AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */,
@@ -515,9 +515,9 @@
 				AB09C7DC2BAB3479007A0815 /* DetailViewController.swift in Sources */,
 				ABACBA4D2BF391BD00460A42 /* ComposePerfumeViewModel.swift in Sources */,
 				ABACBA562BF3ACB400460A42 /* Perfume.swift in Sources */,
-				AB7C55CC2BBA7BB8006B69F0 /* WriteTextField.swift in Sources */,
+				AB7C55CC2BBA7BB8006B69F0 /* InputTextField.swift in Sources */,
 				AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */,
-				AB43B1A72BBD9F7000CC57EA /* WriteView.swift in Sources */,
+				AB43B1A72BBD9F7000CC57EA /* ComposeView.swift in Sources */,
 				ABACBA412BF390BE00460A42 /* ViewModelBindableType.swift in Sources */,
 				AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */,
 				ABACBA492BF3918F00460A42 /* SearchPerfumeViewModel.swift in Sources */,
