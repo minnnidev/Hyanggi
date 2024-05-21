@@ -17,10 +17,12 @@ class HomeView: BaseView {
     override func setViews() {
         plusButton.do {
             $0.image = UIImage(systemName: "plus")
+            $0.tintColor = .black
         }
 
         wishButton.do {
             $0.image = UIImage(systemName: "heart")
+            $0.tintColor = .black
         }
 
         testPapersCollectionView.do {

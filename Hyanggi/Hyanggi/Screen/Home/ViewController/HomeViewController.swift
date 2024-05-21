@@ -26,6 +26,11 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         super.viewDidLoad()
 
         setCollectionView()
+        setNavigationBar()
+    }
+
+    func setNavigationBar() {
+        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
     }
 
     func bindViewModel() {
