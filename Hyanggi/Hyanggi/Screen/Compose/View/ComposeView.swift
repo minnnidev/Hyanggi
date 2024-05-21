@@ -14,7 +14,9 @@ final class ComposeView: BaseView {
     let dismissButton = UIBarButtonItem()
     let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
-    private let dateTextField = InputTextField(fieldName: "시향 날짜", fieldType: .date)
+    private let dateTextField = InputTextField(fieldName: "시향 날짜",
+                                               fieldType: .date,
+                                               isRequired: false)
     private let brandTextField = InputTextField(fieldName: "브랜드")
     private let nameTextField = InputTextField(fieldName: "향수 이름")
     private let contentLabel = UILabel()

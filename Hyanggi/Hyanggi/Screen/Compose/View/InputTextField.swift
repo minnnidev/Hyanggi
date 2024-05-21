@@ -17,15 +17,21 @@ enum WriteTextFieldType {
 final class InputTextField: BaseView {
 
     private let fieldNameLabel = UILabel()
+    private let requiredLabel = UILabel()
     private let textField = UITextField()
     private let datePicker = UIDatePicker()
 
     var fieldName: String
     var fieldType: WriteTextFieldType
+    var isRequired: Bool
 
-    init(fieldName: String, fieldType: WriteTextFieldType = .text, frame: CGRect = .zero) {
+    init(fieldName: String, 
+         fieldType: WriteTextFieldType = .text,
+         isRequired: Bool = true,
+         frame: CGRect = .zero) {
         self.fieldName = fieldName
         self.fieldType = fieldType
+        self.isRequired = isRequired
 
         super.init(frame: frame)
 
@@ -45,6 +51,14 @@ final class InputTextField: BaseView {
             $0.font = .systemFont(ofSize: 15, weight: .semibold)
         }
 
+        requiredLabel.do {
+            $0.text = "*"
+            $0.font = .systemFont(ofSize: 13, weight: .semibold)
+            $0.textColor = .red
+
+            $0.isHidden = isRequired ? false : true
+        }
+
         textField.do {
             $0.font = .systemFont(ofSize: 15)
             $0.backgroundColor = .clear
@@ -60,12 +74,17 @@ final class InputTextField: BaseView {
     }
 
     override func setConstraints() {
-        [fieldNameLabel, textField].forEach {
+        [fieldNameLabel, requiredLabel, textField].forEach {
             addSubview($0)
         }
 
         fieldNameLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.leading.equalToSuperview()
+        }
+
+        requiredLabel.snp.makeConstraints {
+            $0.centerY.equalTo(fieldNameLabel)
+            $0.leading.equalTo(fieldNameLabel.snp.trailing).offset(5)
         }
 
         textField.snp.makeConstraints {
