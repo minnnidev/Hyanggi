@@ -43,5 +43,17 @@ final class ComposeVIewController: BaseViewController, ViewModelBindableType {
                 vc.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
+
+        layoutView.brandTextField.textField.rx.text.orEmpty
+            .bind(to: viewModel.brandNameRelay)
+            .disposed(by: disposeBag)
+
+        layoutView.nameTextField.textField.rx.text.orEmpty
+            .bind(to: viewModel.perfumeNameRelay)
+            .disposed(by: disposeBag)
+
+        viewModel.formValid
+            .bind(to: layoutView.completeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }

@@ -18,8 +18,8 @@ final class InputTextField: BaseView {
 
     private let fieldNameLabel = UILabel()
     private let requiredLabel = UILabel()
-    private let textField = UITextField()
     private let datePicker = UIDatePicker()
+    let textField = UITextField()
 
     var fieldName: String
     var fieldType: WriteTextFieldType

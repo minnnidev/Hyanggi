@@ -14,14 +14,14 @@ final class ComposeView: BaseView {
     let dismissButton = UIBarButtonItem()
     let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
-    private let dateTextField = InputTextField(fieldName: "시향 날짜",
+    let dateTextField = InputTextField(fieldName: "시향 날짜",
                                                fieldType: .date,
                                                isRequired: false)
-    private let brandTextField = InputTextField(fieldName: "브랜드")
-    private let nameTextField = InputTextField(fieldName: "향수 이름")
-    private let contentLabel = UILabel()
+    let brandTextField = InputTextField(fieldName: "브랜드")
+    let nameTextField = InputTextField(fieldName: "향수 이름")
+    let contentLabel = UILabel()
     let contentTextView = UITextView()
-    private let sentenceTextField = InputTextField(fieldName: "이 향수를 한 마디로 표현한다면")
+    let sentenceTextField = InputTextField(fieldName: "이 향수를 한 마디로 표현한다면")
 
     override func setViews() {
         completeButton.do {
