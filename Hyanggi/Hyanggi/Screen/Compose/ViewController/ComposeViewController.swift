@@ -7,8 +7,8 @@
 
 import UIKit
 import SnapKit
-import Then
 import RxSwift
+import RxKeyboard
 
 final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
@@ -25,11 +25,7 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
         super.viewDidLoad()
 
         setNavigationBar()
-    }
-
-    private func setNavigationBar() {
-        navigationItem.leftBarButtonItem = layoutView.dismissButton
-        navigationItem.rightBarButtonItem = layoutView.completeButton
+        updateLayoutWithKeyboardHeight()
     }
 
     func bindViewModel() {
@@ -79,6 +75,25 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
         viewModel.formValid
             .bind(to: layoutView.completeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+    }
+}
+
+extension ComposeViewController {
+    
+    private func setNavigationBar() {
+        navigationItem.leftBarButtonItem = layoutView.dismissButton
+        navigationItem.rightBarButtonItem = layoutView.completeButton
+    }
+
+    private func updateLayoutWithKeyboardHeight() {
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [unowned self] keyboardHeight in
+                var contentInset = self.layoutView.scrollView.contentInset
+                contentInset.bottom = keyboardHeight
+
+                self.layoutView.scrollView.contentInset = contentInset
+            })
             .disposed(by: disposeBag)
     }
 }

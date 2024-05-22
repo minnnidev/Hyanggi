@@ -13,7 +13,7 @@ final class ComposeView: BaseView {
     let completeButton = UIBarButtonItem()
     let dismissButton = UIBarButtonItem()
     let scrollView = UIScrollView(frame: .zero)
-    private let contentView = UIView()
+    let contentView = UIView()
     let dateTextField = InputTextField(fieldName: "시향 날짜",
                                                fieldType: .date,
                                                isRequired: false)
