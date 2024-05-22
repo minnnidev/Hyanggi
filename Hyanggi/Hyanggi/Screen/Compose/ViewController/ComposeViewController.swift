@@ -25,6 +25,7 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
         super.viewDidLoad()
 
         setNavigationBar()
+        hideKeyboard()
         updateLayoutWithKeyboardHeight()
     }
 
@@ -80,10 +81,22 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 }
 
 extension ComposeViewController {
-    
+
     private func setNavigationBar() {
         navigationItem.leftBarButtonItem = layoutView.dismissButton
         navigationItem.rightBarButtonItem = layoutView.completeButton
+    }
+
+    private func hideKeyboard() {
+        let tapGesture = UITapGestureRecognizer()
+        layoutView.scrollView.addGestureRecognizer(tapGesture)
+
+        tapGesture.rx.event
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func updateLayoutWithKeyboardHeight() {
