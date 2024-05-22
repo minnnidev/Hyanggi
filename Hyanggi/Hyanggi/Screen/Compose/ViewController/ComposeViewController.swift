@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import RxSwift
 
-final class ComposeVIewController: BaseViewController, ViewModelBindableType {
+final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
     var viewModel: ComposePerfumeViewModel!
 
@@ -44,12 +44,37 @@ final class ComposeVIewController: BaseViewController, ViewModelBindableType {
             }
             .disposed(by: disposeBag)
 
-        layoutView.brandTextField.textField.rx.text.orEmpty
+        layoutView.completeButton.rx.tap
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.viewModel.createPerfume()
+                vc.dismiss(animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        layoutView.dateTextField.textField
+            .rx.text.orEmpty
+            .bind(to: viewModel.dateRelay)
+            .disposed(by: disposeBag)
+
+        layoutView.brandTextField.textField
+            .rx.text.orEmpty
             .bind(to: viewModel.brandNameRelay)
             .disposed(by: disposeBag)
 
-        layoutView.nameTextField.textField.rx.text.orEmpty
+        layoutView.nameTextField.textField
+            .rx.text.orEmpty
             .bind(to: viewModel.perfumeNameRelay)
+            .disposed(by: disposeBag)
+
+        layoutView.contentTextView
+            .rx.text.orEmpty
+            .bind(to: viewModel.contentRelay)
+            .disposed(by: disposeBag)
+
+        layoutView.sentenceTextField.textField
+            .rx.text.orEmpty
+            .bind(to: viewModel.sentenceRelay)
             .disposed(by: disposeBag)
 
         viewModel.formValid

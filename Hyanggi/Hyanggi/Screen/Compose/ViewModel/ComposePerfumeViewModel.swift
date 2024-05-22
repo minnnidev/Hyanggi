@@ -7,27 +7,30 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import RxRelay
 
 final class ComposePerfumeViewModel: BaseViewModel {
-    let brandNameRelay = PublishRelay<String>()
-    let perfumeNameRelay = PublishRelay<String>()
+    let dateRelay = BehaviorRelay<String>(value: "")
+    let brandNameRelay = BehaviorRelay<String>(value: "")
+    let perfumeNameRelay = BehaviorRelay<String>(value: "")
+    let contentRelay = BehaviorRelay<String>(value: "")
+    let sentenceRelay = BehaviorRelay<String>(value: "")
 
-    let formValid = BehaviorRelay<Bool>(value: false)
+    var formValid: Observable<Bool> {
+        return Observable.combineLatest(brandNameRelay,
+                                        perfumeNameRelay,
+                                        sentenceRelay)
+        .map { !$0.isEmpty && !$1.isEmpty && !$2.isEmpty }
+    }
 
-    private let disposeBag = DisposeBag()
-
-    override init(title: String, storage: PerfumeStorageType) {
-        
-        Observable.combineLatest(brandNameRelay,
-                                 perfumeNameRelay)
-        .map { brandName, perfumeName in
-            return !brandName.isEmpty && !perfumeName.isEmpty
-        }
-        .bind(to: formValid)
-        .disposed(by: disposeBag)
-
-
-        super.init(title: title, storage: storage)
+    func createPerfume() {
+        _ = storage
+            .createPerfume(Perfume(date: dateRelay.value,
+                                          brandName: brandNameRelay.value,
+                                          perfumeName: perfumeNameRelay.value,
+                                          content: contentRelay.value,
+                                          sentence: sentenceRelay.value,
+                                          isLiked: false))
     }
 }
