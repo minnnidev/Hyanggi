@@ -7,10 +7,9 @@
 
 import UIKit
 
-class HomeView: BaseView {
-
+final class HomeView: BaseView {
     let plusButton = UIBarButtonItem()
-    var wishButton = UIBarButtonItem()
+    let wishButton = UIBarButtonItem()
     let testPapersCollectionView = UICollectionView(frame: .zero,
                                                             collectionViewLayout: UICollectionViewLayout())
 

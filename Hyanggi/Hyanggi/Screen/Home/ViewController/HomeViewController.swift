@@ -29,10 +29,6 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         setNavigationBar()
     }
 
-    func setNavigationBar() {
-        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
-    }
-
     func bindViewModel() {
         viewModel.title
             .drive(navigationItem.rx.title)
@@ -43,6 +39,13 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             .bind { vc, _ in
                 vc.presentComposeViewController()
             }
+            .disposed(by: disposeBag)
+
+        layoutView.wishButton.rx.tap
+            .scan(false) { (lastState, newValue) in
+               !lastState
+            }
+            .bind(to: layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
 
         viewModel.perfumes
@@ -88,6 +91,12 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         present(navVC, animated: true)
     }
 }
+extension HomeViewController {
+    
+    func setNavigationBar() {
+        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
+    }
+}
 
 // TODO: refactor with RxDataSource
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
@@ -97,5 +106,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+}
+
+extension Reactive where Base: UIBarButtonItem {
+    
+    var isSelected: Binder<Bool> {
+        return Binder(self.base) { barButtonItem, isSelected in
+            barButtonItem.image = UIImage(systemName: isSelected ? "heart.fill" : "heart")
+        }
     }
 }
