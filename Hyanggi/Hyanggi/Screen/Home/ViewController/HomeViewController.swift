@@ -41,14 +41,22 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             }
             .disposed(by: disposeBag)
 
-        layoutView.wishButton.rx.tap
-            .scan(false) { (lastState, newValue) in
-               !lastState
+        let wishButtonState = layoutView.wishButton.rx.tap
+            .scan(false) { lastState, _ in
+                !lastState
             }
+            .share(replay: 1)
+
+        wishButtonState
+            .bind(to: viewModel.isWishButtonSelected)
+            .disposed(by: disposeBag)
+
+        wishButtonState
             .bind(to: layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
 
-        viewModel.perfumes
+
+        viewModel.perfumesObservable
             .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
                 cell.dataBind(elem)
             }

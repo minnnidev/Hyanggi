@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 
 class PerfumeStorage: PerfumeStorageType {
-    
     private var perfumes = [
         Perfume(date: "2024.05.14",
                 brandName: "딥디크",
@@ -37,5 +36,12 @@ class PerfumeStorage: PerfumeStorageType {
     
     func perfumeList() -> Observable<[Perfume]> {
         return store
+    }
+
+    func wishedPerfumeList() -> RxSwift.Observable<[Perfume]> {
+        return store
+            .map { perfumes in
+                perfumes.filter { $0.isLiked }
+            }
     }
 }

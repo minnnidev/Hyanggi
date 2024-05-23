@@ -9,9 +9,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class HomeViewModel: BaseViewModel {
-    
+final class HomeViewModel: BaseViewModel {
+
     var perfumes: Observable<[Perfume]> {
         return storage.perfumeList()
     }
+
+    var wishedPerfumes: Observable<[Perfume]> {
+        return storage.wishedPerfumeList()
+    }
+
+    var isWishButtonSelected = BehaviorRelay<Bool>(value: false)
+
+    lazy var perfumesObservable = isWishButtonSelected
+        .withUnretained(self)
+        .flatMapLatest { vm, isSelected -> Observable<[Perfume]> in
+            if isSelected {
+                return vm.wishedPerfumes
+            } else {
+                return vm.perfumes
+            }
+        }
 }
