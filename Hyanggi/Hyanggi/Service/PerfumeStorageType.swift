@@ -11,4 +11,5 @@ import RxSwift
 protocol PerfumeStorageType {
     func createPerfume(_ perfume: Perfume) -> Observable<Perfume>
     func perfumeList() -> Observable<[Perfume]>
+    func wishedPerfumeList() -> Observable<[Perfume]>
 }
