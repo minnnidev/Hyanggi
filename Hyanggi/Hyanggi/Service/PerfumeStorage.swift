@@ -38,7 +38,7 @@ class PerfumeStorage: PerfumeStorageType {
         return store
     }
 
-    func wishedPerfumeList() -> RxSwift.Observable<[Perfume]> {
+    func wishedPerfumeList() -> Observable<[Perfume]> {
         return store
             .map { perfumes in
                 perfumes.filter { $0.isLiked }

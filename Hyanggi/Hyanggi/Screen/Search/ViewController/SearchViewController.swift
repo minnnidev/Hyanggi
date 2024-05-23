@@ -32,10 +32,16 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
 
-        viewModel.perfumes
+        viewModel.filteredPerfumes
             .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { row, elem, cell in
                 cell.databind(elem)
             }
+            .disposed(by: disposeBag)
+
+        layoutView.searchBar.searchTextField
+            .rx.text.orEmpty
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .bind(to: viewModel.searchTextRelay)
             .disposed(by: disposeBag)
     }
 
