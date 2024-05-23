@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
-class SearchPerfumeViewModel: BaseViewModel {
-    
+final class SearchPerfumeViewModel: BaseViewModel {
+    var perfumes: Observable<[Perfume]> {
+        return storage.perfumeList()
+    }
 }

@@ -31,10 +31,17 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
+
+        viewModel.perfumes
+            .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { row, elem, cell in
+                cell.databind(elem)
+            }
+            .disposed(by: disposeBag)
     }
 
     private func setCollectionView() {
-        layoutView.searchCollectionView.delegate = self
+        layoutView.searchCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
 
         layoutView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
@@ -47,11 +54,5 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        detailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

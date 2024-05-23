@@ -30,17 +30,8 @@ final class SearchCollectionViewCell: UICollectionViewCell {
 
     private func setViews() {
         contentView.backgroundColor = .white
-        
-        titleLabel.do {
-            $0.text = "딥디크 오로즈"
-        }
-
-        sentenceLabel.do {
-            $0.text = "꽃맛이 날 것 같은 솜사탕 냄새"
-        }
 
         contentLabel.do {
-            $0.text = "akdjsfljdfkajdls;kfadfadjfkajwleijldkjalifjdlajfkesdakdjsflddajkfshakjsdhflkajhsdlkfjhalsdkjfrads"
             $0.numberOfLines = 0
         }
 
@@ -67,9 +58,15 @@ final class SearchCollectionViewCell: UICollectionViewCell {
 
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(sentenceLabel.snp.bottom)
-            $0.leading.equalTo(titleLabel)
-            $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(titleLabel)
         }
+    }
+
+    func databind(_ perfume: Perfume) {
+        titleLabel.text = "\(perfume.brandName) \(perfume.perfumeName)"
+        sentenceLabel.text = perfume.sentence
+        contentLabel.text = perfume.content
     }
 }
