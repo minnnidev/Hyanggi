@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+enum AlertType {
+    case modify, delete
+}
+
 final class DetailViewController: BaseViewController, ViewModelBindableType {
 
     var viewModel: DetailPerfumeViewModel!
@@ -43,23 +47,19 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
             .flatMap { vc, _ in
                 vc.showAlert()
             }
-            .subscribe(onNext: { alertType in
-                switch alertType {
-                case .modify:
-                    print("수정")
-                case .delete:
-                    print("삭제")
-                }
+            .bind(to: viewModel.alertAction)
+            .disposed(by: disposeBag)
+
+        viewModel.alertAction
+            .withUnretained(self)
+            .subscribe(onNext: { vc, alert in
+                vc.viewModel.handleAlertAction(alert)
             })
             .disposed(by: disposeBag)
     }
 }
 
 extension DetailViewController {
-
-    enum AlertType {
-        case modify, delete
-    }
 
     private func setNavigationBar() {
         navigationItem.rightBarButtonItems = [layoutView.ellipsisButton, layoutView.wishButton]
