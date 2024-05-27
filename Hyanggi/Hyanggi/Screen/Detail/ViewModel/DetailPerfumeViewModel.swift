@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class DetailPerfumeViewModel: BaseViewModel {
-    let perfume: Perfume
+    var perfume: Perfume
     lazy var detailPerfume = BehaviorSubject<Perfume>(value: perfume)
     let alertAction = PublishRelay<AlertType>()
     let deleteAction = PublishRelay<Void>()
@@ -28,5 +28,11 @@ class DetailPerfumeViewModel: BaseViewModel {
                 vm.storage.deletePerfume(perfume.id)
             })
             .disposed(by: disposeBag)
+    }
+
+    func toggleLike() {
+        perfume.isLiked.toggle()
+        detailPerfume.onNext(perfume)
+        storage.updateLikePerfume(perfume.id, perfume)
     }
 }

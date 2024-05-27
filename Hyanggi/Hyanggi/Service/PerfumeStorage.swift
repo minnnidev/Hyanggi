@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 class PerfumeStorage: PerfumeStorageType {
+    
     private var perfumes = [
         Perfume(id: UUID(),
                 date: "2024.05.14",
@@ -70,5 +71,13 @@ class PerfumeStorage: PerfumeStorageType {
         store.onNext(perfumes)
 
         return Observable.just(updated)
+    }
+
+    func updateLikePerfume(_ id: UUID, _ perfume: Perfume) {
+        if let idx = perfumes.firstIndex(where: { $0.id == id }) {
+            perfumes[idx].isLiked.toggle()
+        }
+
+        store.onNext(perfumes)
     }
 }

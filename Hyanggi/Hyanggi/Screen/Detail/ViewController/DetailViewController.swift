@@ -50,6 +50,18 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
             .bind(to: viewModel.alertAction)
             .disposed(by: disposeBag)
 
+        viewModel.detailPerfume
+            .map { $0.isLiked }
+            .bind(to: layoutView.wishButton.rx.isSelected)
+            .disposed(by: disposeBag)
+
+        layoutView.wishButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.viewModel.toggleLike()
+            })
+            .disposed(by: disposeBag)
+
         viewModel.alertAction
             .withUnretained(self)
             .subscribe(onNext: { vc, alert in
