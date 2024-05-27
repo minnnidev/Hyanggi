@@ -53,8 +53,13 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
         viewModel.alertAction
             .withUnretained(self)
             .subscribe(onNext: { vc, alert in
-                vc.viewModel.handleAlertAction(alert)
-                vc.navigationController?.popViewController(animated: true)
+                switch alert {
+                case .modify:
+                    vc.presentComposeViewController()
+                case .delete:
+                    vc.viewModel.deleteAction.accept(())
+                    vc.navigationController?.popViewController(animated: true)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -89,9 +94,19 @@ extension DetailViewController {
 
             self?.present(alertVC, animated: true)
 
-            return Disposables.create {
-                self?.dismiss(animated: true)
-            }
+            return Disposables.create()
         }
+    }
+
+    private func presentComposeViewController() {
+        let composeViewModel = ComposePerfumeViewModel(title: "향수 수정",
+                                                       storage: self.viewModel.storage,
+                                                       perfume: self.viewModel.perfume)
+        var composeViewController = ComposeViewController()
+        composeViewController.bind(viewModel: composeViewModel)
+
+        let navVC = UINavigationController(rootViewController: composeViewController)
+
+        self.present(navVC, animated: true)
     }
 }

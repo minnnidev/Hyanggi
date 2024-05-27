@@ -42,11 +42,25 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         layoutView.completeButton.rx.tap
+            .bind(to: viewModel.completeAction)
+            .disposed(by: disposeBag)
+
+        viewModel.completeAction
             .withUnretained(self)
-            .bind { vc, _ in
-                vc.viewModel.createPerfume()
+            .subscribe(onNext: { vc, _ in
                 vc.dismiss(animated: true)
-            }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.initialPerfume
+            .compactMap { $0 }
+            .drive(with: self, onNext: { vc, perfume in
+                vc.layoutView.dateTextField.textField.text = perfume.date
+                vc.layoutView.brandTextField.textField.text = perfume.brandName
+                vc.layoutView.nameTextField.textField.text = perfume.perfumeName
+                vc.layoutView.contentTextView.text = perfume.content
+                vc.layoutView.sentenceTextField.textField.text = perfume.sentence
+            })
             .disposed(by: disposeBag)
 
         layoutView.dateTextField.textField

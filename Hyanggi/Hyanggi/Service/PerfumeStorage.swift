@@ -54,4 +54,12 @@ class PerfumeStorage: PerfumeStorageType {
 
         store.onNext(perfumes)
     }
+
+    func updatePerfume(_ id: UUID, _ perfume: Perfume) {
+        if let idx = perfumes.firstIndex(where: { $0.id == id }) {
+            perfumes[idx] = perfume
+        }
+
+        store.onNext(perfumes)
+    }
 }
