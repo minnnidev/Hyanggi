@@ -25,11 +25,12 @@ final class ComposePerfumeViewModel: BaseViewModel {
 
     func createPerfume() {
         _ = storage
-            .createPerfume(Perfume(date: dateRelay.value,
-                                          brandName: brandNameRelay.value,
-                                          perfumeName: perfumeNameRelay.value,
-                                          content: contentRelay.value,
-                                          sentence: sentenceRelay.value,
-                                          isLiked: false))
+            .createPerfume(Perfume(id: UUID(),
+                                   date: dateRelay.value,
+                                   brandName: brandNameRelay.value,
+                                   perfumeName: perfumeNameRelay.value,
+                                   content: contentRelay.value,
+                                   sentence: sentenceRelay.value,
+                                   isLiked: false))
     }
 }
