@@ -22,6 +22,7 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setNavigationBar()
     }
 
     func bindViewModel() {
@@ -36,5 +37,60 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
                 vc.layoutView.dateLabel.text = perfume.date
             })
             .disposed(by: disposeBag)
+
+        layoutView.ellipsisButton.rx.tap
+            .withUnretained(self)
+            .flatMap { vc, _ in
+                vc.showAlert()
+            }
+            .subscribe(onNext: { alertType in
+                switch alertType {
+                case .modify:
+                    print("수정")
+                case .delete:
+                    print("삭제")
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+extension DetailViewController {
+
+    enum AlertType {
+        case modify, delete
+    }
+
+    private func setNavigationBar() {
+        navigationItem.rightBarButtonItems = [layoutView.ellipsisButton, layoutView.wishButton]
+    }
+
+    private func showAlert() -> Observable<AlertType> {
+        return Observable.create { [weak self] ob in
+            let alertVC = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+            let modifyAction = UIAlertAction(title: "수정하기",
+                                             style: .default) { _ in
+                ob.onNext(.modify)
+                ob.onCompleted()
+            }
+            let deleteAction = UIAlertAction(title: "삭제하기", style: .destructive) { _ in
+                ob.onNext(.delete)
+                ob.onCompleted()
+            }
+
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+
+            [cancelAction, modifyAction, deleteAction].forEach {
+                alertVC.addAction($0)
+            }
+
+            self?.present(alertVC, animated: true)
+
+            return Disposables.create {
+                self?.dismiss(animated: true)
+            }
+        }
     }
 }
