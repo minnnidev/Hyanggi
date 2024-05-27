@@ -12,7 +12,7 @@ final class HomeView: BaseView {
     let wishButton = UIBarButtonItem()
     let testPapersCollectionView = UICollectionView(frame: .zero,
                                                             collectionViewLayout: UICollectionViewLayout())
-    let emptyView = UIView()
+    let emptyView = UIImageView()
 
     override func setViews() {
         plusButton.do {
@@ -36,7 +36,7 @@ final class HomeView: BaseView {
         }
 
         emptyView.do {
-            $0.backgroundColor = .red
+            $0.image = UIImage(named: "icn_trans")
             $0.isHidden = true
         }
     }

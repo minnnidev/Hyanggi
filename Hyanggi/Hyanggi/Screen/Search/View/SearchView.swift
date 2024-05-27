@@ -11,7 +11,7 @@ class SearchView: BaseView {
 
     let searchBar = UISearchBar()
     let searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    let emptyView = UIView()
+    let emptyView = UIImageView()
 
     override func setViews() {
         searchBar.do {
@@ -29,7 +29,7 @@ class SearchView: BaseView {
         }
 
         emptyView.do {
-            $0.backgroundColor = .red
+            $0.image = UIImage(named: "icn_trans")
             $0.isHidden = true
         }
     }
