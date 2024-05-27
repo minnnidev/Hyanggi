@@ -55,11 +55,20 @@ class PerfumeStorage: PerfumeStorageType {
         store.onNext(perfumes)
     }
 
-    func updatePerfume(_ id: UUID, _ perfume: Perfume) {
+    func updatePerfume(_ id: UUID, _ perfume: Perfume) -> Observable<Perfume> {
+        let updated = Perfume(id: id,
+                              date: perfume.date,
+                              brandName: perfume.brandName,
+                              perfumeName: perfume.perfumeName,
+                              content: perfume.content,
+                              sentence: perfume.sentence,
+                              isLiked: perfume.isLiked)
         if let idx = perfumes.firstIndex(where: { $0.id == id }) {
-            perfumes[idx] = perfume
+            perfumes[idx] = updated
         }
 
         store.onNext(perfumes)
+
+        return Observable.just(updated)
     }
 }

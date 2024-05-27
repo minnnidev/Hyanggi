@@ -70,7 +70,7 @@ final class ComposePerfumeViewModel: BaseViewModel {
 
     func updatePerfume() {
         guard let perfume = perfume else { return }
-        storage.updatePerfume(perfume.id, Perfume(id: perfume.id,
+        _ = storage.updatePerfume(perfume.id, Perfume(id: perfume.id,
                                                   date: dateRelay.value,
                                                   brandName: brandNameRelay.value,
                                                   perfumeName: perfumeNameRelay.value,
