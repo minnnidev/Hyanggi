@@ -54,6 +54,7 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
             .withUnretained(self)
             .subscribe(onNext: { vc, alert in
                 vc.viewModel.handleAlertAction(alert)
+                vc.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }

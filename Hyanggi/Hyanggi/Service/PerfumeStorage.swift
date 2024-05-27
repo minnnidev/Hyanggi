@@ -46,4 +46,12 @@ class PerfumeStorage: PerfumeStorageType {
                 perfumes.filter { $0.isLiked }
             }
     }
+
+    func deletePerfume(_ id: UUID) {
+        if let idx = perfumes.firstIndex(where: { $0.id == id }) {
+            perfumes.remove(at: idx)
+        }
+
+        store.onNext(perfumes)
+    }
 }

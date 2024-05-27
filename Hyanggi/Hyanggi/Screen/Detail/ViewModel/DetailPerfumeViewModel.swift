@@ -13,6 +13,7 @@ class DetailPerfumeViewModel: BaseViewModel {
     let perfume: Perfume
     lazy var detailPerfume = BehaviorSubject<Perfume>(value: perfume)
     let alertAction = PublishRelay<AlertType>()
+    let popAction = PublishRelay<AlertType>()
 
     init(perfume: Perfume, title: String, storage: PerfumeStorageType) {
         self.perfume = perfume
@@ -26,7 +27,7 @@ class DetailPerfumeViewModel: BaseViewModel {
         case .modify:
             print("수정")
         case .delete:
-            print("삭제")
+            storage.deletePerfume(perfume.id)
         }
     }
 }

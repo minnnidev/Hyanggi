@@ -12,4 +12,5 @@ protocol PerfumeStorageType {
     func createPerfume(_ perfume: Perfume) -> Observable<Perfume>
     func perfumeList() -> Observable<[Perfume]>
     func wishedPerfumeList() -> Observable<[Perfume]>
+    func deletePerfume(_ id: UUID)
 }
