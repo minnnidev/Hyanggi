@@ -43,6 +43,11 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .bind(to: viewModel.searchTextRelay)
             .disposed(by: disposeBag)
+
+        viewModel.filteredPerfumes
+            .map { !$0.isEmpty}
+            .bind(to: layoutView.emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
     }
 
     private func setCollectionView() {

@@ -12,6 +12,7 @@ final class HomeView: BaseView {
     let wishButton = UIBarButtonItem()
     let testPapersCollectionView = UICollectionView(frame: .zero,
                                                             collectionViewLayout: UICollectionViewLayout())
+    let emptyView = UIView()
 
     override func setViews() {
         plusButton.do {
@@ -33,10 +34,15 @@ final class HomeView: BaseView {
             $0.showsHorizontalScrollIndicator = false
             $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         }
+
+        emptyView.do {
+            $0.backgroundColor = .red
+            $0.isHidden = true
+        }
     }
 
     override func setConstraints() {
-        [testPapersCollectionView].forEach {
+        [testPapersCollectionView, emptyView].forEach {
             addSubview($0)
         }
 
@@ -44,6 +50,11 @@ final class HomeView: BaseView {
             $0.top.equalTo(safeAreaLayoutGuide).offset(80)
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-80)
             $0.leading.trailing.equalToSuperview()
+        }
+
+        emptyView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.height.equalTo(100)
         }
     }
 }

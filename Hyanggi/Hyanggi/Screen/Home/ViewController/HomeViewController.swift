@@ -69,6 +69,11 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
                 vc.pushDetailViewController(perfume)
             })
             .disposed(by: disposeBag)
+
+        viewModel.perfumesObservable
+            .map { !$0.isEmpty }
+            .bind(to: layoutView.emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
     }
 
     private func setCollectionView() {
@@ -118,7 +123,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension Reactive where Base: UIBarButtonItem {
-    
+
     var isSelected: Binder<Bool> {
         return Binder(self.base) { barButtonItem, isSelected in
             barButtonItem.image = UIImage(systemName: isSelected ? "heart.fill" : "heart")
