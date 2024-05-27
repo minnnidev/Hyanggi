@@ -19,6 +19,7 @@ final class ComposePerfumeViewModel: BaseViewModel {
     let sentenceRelay = BehaviorRelay<String>(value: "")
 
     let completeAction = PublishRelay<Void>()
+    let updatedPerfume = PublishRelay<Perfume>()
 
     var initialPerfume: Driver<Perfume?> {
         return Observable.just(perfume)
@@ -70,12 +71,15 @@ final class ComposePerfumeViewModel: BaseViewModel {
 
     func updatePerfume() {
         guard let perfume = perfume else { return }
-        _ = storage.updatePerfume(perfume.id, Perfume(id: perfume.id,
-                                                  date: dateRelay.value,
-                                                  brandName: brandNameRelay.value,
-                                                  perfumeName: perfumeNameRelay.value,
-                                                  content: contentRelay.value,
-                                                  sentence: sentenceRelay.value,
-                                                  isLiked: perfume.isLiked))
+        let updated = Perfume(id: perfume.id,
+                              date: dateRelay.value,
+                              brandName: brandNameRelay.value,
+                              perfumeName: perfumeNameRelay.value,
+                              content: contentRelay.value,
+                              sentence: sentenceRelay.value,
+                              isLiked: perfume.isLiked)
+
+       _ = storage.updatePerfume(perfume.id, updated)
+        updatedPerfume.accept(updated)
     }
 }
