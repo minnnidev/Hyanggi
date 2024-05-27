@@ -50,6 +50,13 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
             .bind(to: layoutView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
 
+        layoutView.searchCollectionView.rx
+            .modelSelected(Perfume.self)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, perfume in
+                vc.pushDetailViewController(perfume)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -74,6 +81,7 @@ extension SearchViewController {
 
     private func hideKeyboard() {
         let tapGesture = UITapGestureRecognizer()
+        tapGesture.cancelsTouchesInView = false
         layoutView.addGestureRecognizer(tapGesture)
 
         tapGesture.rx.event
@@ -82,5 +90,16 @@ extension SearchViewController {
                 vc.view.endEditing(true)
             })
             .disposed(by: disposeBag)
+    }
+
+    private func pushDetailViewController(_ perfume: Perfume) {
+        let detailViewModel = DetailPerfumeViewModel(perfume: perfume,
+                                                     title: "",
+                                                     storage: viewModel.storage)
+        var detailViewController = DetailViewController()
+        detailViewController.bind(viewModel: detailViewModel)
+        detailViewController.hidesBottomBarWhenPushed = true
+
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
