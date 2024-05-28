@@ -34,9 +34,10 @@ final class TabBarViewController: UITabBarController {
     }
 
     func setTabBar() {
-        let homeViewModel = HomeViewModel(title: "향기", storage: storage)
+//        let homeViewModel = HomeViewModel(title: "향기", storage: storage)
+        let testViewModel = HomeViewModel(storage: storage)
         var homeViewController = HomeViewController()
-        homeViewController.bind(viewModel: homeViewModel)
+        homeViewController.bind(viewModel: testViewModel)
 
         let searchViewModel = SearchPerfumeViewModel(title: "검색", storage: storage)
         var searchViewController = SearchViewController()
