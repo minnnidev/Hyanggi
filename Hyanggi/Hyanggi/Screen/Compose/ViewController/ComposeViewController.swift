@@ -30,6 +30,13 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
     }
 
     func bindViewModel() {
+        layoutView.addPhotoButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.pick()
+            })
+            .disposed(by: disposeBag)
+
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
@@ -122,5 +129,33 @@ extension ComposeViewController {
                 self.layoutView.scrollView.contentInset = contentInset
             })
             .disposed(by: disposeBag)
+    }
+
+    private func pick() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+
+        picker.delegate = self
+
+        present(picker, animated: true)
+    }
+}
+
+extension ComposeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var newImage: UIImage? = nil
+
+        if let possibleImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            newImage = possibleImage
+        } else if let possibleImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            newImage = possibleImage
+        }
+
+        layoutView.photoView.image = newImage
+        layoutView.addPhotoButton.isHidden = true
+        
+        picker.dismiss(animated: true, completion: nil)
     }
 }

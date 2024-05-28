@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 final class ComposeView: BaseView {
+    let photoView = UIImageView()
+    let addPhotoButton = UIButton()
     let completeButton = UIBarButtonItem()
     let dismissButton = UIBarButtonItem()
     let scrollView = UIScrollView(frame: .zero)
@@ -24,6 +26,16 @@ final class ComposeView: BaseView {
     let sentenceTextField = InputTextField(fieldName: "이 향수를 한 마디로 표현한다면")
 
     override func setViews() {
+        photoView.do {
+            $0.backgroundColor = UIColor.hyanggiGray
+            $0.isUserInteractionEnabled = true
+        }
+
+        addPhotoButton.do {
+            $0.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
+            $0.tintColor = .white
+        }
+
         completeButton.do {
             $0.title = "완료"
             $0.tintColor = .black
@@ -62,12 +74,24 @@ final class ComposeView: BaseView {
             $0.top.bottom.equalToSuperview()
         }
 
-        [dateTextField, brandTextField, nameTextField, contentLabel, contentTextView, sentenceTextField].forEach {
+        photoView.addSubview(addPhotoButton)
+
+        [photoView, dateTextField, brandTextField, nameTextField, contentLabel, contentTextView, sentenceTextField].forEach {
             contentView.addSubview($0)
         }
 
+        photoView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(30)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.height.equalTo(120)
+        }
+
+        addPhotoButton.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+
         dateTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
+            $0.top.equalTo(photoView.snp.bottom).offset(40)
             $0.leading.equalToSuperview().offset(20)
             $0.centerX.equalToSuperview()
         }
