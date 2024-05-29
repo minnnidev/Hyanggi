@@ -81,9 +81,8 @@ extension HomeViewController {
     }
 
     private func pushDetailViewController(_ perfume: Perfume) {
-        let detailViewModel = DetailPerfumeViewModel(perfume: perfume,
-                                                     title: "",
-                                                     storage: viewModel.storage)
+        let detailViewModel = DetailPerfumeViewModel(storage: viewModel.storage, perfume: perfume)
+
         var detailViewController = DetailViewController()
         detailViewController.bind(viewModel: detailViewModel)
         detailViewController.hidesBottomBarWhenPushed = true
@@ -92,8 +91,6 @@ extension HomeViewController {
     }
 
     private func presentComposeViewController() {
-////        let composeViewModel = ComposePerfumeViewModel(title: "향수 추가",
-//                                                       storage: viewModel.storage)
         let composeViewModel = ComposeViewModel(storage: viewModel.storage)
         var composeViewController = ComposeViewController()
         composeViewController.bind(viewModel: composeViewModel)

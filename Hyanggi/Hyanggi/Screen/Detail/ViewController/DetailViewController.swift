@@ -7,6 +7,8 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+
 
 enum AlertType {
     case modify, delete
@@ -30,10 +32,14 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
     }
 
     func bindViewModel() {
-        viewModel.detailPerfume
-            .withUnretained(self)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { vc, perfume in
+        let input = DetailPerfumeViewModel.Input(
+            wishButtonTap: layoutView.wishButton.rx.tap
+        )
+
+        let output = viewModel.transform(input: input)
+
+        output.detailPerfume
+            .drive(with: self, onNext: { vc, perfume in
                 vc.layoutView.brandNameLabel.text = perfume.brandName
                 vc.layoutView.perfumeNameLabel.text = perfume.perfumeName
                 vc.layoutView.sentenceLabel.text = "\"\(perfume.sentence)\""
@@ -42,34 +48,26 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
 
-        layoutView.ellipsisButton.rx.tap
-            .withUnretained(self)
-            .flatMap { vc, _ in
-                vc.showAlert()
-            }
-            .bind(to: viewModel.alertAction)
-            .disposed(by: disposeBag)
-
-        viewModel.detailPerfume
+        output.detailPerfume
             .map { $0.isLiked }
-            .bind(to: layoutView.wishButton.rx.isSelected)
+            .drive(layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
 
-        layoutView.wishButton.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
-                vc.viewModel.toggleLike()
-            })
+        output.wishButtonState
+            .drive(layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
 
-        viewModel.alertAction
+        layoutView.ellipsisButton.rx.tap
+            .flatMap { [unowned self] in
+                self.showAlert()
+            }
             .withUnretained(self)
             .subscribe(onNext: { vc, alert in
                 switch alert {
                 case .modify:
                     vc.presentComposeViewController()
                 case .delete:
-                    vc.viewModel.deleteAction.accept(())
+                    vc.viewModel.deletePerfume()
                     vc.navigationController?.popViewController(animated: true)
                 }
             })
@@ -111,8 +109,9 @@ extension DetailViewController {
     }
 
     private func presentComposeViewController() {
-        let composeViewModel = ComposeViewModel(perfume: viewModel.perfume, 
+        let composeViewModel = ComposeViewModel(perfume: viewModel.perfume,
                                                 storage: viewModel.storage)
+
         var composeViewController = ComposeViewController()
         composeViewController.bind(viewModel: composeViewModel)
 

@@ -84,9 +84,8 @@ extension SearchViewController {
     }
 
     private func pushDetailViewController(_ perfume: Perfume) {
-        let detailViewModel = DetailPerfumeViewModel(perfume: perfume,
-                                                     title: "",
-                                                     storage: viewModel.storage)
+        let detailViewModel = DetailPerfumeViewModel(storage: viewModel.storage, perfume: perfume)
+
         var detailViewController = DetailViewController()
         detailViewController.bind(viewModel: detailViewModel)
         detailViewController.hidesBottomBarWhenPushed = true

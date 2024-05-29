@@ -73,11 +73,10 @@ class PerfumeStorage: PerfumeStorageType {
         return Observable.just(updated)
     }
 
-    func updateLikePerfume(_ id: UUID, _ perfume: Perfume) {
+    func updateLikePerfume(_ id: UUID) {
         if let idx = perfumes.firstIndex(where: { $0.id == id }) {
             perfumes[idx].isLiked.toggle()
         }
-
         store.onNext(perfumes)
     }
 }

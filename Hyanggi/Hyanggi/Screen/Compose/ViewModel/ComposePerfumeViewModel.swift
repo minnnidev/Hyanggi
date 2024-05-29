@@ -57,15 +57,14 @@ final class ComposeViewModel: ViewModelType {
                                                      input.sentenceText))
             .map { [weak self] date, brandName, perfumeName, content, sentence in
                 if let perfume = self?.perfume {
-                    let a = Perfume(id: perfume.id,
-                                    date: date.isEmpty ? perfume.date : date,
-                                    brandName: brandName.isEmpty ? perfume.brandName : brandName,
-                                    perfumeName: perfumeName.isEmpty ? perfume.perfumeName : perfumeName,
-                                    content: content.isEmpty ? perfume.content : content,
-                                    sentence: sentence.isEmpty ? perfume.sentence : sentence
-                                    ,
-                                    isLiked: perfume.isLiked)
-                    return a
+                    return Perfume(id: perfume.id,
+                                   date: date.isEmpty ? perfume.date : date,
+                                   brandName: brandName.isEmpty ? perfume.brandName : brandName,
+                                   perfumeName: perfumeName.isEmpty ? perfume.perfumeName : perfumeName,
+                                   content: content.isEmpty ? perfume.content : content,
+                                   sentence: sentence.isEmpty ? perfume.sentence : sentence
+                                   ,
+                                   isLiked: perfume.isLiked)
                 } else {
                     return Perfume(id: UUID(),
                                    date: date,
