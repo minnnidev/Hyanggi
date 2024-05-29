@@ -35,7 +35,11 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             .startWith(false)
             .share(replay: 1)
 
-        let input = HomeViewModel.Input(wishButtonSelected: wishButtonState)
+        let input = HomeViewModel.Input(
+            wishButtonSelected: wishButtonState,
+            perfumeSelected: layoutView.testPapersCollectionView.rx.modelSelected(Perfume.self),
+            plusButtonTapped: layoutView.plusButton.rx.tap
+        )
         let output = viewModel.transform(input: input)
 
         output.perfumes
@@ -44,15 +48,22 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             }
             .disposed(by: disposeBag)
 
-        wishButtonState
-            .bind(to: layoutView.wishButton.rx.isSelected)
+        output.pushToDetail
+            .withUnretained(self)
+            .bind { vc, perfume in
+                vc.pushDetailViewController(perfume)
+            }
             .disposed(by: disposeBag)
 
-        layoutView.plusButton.rx.tap
+        output.presentCompose
             .withUnretained(self)
             .bind { vc, _ in
                 vc.presentComposeViewController()
             }
+            .disposed(by: disposeBag)
+
+        wishButtonState
+            .bind(to: layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
     }
 }

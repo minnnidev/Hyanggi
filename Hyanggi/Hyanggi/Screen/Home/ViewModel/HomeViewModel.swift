@@ -20,10 +20,14 @@ final class HomeViewModel: ViewModelType {
 
     struct Input {
         let wishButtonSelected: Observable<Bool>
+        let perfumeSelected: ControlEvent<Perfume>
+        let plusButtonTapped: ControlEvent<Void>
     }
 
     struct Output {
         let perfumes: Observable<[Perfume]>
+        let pushToDetail: Observable<Perfume>
+        let presentCompose: Observable<Void>
     }
 
     func transform(input: Input) -> Output {
@@ -36,6 +40,12 @@ final class HomeViewModel: ViewModelType {
                 }
             }
 
-        return Output(perfumes: perfumes)
+        let pushToDetail = input.perfumeSelected.asObservable()
+
+        let presentCompose = input.plusButtonTapped.asObservable()
+
+        return Output(perfumes: perfumes,
+                      pushToDetail: pushToDetail,
+                      presentCompose: presentCompose)
     }
 }
