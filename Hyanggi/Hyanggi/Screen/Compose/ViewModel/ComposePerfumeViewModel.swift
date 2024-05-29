@@ -34,9 +34,12 @@ final class ComposeViewModel: ViewModelType {
     struct Output {
         let isFormValid: Observable<Bool>
         let dismissToPrevious: Observable<Void>
+        let initialPerfume: Observable<Perfume?>
     }
 
     func transform(input: Input) -> Output {
+        let initialPerfume = Observable.just(perfume)
+
         let isFormValid = Observable
             .combineLatest(input.brandNameText,
                            input.perfumeNameText,
@@ -46,42 +49,59 @@ final class ComposeViewModel: ViewModelType {
         let dismissToPrevious = Observable
             .merge(input.dismissButtonTap.asObservable(), input.completeButtonTap.asObservable())
 
-        input.completeButtonTap
+        let completeHandler = input.completeButtonTap
             .withLatestFrom(Observable.combineLatest(input.dateText,
                                                      input.brandNameText,
                                                      input.perfumeNameText,
                                                      input.contentText,
                                                      input.sentenceText))
-
-            .map { date, brand, perfume, content, sentence in
-                Perfume(id: UUID(),
-                        date: date,
-                        brandName: brand,
-                        perfumeName: perfume,
-                        content: content,
-                        sentence: sentence,
-                        isLiked: false)
+            .map { [weak self] date, brandName, perfumeName, content, sentence in
+                if let perfume = self?.perfume {
+                    let a = Perfume(id: perfume.id,
+                                    date: date.isEmpty ? perfume.date : date,
+                                    brandName: brandName.isEmpty ? perfume.brandName : brandName,
+                                    perfumeName: perfumeName.isEmpty ? perfume.perfumeName : perfumeName,
+                                    content: content.isEmpty ? perfume.content : content,
+                                    sentence: sentence.isEmpty ? perfume.sentence : sentence
+                                    ,
+                                    isLiked: perfume.isLiked)
+                    return a
+                } else {
+                    return Perfume(id: UUID(),
+                                   date: date,
+                                   brandName: brandName,
+                                   perfumeName: perfumeName,
+                                   content: content,
+                                   sentence: sentence,
+                                   isLiked: false)
+                }
             }
+
+        completeHandler
             .withUnretained(self)
-            .subscribe(onNext: { vm, perfume in
-                vm.createPerfume(perfume)
+            .subscribe(onNext: { vm, composedPerfume in
+                if let perfume = vm.perfume {
+                    vm.updatePerfume(composedPerfume)
+                } else {
+                    vm.createPerfume(composedPerfume)
+                }
             })
             .disposed(by: disposeBag)
 
         return Output(
             isFormValid: isFormValid,
-            dismissToPrevious: dismissToPrevious
+            dismissToPrevious: dismissToPrevious, 
+            initialPerfume: initialPerfume
         )
     }
 
     func createPerfume(_ perfume: Perfume) {
         _ = storage
-            .createPerfume(Perfume(id: UUID(),
-                                   date: perfume.date,
-                                   brandName: perfume.brandName,
-                                   perfumeName: perfume.perfumeName,
-                                   content: perfume.content,
-                                   sentence: perfume.sentence,
-                                   isLiked: false))
+            .createPerfume(perfume)
+    }
+
+    func updatePerfume(_ perfume: Perfume) {
+        _ = storage
+            .updatePerfume(perfume.id, perfume)
     }
 }

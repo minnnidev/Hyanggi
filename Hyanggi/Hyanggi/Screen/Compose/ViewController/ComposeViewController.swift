@@ -42,6 +42,18 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
         let output = viewModel.transform(input: input)
 
+        output.initialPerfume
+            .compactMap { $0 }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, perfume in
+                vc.layoutView.dateTextField.textField.text = perfume.date
+                vc.layoutView.brandTextField.textField.text = perfume.brandName
+                vc.layoutView.nameTextField.textField.text = perfume.perfumeName
+                vc.layoutView.contentTextView.text = perfume.content
+                vc.layoutView.sentenceTextField.textField.text = perfume.sentence
+            })
+            .disposed(by: disposeBag)
+
         output.dismissToPrevious
             .withUnretained(self)
             .bind { vc, _ in
@@ -58,7 +70,7 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 extension ComposeViewController {
 
     private func setNavigationBar() {
-        navigationItem.title = "향수 추가"
+        navigationItem.title = "입력"
         navigationItem.leftBarButtonItem = layoutView.dismissButton
         navigationItem.rightBarButtonItem = layoutView.completeButton
     }
