@@ -92,8 +92,9 @@ extension HomeViewController {
     }
 
     private func presentComposeViewController() {
-        let composeViewModel = ComposePerfumeViewModel(title: "향수 추가",
-                                                       storage: viewModel.storage)
+////        let composeViewModel = ComposePerfumeViewModel(title: "향수 추가",
+//                                                       storage: viewModel.storage)
+        let composeViewModel = ComposeViewModel(storage: viewModel.storage)
         var composeViewController = ComposeViewController()
         composeViewController.bind(viewModel: composeViewModel)
 

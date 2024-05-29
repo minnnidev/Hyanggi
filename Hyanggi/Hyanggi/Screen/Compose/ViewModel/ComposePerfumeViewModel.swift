@@ -9,77 +9,79 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class ComposePerfumeViewModel: BaseViewModel {
+final class ComposeViewModel: ViewModelType {
     private var perfume: Perfume?
-
-    let dateRelay = BehaviorRelay<String>(value: "")
-    let brandNameRelay = BehaviorRelay<String>(value: "")
-    let perfumeNameRelay = BehaviorRelay<String>(value: "")
-    let contentRelay = BehaviorRelay<String>(value: "")
-    let sentenceRelay = BehaviorRelay<String>(value: "")
-
-    let completeAction = PublishRelay<Void>()
-    let updatedPerfume = PublishRelay<Perfume>()
-
-    var initialPerfume: Driver<Perfume?> {
-        return Observable.just(perfume)
-            .asDriver(onErrorJustReturn: nil)
-    }
-
-    var formValid: Observable<Bool> {
-        return Observable.combineLatest(brandNameRelay,
-                                        perfumeNameRelay,
-                                        sentenceRelay)
-        .map { !$0.isEmpty && !$1.isEmpty && !$2.isEmpty }
-    }
+    let storage: PerfumeStorageType
 
     private let disposeBag = DisposeBag()
 
-    init(title: String,
-         storage: PerfumeStorageType,
-         perfume: Perfume? = nil) {
+    init(perfume: Perfume? = nil,
+         storage: PerfumeStorageType) {
         self.perfume = perfume
+        self.storage = storage
+    }
 
-        super.init(title: title, storage: storage)
+    struct Input {
+        let dateText: Observable<String>
+        let brandNameText: Observable<String>
+        let perfumeNameText: Observable<String>
+        let contentText: Observable<String>
+        let sentenceText: Observable<String>
+        let dismissButtonTap: ControlEvent<Void>
+        let completeButtonTap: ControlEvent<Void>
+    }
 
-        completeAction
+    struct Output {
+        let isFormValid: Observable<Bool>
+        let dismissToPrevious: Observable<Void>
+    }
+
+    func transform(input: Input) -> Output {
+        let isFormValid = Observable
+            .combineLatest(input.brandNameText,
+                           input.perfumeNameText,
+                           input.sentenceText)
+            .map { !$0.isEmpty && !$1.isEmpty && !$2.isEmpty }
+
+        let dismissToPrevious = Observable
+            .merge(input.dismissButtonTap.asObservable(), input.completeButtonTap.asObservable())
+
+        input.completeButtonTap
+            .withLatestFrom(Observable.combineLatest(input.dateText,
+                                                     input.brandNameText,
+                                                     input.perfumeNameText,
+                                                     input.contentText,
+                                                     input.sentenceText))
+
+            .map { date, brand, perfume, content, sentence in
+                Perfume(id: UUID(),
+                        date: date,
+                        brandName: brand,
+                        perfumeName: perfume,
+                        content: content,
+                        sentence: sentence,
+                        isLiked: false)
+            }
             .withUnretained(self)
-            .subscribe(onNext: { vm, _ in
-                vm.handleCompleteAction()
+            .subscribe(onNext: { vm, perfume in
+                vm.createPerfume(perfume)
             })
             .disposed(by: disposeBag)
+
+        return Output(
+            isFormValid: isFormValid,
+            dismissToPrevious: dismissToPrevious
+        )
     }
 
-    func handleCompleteAction() {
-        if perfume != nil {
-            updatePerfume()
-        } else {
-            createPerfume()
-        }
-    }
-
-    func createPerfume() {
+    func createPerfume(_ perfume: Perfume) {
         _ = storage
             .createPerfume(Perfume(id: UUID(),
-                                   date: dateRelay.value,
-                                   brandName: brandNameRelay.value,
-                                   perfumeName: perfumeNameRelay.value,
-                                   content: contentRelay.value,
-                                   sentence: sentenceRelay.value,
+                                   date: perfume.date,
+                                   brandName: perfume.brandName,
+                                   perfumeName: perfume.perfumeName,
+                                   content: perfume.content,
+                                   sentence: perfume.sentence,
                                    isLiked: false))
-    }
-
-    func updatePerfume() {
-        guard let perfume = perfume else { return }
-        let updated = Perfume(id: perfume.id,
-                              date: dateRelay.value,
-                              brandName: brandNameRelay.value,
-                              perfumeName: perfumeNameRelay.value,
-                              content: contentRelay.value,
-                              sentence: sentenceRelay.value,
-                              isLiked: perfume.isLiked)
-
-       _ = storage.updatePerfume(perfume.id, updated)
-        updatedPerfume.accept(updated)
     }
 }
