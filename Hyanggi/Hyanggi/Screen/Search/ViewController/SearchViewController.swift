@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 import RxSwift
 
 final class SearchViewController: BaseViewController, ViewModelBindableType {
@@ -24,53 +22,46 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setNavigationBar()
         setCollectionView()
         hideKeyboard()
     }
 
     func bindViewModel() {
-        viewModel.title
-            .drive(navigationItem.rx.title)
-            .disposed(by: disposeBag)
+        let searchText = layoutView.searchBar.searchTextField
+            .rx.text.orEmpty
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
 
-        viewModel.filteredPerfumes
+        let input = SearchPerfumeViewModel.Input(
+            searchText: searchText, 
+            perfumeSelected: layoutView.searchCollectionView.rx.modelSelected(Perfume.self)
+        )
+        let output = viewModel.transform(input: input)
+
+        output.searchedPerfumes
             .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { row, elem, cell in
                 cell.databind(elem)
             }
             .disposed(by: disposeBag)
 
-        layoutView.searchBar.searchTextField
-            .rx.text.orEmpty
-            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-            .bind(to: viewModel.searchTextRelay)
-            .disposed(by: disposeBag)
-
-        viewModel.filteredPerfumes
-            .map { !$0.isEmpty}
+        output.isEmpty
             .bind(to: layoutView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
 
-        layoutView.searchCollectionView.rx
-            .modelSelected(Perfume.self)
+        output.pushToDetail
             .withUnretained(self)
-            .subscribe(onNext: { vc, perfume in
+            .bind { vc, perfume in
                 vc.pushDetailViewController(perfume)
-            })
+            }
             .disposed(by: disposeBag)
-    }
-}
-
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 90)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
     }
 }
 
 extension SearchViewController {
+
+    private func setNavigationBar() {
+        navigationItem.title = "검색"
+    }
 
     private func setCollectionView() {
         layoutView.searchCollectionView.rx.setDelegate(self)
@@ -101,5 +92,16 @@ extension SearchViewController {
         detailViewController.hidesBottomBarWhenPushed = true
 
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 90)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
     }
 }
