@@ -10,14 +10,17 @@ import RxSwift
 import RxCocoa
 
 class PerfumeStorage: PerfumeStorageType {
+    
     private var perfumes = [
-        Perfume(date: "2024.05.14",
+        Perfume(id: UUID(),
+                date: "2024.05.14",
                 brandName: "딥디크",
                 perfumeName: "플레르 드 뽀",
                 content: "안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽안뇽",
                 sentence: "솜사탕",
                 isLiked: false),
-        Perfume(date: "2024.05.13",
+        Perfume(id: UUID(),
+                date: "2024.05.13",
                 brandName: "딥디크",
                 perfumeName: "오 로즈",
                 content: "아 냄새 좋아. 돈 생기면 꼭 사야지 ㅠㅠ",
@@ -43,5 +46,37 @@ class PerfumeStorage: PerfumeStorageType {
             .map { perfumes in
                 perfumes.filter { $0.isLiked }
             }
+    }
+
+    func deletePerfume(_ id: UUID) {
+        if let idx = perfumes.firstIndex(where: { $0.id == id }) {
+            perfumes.remove(at: idx)
+        }
+
+        store.onNext(perfumes)
+    }
+
+    func updatePerfume(_ id: UUID, _ perfume: Perfume) -> Observable<Perfume> {
+        let updated = Perfume(id: id,
+                              date: perfume.date,
+                              brandName: perfume.brandName,
+                              perfumeName: perfume.perfumeName,
+                              content: perfume.content,
+                              sentence: perfume.sentence,
+                              isLiked: perfume.isLiked)
+        if let idx = perfumes.firstIndex(where: { $0.id == id }) {
+            perfumes[idx] = updated
+        }
+
+        store.onNext(perfumes)
+
+        return Observable.just(updated)
+    }
+
+    func updateLikePerfume(_ id: UUID) {
+        if let idx = perfumes.firstIndex(where: { $0.id == id }) {
+            perfumes[idx].isLiked.toggle()
+        }
+        store.onNext(perfumes)
     }
 }

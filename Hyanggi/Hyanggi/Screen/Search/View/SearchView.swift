@@ -11,10 +11,12 @@ class SearchView: BaseView {
 
     let searchBar = UISearchBar()
     let searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    let emptyView = UIImageView()
 
     override func setViews() {
         searchBar.do {
             $0.searchBarStyle = .minimal
+            $0.placeholder = "검색어를 입력해 주세요"
         }
 
         searchCollectionView.do {
@@ -25,10 +27,15 @@ class SearchView: BaseView {
             $0.backgroundColor = .clear
             $0.showsVerticalScrollIndicator = false
         }
+
+        emptyView.do {
+            $0.image = UIImage(named: "icn_trans")
+            $0.isHidden = true
+        }
     }
 
     override func setConstraints() {
-        [searchBar, searchCollectionView].forEach {
+        [searchBar, searchCollectionView, emptyView].forEach {
             addSubview($0)
         }
 
@@ -43,6 +50,11 @@ class SearchView: BaseView {
             $0.leading.equalToSuperview().offset(20)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+
+        emptyView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.height.equalTo(100)
         }
     }
 }

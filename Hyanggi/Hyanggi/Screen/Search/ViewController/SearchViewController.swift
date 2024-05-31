@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 import RxSwift
 
 final class SearchViewController: BaseViewController, ViewModelBindableType {
@@ -24,25 +22,45 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setNavigationBar()
         setCollectionView()
+        hideKeyboard()
     }
 
     func bindViewModel() {
-        viewModel.title
-            .drive(navigationItem.rx.title)
-            .disposed(by: disposeBag)
+        let searchText = layoutView.searchBar.searchTextField
+            .rx.text.orEmpty
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
 
-        viewModel.filteredPerfumes
+        let input = SearchPerfumeViewModel.Input(
+            searchText: searchText, 
+            perfumeSelected: layoutView.searchCollectionView.rx.modelSelected(Perfume.self)
+        )
+        let output = viewModel.transform(input: input)
+
+        output.searchedPerfumes
             .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { row, elem, cell in
                 cell.databind(elem)
             }
             .disposed(by: disposeBag)
 
-        layoutView.searchBar.searchTextField
-            .rx.text.orEmpty
-            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-            .bind(to: viewModel.searchTextRelay)
+        output.isEmpty
+            .bind(to: layoutView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
+
+        output.pushToDetail
+            .withUnretained(self)
+            .bind { vc, perfume in
+                vc.pushDetailViewController(perfume)
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension SearchViewController {
+
+    private func setNavigationBar() {
+        navigationItem.title = "검색"
     }
 
     private func setCollectionView() {
@@ -51,7 +69,31 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
 
         layoutView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
+
+    private func hideKeyboard() {
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.cancelsTouchesInView = false
+        layoutView.addGestureRecognizer(tapGesture)
+
+        tapGesture.rx.event
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func pushDetailViewController(_ perfume: Perfume) {
+        let detailViewModel = DetailPerfumeViewModel(storage: viewModel.storage, perfume: perfume)
+
+        var detailViewController = DetailViewController()
+        detailViewController.bind(viewModel: detailViewModel)
+        detailViewController.hidesBottomBarWhenPushed = true
+
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
+
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

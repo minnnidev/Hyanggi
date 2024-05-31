@@ -23,10 +23,12 @@ final class DetailView: BaseView {
     override func setViews() {
         ellipsisButton.do {
             $0.image = UIImage(systemName: "ellipsis")
+            $0.tintColor = .black
         }
 
         wishButton.do {
             $0.image = UIImage(systemName: "heart")
+            $0.tintColor = .black
         }
 
         brandNameLabel.do {

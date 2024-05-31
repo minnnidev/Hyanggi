@@ -12,7 +12,7 @@ import RxKeyboard
 
 final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
-    var viewModel: ComposePerfumeViewModel!
+    var viewModel: ComposeViewModel!
 
     private let layoutView = ComposeView()
     private let disposeBag = DisposeBag()
@@ -30,51 +30,38 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
     }
 
     func bindViewModel() {
-        viewModel.title
-            .drive(navigationItem.rx.title)
+        let input = ComposeViewModel.Input(
+            dateText: layoutView.dateTextField.textField.rx.text.orEmpty.asObservable(),
+            brandNameText: layoutView.brandTextField.textField.rx.text.orEmpty.asObservable(),
+            perfumeNameText: layoutView.nameTextField.textField.rx.text.orEmpty.asObservable(),
+            contentText: layoutView.contentTextView.rx.text.orEmpty.asObservable(),
+            sentenceText: layoutView.sentenceTextField.textField.rx.text.orEmpty.asObservable(),
+            dismissButtonTap: layoutView.dismissButton.rx.tap,
+            completeButtonTap: layoutView.completeButton.rx.tap
+        )
+
+        let output = viewModel.transform(input: input)
+
+        output.initialPerfume
+            .compactMap { $0 }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, perfume in
+                vc.layoutView.dateTextField.textField.text = perfume.date
+                vc.layoutView.brandTextField.textField.text = perfume.brandName
+                vc.layoutView.nameTextField.textField.text = perfume.perfumeName
+                vc.layoutView.contentTextView.text = perfume.content
+                vc.layoutView.sentenceTextField.textField.text = perfume.sentence
+            })
             .disposed(by: disposeBag)
 
-        layoutView.dismissButton.rx.tap
+        output.dismissToPrevious
             .withUnretained(self)
             .bind { vc, _ in
                 vc.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
 
-        layoutView.completeButton.rx.tap
-            .withUnretained(self)
-            .bind { vc, _ in
-                vc.viewModel.createPerfume()
-                vc.dismiss(animated: true)
-            }
-            .disposed(by: disposeBag)
-
-        layoutView.dateTextField.textField
-            .rx.text.orEmpty
-            .bind(to: viewModel.dateRelay)
-            .disposed(by: disposeBag)
-
-        layoutView.brandTextField.textField
-            .rx.text.orEmpty
-            .bind(to: viewModel.brandNameRelay)
-            .disposed(by: disposeBag)
-
-        layoutView.nameTextField.textField
-            .rx.text.orEmpty
-            .bind(to: viewModel.perfumeNameRelay)
-            .disposed(by: disposeBag)
-
-        layoutView.contentTextView
-            .rx.text.orEmpty
-            .bind(to: viewModel.contentRelay)
-            .disposed(by: disposeBag)
-
-        layoutView.sentenceTextField.textField
-            .rx.text.orEmpty
-            .bind(to: viewModel.sentenceRelay)
-            .disposed(by: disposeBag)
-
-        viewModel.formValid
+        output.isFormValid
             .bind(to: layoutView.completeButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
@@ -83,6 +70,7 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 extension ComposeViewController {
 
     private func setNavigationBar() {
+        navigationItem.title = "입력"
         navigationItem.leftBarButtonItem = layoutView.dismissButton
         navigationItem.rightBarButtonItem = layoutView.completeButton
     }

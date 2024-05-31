@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB003E9D2C06229600A163E8 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB003E9C2C06229600A163E8 /* ViewModelType.swift */; };
+		AB003E9F2C0632B700A163E8 /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB003E9E2C0632B700A163E8 /* Reactive+.swift */; };
 		AB09C7BD2BAB32F3007A0815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7BC2BAB32F3007A0815 /* AppDelegate.swift */; };
 		AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7BE2BAB32F3007A0815 /* SceneDelegate.swift */; };
 		AB09C7C12BAB32F3007A0815 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09C7C02BAB32F3007A0815 /* HomeViewController.swift */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		64F7B10EF05A1B01EEE127EE /* Pods-Hyanggi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.release.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.release.xcconfig"; sourceTree = "<group>"; };
+		AB003E9C2C06229600A163E8 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		AB003E9E2C0632B700A163E8 /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		AB09C7B92BAB32F3007A0815 /* Hyanggi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hyanggi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB09C7BC2BAB32F3007A0815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB09C7BE2BAB32F3007A0815 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 			children = (
 				ABADCB6A2BBD917C000F4127 /* Base */,
 				AB7C55BF2BB989DB006B69F0 /* Extension */,
+				AB003E9C2C06229600A163E8 /* ViewModelType.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			children = (
 				AB7C55BD2BB98833006B69F0 /* UIColor+.swift */,
 				AB43B1A82BBDA37600CC57EA /* Date+.swift */,
+				AB003E9E2C0632B700A163E8 /* Reactive+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				ABACBA562BF3ACB400460A42 /* Perfume.swift in Sources */,
 				AB7C55CC2BBA7BB8006B69F0 /* InputTextField.swift in Sources */,
 				AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */,
+				AB003E9F2C0632B700A163E8 /* Reactive+.swift in Sources */,
 				AB43B1A72BBD9F7000CC57EA /* ComposeView.swift in Sources */,
 				ABACBA412BF390BE00460A42 /* ViewModelBindableType.swift in Sources */,
 				AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */,
@@ -524,6 +531,7 @@
 				AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
+				AB003E9D2C06229600A163E8 /* ViewModelType.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */,
@@ -679,6 +687,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hyanggi/App/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -709,6 +718,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hyanggi/App/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

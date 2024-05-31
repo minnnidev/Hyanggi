@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 import RxSwift
 import RxCocoa
 
@@ -30,45 +28,50 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
     }
 
     func bindViewModel() {
-        viewModel.title
-            .drive(navigationItem.rx.title)
+        let wishButtonState = layoutView.wishButton.rx.tap
+            .scan(false) { lastState, _ in
+                !lastState
+            }
+            .startWith(false)
+            .share(replay: 1)
+
+        let input = HomeViewModel.Input(
+            wishButtonSelected: wishButtonState,
+            perfumeSelected: layoutView.testPapersCollectionView.rx.modelSelected(Perfume.self),
+            plusButtonTapped: layoutView.plusButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
+
+        output.perfumes
+            .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
+                cell.dataBind(elem)
+            }
             .disposed(by: disposeBag)
 
-        layoutView.plusButton.rx.tap
+        output.pushToDetail
+            .withUnretained(self)
+            .bind { vc, perfume in
+                vc.pushDetailViewController(perfume)
+            }
+            .disposed(by: disposeBag)
+
+        output.presentCompose
             .withUnretained(self)
             .bind { vc, _ in
                 vc.presentComposeViewController()
             }
             .disposed(by: disposeBag)
 
-        let wishButtonState = layoutView.wishButton.rx.tap
-            .scan(false) { lastState, _ in
-                !lastState
-            }
-            .share(replay: 1)
-
-        wishButtonState
-            .bind(to: viewModel.isWishButtonSelected)
-            .disposed(by: disposeBag)
-
         wishButtonState
             .bind(to: layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
-
-
-        viewModel.perfumesObservable
-            .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
-                cell.dataBind(elem)
-            }
-            .disposed(by: disposeBag)
-
-        layoutView.testPapersCollectionView.rx
-            .modelSelected(Perfume.self)
-            .withUnretained(self)
-            .subscribe(onNext: { vc, perfume in
-                vc.pushDetailViewController(perfume)
-            })
-            .disposed(by: disposeBag)
+    }
+}
+extension HomeViewController {
+    
+    func setNavigationBar() {
+        navigationItem.title = "향기"
+        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
     }
 
     private func setCollectionView() {
@@ -78,9 +81,8 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
     }
 
     private func pushDetailViewController(_ perfume: Perfume) {
-        let detailViewModel = DetailPerfumeViewModel(perfume: perfume,
-                                                     title: "",
-                                                     storage: viewModel.storage)
+        let detailViewModel = DetailPerfumeViewModel(storage: viewModel.storage, perfume: perfume)
+
         var detailViewController = DetailViewController()
         detailViewController.bind(viewModel: detailViewModel)
         detailViewController.hidesBottomBarWhenPushed = true
@@ -89,20 +91,13 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
     }
 
     private func presentComposeViewController() {
-        let composeViewModel = ComposePerfumeViewModel(title: "향수 추가",
-                                                       storage: viewModel.storage)
+        let composeViewModel = ComposeViewModel(storage: viewModel.storage)
         var composeViewController = ComposeViewController()
         composeViewController.bind(viewModel: composeViewModel)
-        
+
         let navVC = UINavigationController(rootViewController: composeViewController)
 
         present(navVC, animated: true)
-    }
-}
-extension HomeViewController {
-    
-    func setNavigationBar() {
-        navigationItem.rightBarButtonItems = [layoutView.plusButton, layoutView.wishButton]
     }
 }
 
@@ -118,7 +113,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension Reactive where Base: UIBarButtonItem {
-    
+
     var isSelected: Binder<Bool> {
         return Binder(self.base) { barButtonItem, isSelected in
             barButtonItem.image = UIImage(systemName: isSelected ? "heart.fill" : "heart")

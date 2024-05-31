@@ -9,25 +9,43 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class HomeViewModel: BaseViewModel {
+final class HomeViewModel: ViewModelType {
+    let storage: PerfumeStorageType
 
-    var perfumes: Observable<[Perfume]> {
-        return storage.perfumeList()
+    init(storage: PerfumeStorageType) {
+        self.storage = storage
     }
 
-    var wishedPerfumes: Observable<[Perfume]> {
-        return storage.wishedPerfumeList()
+    var disposeBag = DisposeBag()
+
+    struct Input {
+        let wishButtonSelected: Observable<Bool>
+        let perfumeSelected: ControlEvent<Perfume>
+        let plusButtonTapped: ControlEvent<Void>
     }
 
-    var isWishButtonSelected = BehaviorRelay<Bool>(value: false)
+    struct Output {
+        let perfumes: Observable<[Perfume]>
+        let pushToDetail: Observable<Perfume>
+        let presentCompose: Observable<Void>
+    }
 
-    lazy var perfumesObservable = isWishButtonSelected
-        .withUnretained(self)
-        .flatMapLatest { vm, isSelected -> Observable<[Perfume]> in
-            if isSelected {
-                return vm.wishedPerfumes
-            } else {
-                return vm.perfumes
+    func transform(input: Input) -> Output {
+        let perfumes = input.wishButtonSelected
+            .flatMapLatest { isSelected -> Observable<[Perfume]> in
+                if isSelected {
+                    return self.storage.wishedPerfumeList()
+                } else {
+                    return self.storage.perfumeList()
+                }
             }
-        }
+
+        let pushToDetail = input.perfumeSelected.asObservable()
+
+        let presentCompose = input.plusButtonTapped.asObservable()
+
+        return Output(perfumes: perfumes,
+                      pushToDetail: pushToDetail,
+                      presentCompose: presentCompose)
+    }
 }
