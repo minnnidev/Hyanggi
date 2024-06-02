@@ -12,7 +12,9 @@ final class HomeView: BaseView {
     let wishButton = UIBarButtonItem()
     let testPapersCollectionView = UICollectionView(frame: .zero,
                                                             collectionViewLayout: UICollectionViewLayout())
-    let emptyView = UIImageView()
+    let emptyView = UIStackView()
+    private let emptyImageView = UIImageView()
+    private let emptyLabel = UILabel()
 
     override func setViews() {
         plusButton.do {
@@ -35,13 +37,28 @@ final class HomeView: BaseView {
             $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         }
 
-        emptyView.do {
+        emptyImageView.do {
             $0.image = UIImage(named: "icn_trans")
+        }
+
+        emptyLabel.do {
+            $0.text = "시향지를 추가해 주세요"
+            $0.font = .systemFont(ofSize: 15)
+        }
+
+        emptyView.do {
+            $0.axis = .vertical
+            $0.alignment = .center
+            $0.distribution = .fill
             $0.isHidden = true
         }
     }
 
     override func setConstraints() {
+        [emptyImageView, emptyLabel].forEach {
+            emptyView.addArrangedSubview($0)
+        }
+
         [testPapersCollectionView, emptyView].forEach {
             addSubview($0)
         }
@@ -52,9 +69,13 @@ final class HomeView: BaseView {
             $0.leading.trailing.equalToSuperview()
         }
 
+        emptyImageView.snp.makeConstraints {
+            $0.width.equalTo(100)
+            $0.height.equalTo(100)
+        }
+
         emptyView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.height.equalTo(100)
         }
     }
 }
