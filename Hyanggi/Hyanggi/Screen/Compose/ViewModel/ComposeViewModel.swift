@@ -47,7 +47,7 @@ final class ComposeViewModel: ViewModelType {
 
         let initialPerfumeImage: Driver<UIImage?> = Observable<UIImage?>.create { observer in
                if let photoId = self.perfume?.photoId {
-                   if let image = ImageFileManager.shared.loadImage(photoId) {
+                   if let image = ImageFileManager.shared.loadImage(imageName: photoId) {
                        observer.onNext(image)
                    } else {
                        observer.onNext(nil)

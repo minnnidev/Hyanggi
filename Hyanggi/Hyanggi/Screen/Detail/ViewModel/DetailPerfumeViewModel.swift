@@ -61,7 +61,7 @@ final class DetailPerfumeViewModel: ViewModelType {
         let detailPerfumeImage = perfumeRelay
             .map { perfume -> UIImage? in
                 guard let photoId = perfume.photoId else { return nil }
-                return ImageFileManager.shared.loadImage(photoId)
+                return ImageFileManager.shared.loadImage(imageName: photoId)
             }
             .asDriver(onErrorJustReturn: nil)
 
@@ -74,7 +74,7 @@ final class DetailPerfumeViewModel: ViewModelType {
         storage.deletePerfume(perfumeRelay.value.id)
 
         if let photoId = self.perfumeRelay.value.photoId {
-            ImageFileManager.shared.deleteImage(photoId)
+            ImageFileManager.shared.deleteImage(imageName: photoId)
         }
     }
 }

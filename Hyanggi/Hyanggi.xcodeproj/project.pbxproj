@@ -27,7 +27,6 @@
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55CC2BBA7BB8006B69F0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */; };
-		AB9364522C0C8EAC002879AE /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9364512C0C8EAC002879AE /* ImageFileManager.swift */; };
 		ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA392BF38C3700460A42 /* BaseViewModel.swift */; };
 		ABACBA3D2BF38D5500460A42 /* PerfumeStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */; };
 		ABACBA412BF390BE00460A42 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */; };
@@ -39,6 +38,7 @@
 		ABACBA562BF3ACB400460A42 /* Perfume.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA552BF3ACB400460A42 /* Perfume.swift */; };
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
+		ABCFAD242C0CD9CB00909D26 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFAD232C0CD9CB00909D26 /* ImageFileManager.swift */; };
 		B4DEA26F6E71E09220BD4C8C /* Pods_Hyanggi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +79,6 @@
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
-		AB9364512C0C8EAC002879AE /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageFileManager.swift; path = "../../../../../Library/Mobile Documents/.Trash/Hyanggi/Hyanggi/Hyanggi/Service/ImageFileManager.swift"; sourceTree = "<group>"; };
 		ABACBA392BF38C3700460A42 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeStorageType.swift; sourceTree = "<group>"; };
 		ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		ABACBA552BF3ACB400460A42 /* Perfume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perfume.swift; sourceTree = "<group>"; };
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		ABCFAD232C0CD9CB00909D26 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.debug.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.debug.xcconfig"; sourceTree = "<group>"; };
 		FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyanggi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -278,7 +278,7 @@
 			children = (
 				ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */,
 				ABACBA4E2BF3930400460A42 /* PerfumeStorage.swift */,
-				AB9364512C0C8EAC002879AE /* ImageFileManager.swift */,
+				ABCFAD232C0CD9CB00909D26 /* ImageFileManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
 				ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */,
-				AB9364522C0C8EAC002879AE /* ImageFileManager.swift in Sources */,
+				ABCFAD242C0CD9CB00909D26 /* ImageFileManager.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
 				AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */,
 				AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */,

@@ -43,6 +43,10 @@ final class TestPaperCell: UICollectionViewCell {
             $0.textAlignment = .left
             $0.font = .systemFont(ofSize: 17)
         }
+
+        imageView.do {
+            $0.contentMode = .scaleAspectFit
+        }
     }
 
     private func setLayout() {
@@ -74,7 +78,7 @@ final class TestPaperCell: UICollectionViewCell {
         perfumeNameLabel.text = perfume.perfumeName
 
         if let photoId = perfume.photoId {
-            imageView.image = ImageFileManager.shared.loadImage(photoId)
+            imageView.image = ImageFileManager.shared.loadImage(imageName: photoId)
         }
     }
 }
