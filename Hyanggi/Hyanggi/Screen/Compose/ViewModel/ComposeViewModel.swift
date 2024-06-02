@@ -30,12 +30,14 @@ final class ComposeViewModel: ViewModelType {
         let sentenceText: Observable<String>
         let dismissButtonTap: ControlEvent<Void>
         let completeButtonTap: ControlEvent<Void>
+        let selectImage: Observable<UIImage?>
     }
 
     struct Output {
         let isFormValid: Observable<Bool>
         let dismissToPrevious: Observable<Void>
         let initialPerfume: Observable<Perfume?>
+        let selectedImage: Observable<UIImage?>
     }
 
     func transform(input: Input) -> Output {
@@ -91,7 +93,8 @@ final class ComposeViewModel: ViewModelType {
         return Output(
             isFormValid: isFormValid,
             dismissToPrevious: dismissToPrevious, 
-            initialPerfume: initialPerfume
+            initialPerfume: initialPerfume,
+            selectedImage: input.selectImage
         )
     }
 

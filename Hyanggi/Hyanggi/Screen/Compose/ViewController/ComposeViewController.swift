@@ -14,6 +14,7 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
     var viewModel: ComposeViewModel!
 
     private let layoutView = ComposeView()
+    private let selectedImageSubject = PublishSubject<UIImage?>()
     private let disposeBag = DisposeBag()
 
     override func loadView() {
@@ -36,7 +37,8 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             contentText: layoutView.contentTextView.rx.text.orEmpty.asObservable(),
             sentenceText: layoutView.sentenceTextField.textField.rx.text.orEmpty.asObservable(),
             dismissButtonTap: layoutView.dismissButton.rx.tap,
-            completeButtonTap: layoutView.completeButton.rx.tap
+            completeButtonTap: layoutView.completeButton.rx.tap,
+            selectImage: selectedImageSubject
         )
 
         let output = viewModel.transform(input: input)
@@ -62,6 +64,20 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
         output.isFormValid
             .bind(to: layoutView.completeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        output.selectedImage
+            .withUnretained(self)
+            .subscribe(onNext: { vc, image in
+                vc.layoutView.photoView.image = image
+            })
+            .disposed(by: disposeBag)
+
+        layoutView.photoView.rx.tapGesture
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.presentImagePicker()
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -95,5 +111,28 @@ extension ComposeViewController {
                 self.layoutView.scrollView.contentInset = contentInset
             })
             .disposed(by: disposeBag)
+    }
+
+    private func presentImagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension ComposeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let selectedImage = info[.originalImage] as? UIImage {
+            selectedImageSubject.onNext(selectedImage)
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

@@ -15,3 +15,26 @@ extension Reactive where Base: UIViewController {
         return ControlEvent(events: source)
     }
 }
+
+extension Reactive where Base: UIImageView {
+    var tapGesture: Observable<UITapGestureRecognizer> {
+        return Observable.create { [weak base] observer in
+            guard let imageView = base else {
+                observer.on(.completed)
+                return Disposables.create()
+            }
+
+            imageView.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer()
+            imageView.addGestureRecognizer(tapGesture)
+
+            let disposable = tapGesture.rx.event
+                .bind(to: observer)
+
+            return Disposables.create {
+                imageView.removeGestureRecognizer(tapGesture)
+                disposable.dispose()
+            }
+        }
+    }
+}
