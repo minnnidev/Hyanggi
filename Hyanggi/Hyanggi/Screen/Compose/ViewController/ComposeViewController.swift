@@ -45,13 +45,19 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
         output.initialPerfume
             .compactMap { $0 }
-            .withUnretained(self)
-            .subscribe(onNext: { vc, perfume in
+            .drive(with: self, onNext: { vc, perfume in
                 vc.layoutView.dateTextField.textField.text = perfume.date
                 vc.layoutView.brandTextField.textField.text = perfume.brandName
                 vc.layoutView.nameTextField.textField.text = perfume.perfumeName
                 vc.layoutView.contentTextView.text = perfume.content
                 vc.layoutView.sentenceTextField.textField.text = perfume.sentence
+            })
+            .disposed(by: disposeBag)
+
+        output.initialPerfumeImage
+            .compactMap { $0 }
+            .drive(with: self, onNext: { vc, image in
+                vc.layoutView.photoView.image = image
             })
             .disposed(by: disposeBag)
 
@@ -67,8 +73,7 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         output.selectedImage
-            .withUnretained(self)
-            .subscribe(onNext: { vc, image in
+            .drive(with: self, onNext: { vc, image in
                 vc.layoutView.photoView.image = image
             })
             .disposed(by: disposeBag)

@@ -28,7 +28,7 @@ final class ComposeView: BaseView {
     override func setViews() {
         photoView.do {
             $0.backgroundColor = UIColor.hyanggiGray
-            $0.isUserInteractionEnabled = true
+            $0.contentMode = .scaleAspectFit
         }
 
         addPhotoButton.do {

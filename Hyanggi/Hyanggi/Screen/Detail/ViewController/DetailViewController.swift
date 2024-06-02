@@ -60,6 +60,7 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
         output.detailPerfumeImage
             .drive(with: self, onNext: { vc, image in
                 vc.layoutView.imageView.image = image
+                vc.layoutView.updateImageContraints()
             })
             .disposed(by: disposeBag)
 

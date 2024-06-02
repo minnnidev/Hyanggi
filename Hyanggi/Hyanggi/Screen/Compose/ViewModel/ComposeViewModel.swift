@@ -36,12 +36,30 @@ final class ComposeViewModel: ViewModelType {
     struct Output {
         let isFormValid: Observable<Bool>
         let dismissToPrevious: Observable<Void>
-        let initialPerfume: Observable<Perfume?>
-        let selectedImage: Observable<UIImage?>
+        let initialPerfume: Driver<Perfume?>
+        let initialPerfumeImage: Driver<UIImage?>
+        let selectedImage: Driver<UIImage?>
     }
 
     func transform(input: Input) -> Output {
         let initialPerfume = Observable.just(perfume)
+            .asDriver(onErrorJustReturn: nil)
+
+        let initialPerfumeImage: Driver<UIImage?> = Observable<UIImage?>.create { observer in
+               if let photoId = self.perfume?.photoId {
+                   if let image = ImageFileManager.shared.loadImage(photoId) {
+                       observer.onNext(image)
+                   } else {
+                       observer.onNext(nil)
+                   }
+               } else {
+                   observer.onNext(nil)
+               }
+               observer.onCompleted()
+               return Disposables.create()
+           }
+           .asDriver(onErrorJustReturn: nil)
+
 
         let isFormValid = Observable
             .combineLatest(input.brandNameText,
@@ -109,11 +127,13 @@ final class ComposeViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         let selectImage = input.selectImage
+            .asDriver(onErrorJustReturn: nil)
 
         return Output(
             isFormValid: isFormValid,
             dismissToPrevious: dismissToPrevious, 
-            initialPerfume: initialPerfume,
+            initialPerfume: initialPerfume, 
+            initialPerfumeImage: initialPerfumeImage,
             selectedImage: selectImage
         )
     }

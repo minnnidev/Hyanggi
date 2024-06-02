@@ -110,13 +110,32 @@ final class DetailView: BaseView {
             $0.top.equalTo(contentTextView.snp.bottom).offset(30)
             $0.leading.equalTo(brandNameLabel)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(imageView.snp.width)
+
+            if let _ = imageView.image {
+                $0.height.equalTo(imageView.snp.width)
+            } else {
+                $0.height.equalTo(0)
+            }
         }
 
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(5)
             $0.leading.equalTo(brandNameLabel)
             $0.bottom.equalToSuperview().offset(-30)
+        }
+    }
+
+    func updateImageContraints() {
+        imageView.snp.remakeConstraints {
+            $0.top.equalTo(contentTextView.snp.bottom).offset(30)
+            $0.leading.equalTo(brandNameLabel)
+            $0.centerX.equalToSuperview()
+
+            if let _ = imageView.image {
+                $0.height.equalTo(imageView.snp.width)
+            } else {
+                $0.height.equalTo(0)
+            }
         }
     }
 }
