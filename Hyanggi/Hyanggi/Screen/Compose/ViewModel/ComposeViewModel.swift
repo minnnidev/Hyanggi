@@ -57,10 +57,20 @@ final class ComposeViewModel: ViewModelType {
                                                      input.brandNameText,
                                                      input.perfumeNameText,
                                                      input.contentText,
-                                                     input.sentenceText))
-            .map { [weak self] date, brandName, perfumeName, content, sentence in
+                                                     input.sentenceText,
+                                                     input.selectImage.startWith(nil)))
+            .map { [weak self] date, brandName, perfumeName, content, sentence, selectedImage in
+                var imagePath: String? = nil
+
                 if let perfume = self?.perfume {
+                    if let image = selectedImage {
+                        let imageName = "\(perfume.id.uuidString)"
+                        ImageFileManager.shared.saveImage(image: image, imageName: imageName)
+                        imagePath = imageName
+                    }
+
                     return Perfume(id: perfume.id,
+                                   photoId: imagePath,
                                    date: date.isEmpty ? perfume.date : date,
                                    brandName: brandName.isEmpty ? perfume.brandName : brandName,
                                    perfumeName: perfumeName.isEmpty ? perfume.perfumeName : perfumeName,
@@ -69,7 +79,15 @@ final class ComposeViewModel: ViewModelType {
                                    ,
                                    isLiked: perfume.isLiked)
                 } else {
-                    return Perfume(id: UUID(),
+                    let id = UUID()
+                    if let image = selectedImage {
+                        let imageName = "\(id.uuidString)"
+                        ImageFileManager.shared.saveImage(image: image, imageName: "\(id.uuidString)")
+                        imagePath = imageName
+                    }
+
+                    return Perfume(id: id,
+                                   photoId: imagePath,
                                    date: date,
                                    brandName: brandName,
                                    perfumeName: perfumeName,
@@ -90,11 +108,13 @@ final class ComposeViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
+        let selectImage = input.selectImage
+
         return Output(
             isFormValid: isFormValid,
             dismissToPrevious: dismissToPrevious, 
             initialPerfume: initialPerfume,
-            selectedImage: input.selectImage
+            selectedImage: selectImage
         )
     }
 

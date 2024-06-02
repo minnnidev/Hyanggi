@@ -38,10 +38,6 @@ final class TestPaperCell: UICollectionViewCell {
             $0.textAlignment = .left
             $0.font = .systemFont(ofSize: 17)
         }
-
-        imageView.do {
-            $0.backgroundColor = .systemGray4
-        }
     }
 
     private func setLayout() {
@@ -71,5 +67,9 @@ final class TestPaperCell: UICollectionViewCell {
     func dataBind(_ perfume: Perfume) {
         brandNameLabel.text = perfume.brandName
         perfumeNameLabel.text = perfume.perfumeName
+
+        if let photoId = perfume.photoId {
+            imageView.image = ImageFileManager.shared.loadImage(photoId)
+        }
     }
 }

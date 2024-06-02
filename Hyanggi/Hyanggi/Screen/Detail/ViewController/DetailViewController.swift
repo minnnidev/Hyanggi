@@ -57,6 +57,12 @@ final class DetailViewController: BaseViewController, ViewModelBindableType {
             .drive(layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)
 
+        output.detailPerfumeImage
+            .drive(with: self, onNext: { vc, image in
+                vc.layoutView.imageView.image = image
+            })
+            .disposed(by: disposeBag)
+
         layoutView.ellipsisButton.rx.tap
             .flatMap { [unowned self] in
                 self.showAlert()

@@ -9,6 +9,7 @@ import Foundation
 
 struct Perfume {
     var id: UUID
+    var photoId: String?
     var date: String
     var brandName: String
     var perfumeName: String

@@ -127,7 +127,7 @@ extension ComposeViewController: UIImagePickerControllerDelegate, UINavigationCo
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
-        if let selectedImage = info[.originalImage] as? UIImage {
+        if let selectedImage = info[.editedImage] as? UIImage {
             selectedImageSubject.onNext(selectedImage)
         }
     }

@@ -37,11 +37,13 @@ final class DetailPerfumeViewModel: ViewModelType {
     struct Output {
         let detailPerfume: Driver<Perfume>
         let wishButtonState: Driver<Bool>
+        let detailPerfumeImage: Driver<UIImage?>
     }
 
     func transform(input: Input) -> Output {
         let detailPerfume = perfumeRelay
             .asDriver(onErrorJustReturn: perfumeRelay.value)
+        
 
         input.wishButtonTap
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
@@ -57,11 +59,23 @@ final class DetailPerfumeViewModel: ViewModelType {
         let wishButtonState = wishButtonStateRelay
             .asDriver(onErrorJustReturn: false)
 
+        let detailPerfumeImage = perfumeRelay
+            .map { perfume -> UIImage? in
+                guard let photoId = perfume.photoId else { return nil }
+                return ImageFileManager.shared.loadImage(photoId)
+            }
+            .asDriver(onErrorJustReturn: nil)
+
         return Output(detailPerfume: detailPerfume,
-                      wishButtonState: wishButtonState)
+                      wishButtonState: wishButtonState,
+                      detailPerfumeImage: detailPerfumeImage)
     }
 
     func deletePerfume() {
         storage.deletePerfume(perfumeRelay.value.id)
+
+        if let photoId = perfumeRelay.value.photoId {
+            ImageFileManager.shared.deleteImage(photoId)
+        }
     }
 }

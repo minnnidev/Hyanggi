@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 final class DetailView: BaseView {
-
     let ellipsisButton = UIBarButtonItem()
     let wishButton = UIBarButtonItem()
     let brandNameLabel = UILabel()
@@ -19,6 +20,7 @@ final class DetailView: BaseView {
     let dateLabel = UILabel()
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView()
+    private var imageViewHeightConstraint: Constraint?
 
     override func setViews() {
         ellipsisButton.do {
@@ -57,7 +59,7 @@ final class DetailView: BaseView {
         }
 
         imageView.do {
-            $0.backgroundColor = .systemGray4
+            $0.contentMode = .scaleAspectFit
         }
 
         dateLabel.do {
