@@ -40,10 +40,12 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             perfumeSelected: layoutView.testPapersCollectionView.rx.modelSelected(Perfume.self),
             plusButtonTapped: layoutView.plusButton.rx.tap
         )
+
         let output = viewModel.transform(input: input)
 
         output.perfumes
-            .bind(to: layoutView.testPapersCollectionView.rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
+            .bind(to: layoutView.testPapersCollectionView
+                .rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
                 cell.dataBind(elem)
             }
             .disposed(by: disposeBag)
@@ -113,6 +115,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestPaperCell.identifier, for: indexPath) as? TestPaperCell else { return }
+        cell.disposeBag = DisposeBag() 
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class TestPaperCell: UICollectionViewCell {
 
@@ -14,6 +15,7 @@ final class TestPaperCell: UICollectionViewCell {
     private let brandNameLabel = UILabel()
     private let perfumeNameLabel = UILabel()
     private let imageView = UIImageView()
+    var disposeBag = DisposeBag()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
