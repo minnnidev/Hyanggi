@@ -28,6 +28,7 @@ final class HomeViewModel: ViewModelType {
         let perfumes: Observable<[Perfume]>
         let pushToDetail: Observable<Perfume>
         let presentCompose: Observable<Void>
+        let isEmpty: Observable<Bool>
     }
 
     func transform(input: Input) -> Output {
@@ -39,13 +40,18 @@ final class HomeViewModel: ViewModelType {
                     return self.storage.perfumeList()
                 }
             }
+            .share(replay: 1)
 
         let pushToDetail = input.perfumeSelected.asObservable()
 
         let presentCompose = input.plusButtonTapped.asObservable()
 
+        let isEmpty = perfumes
+            .map { !$0.isEmpty }
+
         return Output(perfumes: perfumes,
                       pushToDetail: pushToDetail,
-                      presentCompose: presentCompose)
+                      presentCompose: presentCompose,
+                      isEmpty: isEmpty)
     }
 }

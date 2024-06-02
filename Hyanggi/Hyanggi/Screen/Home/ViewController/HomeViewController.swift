@@ -62,6 +62,10 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             }
             .disposed(by: disposeBag)
 
+        output.isEmpty
+            .bind(to: layoutView.emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
+
         wishButtonState
             .bind(to: layoutView.wishButton.rx.isSelected)
             .disposed(by: disposeBag)

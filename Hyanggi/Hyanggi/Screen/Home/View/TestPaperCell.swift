@@ -30,7 +30,10 @@ final class TestPaperCell: UICollectionViewCell {
         contentView.backgroundColor = .white
 
         brandNameLabel.do {
+            $0.numberOfLines = 0
+            $0.textAlignment = .left
             $0.font = .systemFont(ofSize: 15)
+
         }
 
         perfumeNameLabel.do {

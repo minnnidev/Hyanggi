@@ -43,7 +43,6 @@ final class DetailPerfumeViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let detailPerfume = perfumeRelay
             .asDriver(onErrorJustReturn: perfumeRelay.value)
-        
 
         input.wishButtonTap
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
@@ -74,7 +73,7 @@ final class DetailPerfumeViewModel: ViewModelType {
     func deletePerfume() {
         storage.deletePerfume(perfumeRelay.value.id)
 
-        if let photoId = perfumeRelay.value.photoId {
+        if let photoId = self.perfumeRelay.value.photoId {
             ImageFileManager.shared.deleteImage(photoId)
         }
     }
