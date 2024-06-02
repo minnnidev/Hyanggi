@@ -1,5 +1,5 @@
 //
-//  ComposePerfumeViewModel.swift
+//  ComposeViewModel.swift
 //  Hyanggi
 //
 //  Created by 김민 on 5/14/24.
@@ -13,6 +13,7 @@ final class ComposeViewModel: ViewModelType {
     private var perfume: Perfume?
     let storage: PerfumeStorageType
 
+    let updatedPerfume = PublishSubject<Perfume>()
     private let disposeBag = DisposeBag()
 
     init(perfume: Perfume? = nil,
@@ -79,7 +80,7 @@ final class ComposeViewModel: ViewModelType {
         completeHandler
             .withUnretained(self)
             .subscribe(onNext: { vm, composedPerfume in
-                if let perfume = vm.perfume {
+                if vm.perfume != nil {
                     vm.updatePerfume(composedPerfume)
                 } else {
                     vm.createPerfume(composedPerfume)
@@ -102,5 +103,6 @@ final class ComposeViewModel: ViewModelType {
     func updatePerfume(_ perfume: Perfume) {
         _ = storage
             .updatePerfume(perfume.id, perfume)
+            .bind(to: updatedPerfume)
     }
 }

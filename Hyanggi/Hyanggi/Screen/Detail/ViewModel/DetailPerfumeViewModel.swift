@@ -11,14 +11,23 @@ import RxCocoa
 
 final class DetailPerfumeViewModel: ViewModelType {
     let storage: PerfumeStorageType
-    var perfume: Perfume
-    private lazy var wishButtonStateRelay = BehaviorRelay<Bool>(value: perfume.isLiked)
+    let perfumeRelay: BehaviorRelay<Perfume>
+    let wishButtonStateRelay: BehaviorRelay<Bool>
 
+    let updatedPerfume = PublishRelay<Perfume>()
     private let disposeBag = DisposeBag()
 
     init(storage: PerfumeStorageType, perfume: Perfume) {
         self.storage = storage
-        self.perfume = perfume
+        self.perfumeRelay = BehaviorRelay(value: perfume)
+        self.wishButtonStateRelay = BehaviorRelay(value: perfumeRelay.value.isLiked)
+
+        updatedPerfume
+            .withUnretained(self)
+            .subscribe(onNext: { vm, updatedPerfume in
+                vm.perfumeRelay.accept(updatedPerfume)
+            })
+            .disposed(by: disposeBag)
     }
 
     struct Input {
@@ -31,9 +40,8 @@ final class DetailPerfumeViewModel: ViewModelType {
     }
 
     func transform(input: Input) -> Output {
-        let detailPerfume = Observable.just(perfume)
-            .share(replay: 1)
-            .asDriver(onErrorJustReturn: perfume)
+        let detailPerfume = perfumeRelay
+            .asDriver(onErrorJustReturn: perfumeRelay.value)
 
         input.wishButtonTap
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
@@ -41,7 +49,7 @@ final class DetailPerfumeViewModel: ViewModelType {
             .map { !$0 }
             .withUnretained(self)
             .subscribe(onNext: { vm, isLiked in
-                _ = vm.storage.updateLikePerfume(vm.perfume.id)
+                _ = vm.storage.updateLikePerfume(vm.perfumeRelay.value.id)
                 vm.wishButtonStateRelay.accept(isLiked)
             })
             .disposed(by: disposeBag)
@@ -54,6 +62,6 @@ final class DetailPerfumeViewModel: ViewModelType {
     }
 
     func deletePerfume() {
-        storage.deletePerfume(perfume.id)
+        storage.deletePerfume(perfumeRelay.value.id)
     }
 }

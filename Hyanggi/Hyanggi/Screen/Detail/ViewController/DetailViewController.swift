@@ -109,8 +109,12 @@ extension DetailViewController {
     }
 
     private func presentComposeViewController() {
-        let composeViewModel = ComposeViewModel(perfume: viewModel.perfume,
+        let composeViewModel = ComposeViewModel(perfume: viewModel.perfumeRelay.value,
                                                 storage: viewModel.storage)
+
+        composeViewModel.updatedPerfume
+            .bind(to: viewModel.updatedPerfume)
+            .disposed(by: disposeBag)
 
         var composeViewController = ComposeViewController()
         composeViewController.bind(viewModel: composeViewModel)
