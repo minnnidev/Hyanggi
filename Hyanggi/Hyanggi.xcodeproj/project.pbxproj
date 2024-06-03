@@ -719,7 +719,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hyanggi/App/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "향수 사진을 업로드하기 위해 앨범에 접근할 수 있도록 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -750,7 +750,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hyanggi/App/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 접근 권한";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "향수 사진을 업로드하기 위해 앨범에 접근할 수 있도록 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
