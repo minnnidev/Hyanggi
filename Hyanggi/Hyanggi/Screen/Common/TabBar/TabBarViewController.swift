@@ -11,7 +11,7 @@ final class TabBarViewController: UITabBarController {
 
     private let storage: PerfumeStorageType
 
-    init(storage: PerfumeStorageType = PerfumeStorage()) {
+    init(storage: PerfumeStorageType = RealmService()) {
         self.storage = storage
         super.init(nibName: nil, bundle: nil)
     }

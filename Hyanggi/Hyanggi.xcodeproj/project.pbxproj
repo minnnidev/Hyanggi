@@ -22,6 +22,7 @@
 		AB43B1A72BBD9F7000CC57EA /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A62BBD9F7000CC57EA /* ComposeView.swift */; };
 		AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1A82BBDA37600CC57EA /* Date+.swift */; };
 		AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */; };
+		AB4E97F72C0E1B6000350494 /* RealmError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4E97F62C0E1B6000350494 /* RealmError.swift */; };
 		AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */; };
 		AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB73F2B32BC6807400C38AE4 /* HomeView.swift */; };
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
@@ -39,6 +40,8 @@
 		ABADCB722BBD93ED000F4127 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB712BBD93ED000F4127 /* BaseView.swift */; };
 		ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADCB752BBD9CDC000F4127 /* DetailView.swift */; };
 		ABCFAD242C0CD9CB00909D26 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFAD232C0CD9CB00909D26 /* ImageFileManager.swift */; };
+		ABCFAD2D2C0DDF6C00909D26 /* PerfumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFAD2C2C0DDF6C00909D26 /* PerfumeModel.swift */; };
+		ABCFAD302C0DE05000909D26 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFAD2F2C0DE05000909D26 /* RealmService.swift */; };
 		B4DEA26F6E71E09220BD4C8C /* Pods_Hyanggi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,7 @@
 		AB43B1A62BBD9F7000CC57EA /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		AB43B1A82BBDA37600CC57EA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AB43B1AB2BBDB83600CC57EA /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB4E97F62C0E1B6000350494 /* RealmError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmError.swift; sourceTree = "<group>"; };
 		AB73F2B12BC67EDE00C38AE4 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AB73F2B32BC6807400C38AE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 		ABADCB712BBD93ED000F4127 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		ABADCB752BBD9CDC000F4127 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		ABCFAD232C0CD9CB00909D26 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		ABCFAD2C2C0DDF6C00909D26 /* PerfumeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeModel.swift; sourceTree = "<group>"; };
+		ABCFAD2F2C0DE05000909D26 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		EC135A5797A97257F885F6ED /* Pods-Hyanggi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyanggi.debug.xcconfig"; path = "Target Support Files/Pods-Hyanggi/Pods-Hyanggi.debug.xcconfig"; sourceTree = "<group>"; };
 		FB67F62509A540362E0D17BC /* Pods_Hyanggi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyanggi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -276,8 +282,9 @@
 		ABACBA3B2BF38D1B00460A42 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				ABCFAD2E2C0DE04400909D26 /* Realm */,
+				ABCFAD252C0DDA0D00909D26 /* Local */,
 				ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */,
-				ABACBA4E2BF3930400460A42 /* PerfumeStorage.swift */,
 				ABCFAD232C0CD9CB00909D26 /* ImageFileManager.swift */,
 			);
 			path = Service;
@@ -367,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				ABACBA552BF3ACB400460A42 /* Perfume.swift */,
+				ABCFAD2C2C0DDF6C00909D26 /* PerfumeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +387,23 @@
 				ABACBA392BF38C3700460A42 /* BaseViewModel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		ABCFAD252C0DDA0D00909D26 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				ABACBA4E2BF3930400460A42 /* PerfumeStorage.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		ABCFAD2E2C0DE04400909D26 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFAD2F2C0DE05000909D26 /* RealmService.swift */,
+				AB4E97F62C0E1B6000350494 /* RealmError.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		C22777D8E1D78CC3E44B9B8A /* Pods */ = {
@@ -528,12 +553,15 @@
 				AB73F2B22BC67EDE00C38AE4 /* SearchView.swift in Sources */,
 				AB003E9F2C0632B700A163E8 /* Reactive+.swift in Sources */,
 				AB43B1A72BBD9F7000CC57EA /* ComposeView.swift in Sources */,
+				ABCFAD302C0DE05000909D26 /* RealmService.swift in Sources */,
 				ABACBA412BF390BE00460A42 /* ViewModelBindableType.swift in Sources */,
+				ABCFAD2D2C0DDF6C00909D26 /* PerfumeModel.swift in Sources */,
 				AB43B1A92BBDA37600CC57EA /* Date+.swift in Sources */,
 				ABACBA492BF3918F00460A42 /* SearchPerfumeViewModel.swift in Sources */,
 				AB73F2B42BC6807400C38AE4 /* HomeView.swift in Sources */,
 				AB09C7F02BAB3AD9007A0815 /* BaseViewController.swift in Sources */,
 				ABADCB762BBD9CDC000F4127 /* DetailView.swift in Sources */,
+				AB4E97F72C0E1B6000350494 /* RealmError.swift in Sources */,
 				AB003E9D2C06229600A163E8 /* ViewModelType.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,

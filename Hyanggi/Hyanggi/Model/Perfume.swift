@@ -17,3 +17,17 @@ struct Perfume {
     var sentence: String
     var isLiked: Bool
 }
+
+extension Perfume {
+    
+    func converToRealmModel() -> PerfumeModel {
+        return PerfumeModel(id: self.id,
+                            photoId: self.photoId,
+                            date: self.date,
+                            brandName: self.brandName,
+                            perfumeName: self.perfumeName,
+                            content: self.content,
+                            sentence: self.sentence,
+                            isLiked: self.isLiked)
+    }
+}
