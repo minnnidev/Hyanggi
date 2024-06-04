@@ -28,7 +28,6 @@
 		AB7C55BC2BB98496006B69F0 /* TestPaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */; };
 		AB7C55BE2BB98833006B69F0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55BD2BB98833006B69F0 /* UIColor+.swift */; };
 		AB7C55CC2BBA7BB8006B69F0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */; };
-		ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA392BF38C3700460A42 /* BaseViewModel.swift */; };
 		ABACBA3D2BF38D5500460A42 /* PerfumeStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */; };
 		ABACBA412BF390BE00460A42 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */; };
 		ABACBA472BF3917200460A42 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABACBA462BF3917200460A42 /* HomeViewModel.swift */; };
@@ -83,7 +82,6 @@
 		AB7C55BB2BB98496006B69F0 /* TestPaperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPaperCell.swift; sourceTree = "<group>"; };
 		AB7C55BD2BB98833006B69F0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AB7C55CB2BBA7BB8006B69F0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
-		ABACBA392BF38C3700460A42 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		ABACBA3C2BF38D5500460A42 /* PerfumeStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeStorageType.swift; sourceTree = "<group>"; };
 		ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		ABACBA462BF3917200460A42 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 			children = (
 				ABADCB6A2BBD917C000F4127 /* Base */,
 				AB7C55BF2BB989DB006B69F0 /* Extension */,
-				AB003E9C2C06229600A163E8 /* ViewModelType.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -302,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				ABACBA402BF390BE00460A42 /* ViewModelBindableType.swift */,
+				AB003E9C2C06229600A163E8 /* ViewModelType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -384,7 +382,6 @@
 			children = (
 				AB09C7EF2BAB3AD9007A0815 /* BaseViewController.swift */,
 				ABADCB712BBD93ED000F4127 /* BaseView.swift */,
-				ABACBA392BF38C3700460A42 /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -565,7 +562,6 @@
 				AB003E9D2C06229600A163E8 /* ViewModelType.swift in Sources */,
 				AB09C7E22BAB34AD007A0815 /* TabBarViewController.swift in Sources */,
 				AB09C7D92BAB3457007A0815 /* SearchViewController.swift in Sources */,
-				ABACBA3A2BF38C3700460A42 /* BaseViewModel.swift in Sources */,
 				ABCFAD242C0CD9CB00909D26 /* ImageFileManager.swift in Sources */,
 				AB09C7BF2BAB32F3007A0815 /* SceneDelegate.swift in Sources */,
 				AB43B1AC2BBDB83600CC57EA /* SearchCollectionViewCell.swift in Sources */,
@@ -714,7 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BTX96P3YD4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -722,7 +718,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "향수 사진을 업로드하기 위해 앨범에 접근할 수 있도록 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,9 +727,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = min.Hyanggi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -744,7 +744,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BTX96P3YD4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -752,7 +752,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "향수 사진을 업로드하기 위해 앨범에 접근할 수 있도록 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -761,9 +761,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = min.Hyanggi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
