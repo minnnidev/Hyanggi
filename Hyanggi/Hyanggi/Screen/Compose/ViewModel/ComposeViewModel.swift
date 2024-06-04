@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class ComposeViewModel: ViewModelType {
+    
     private var perfume: Perfume?
     let updatedPerfume = PublishSubject<Perfume>()
     private let disposeBag = DisposeBag()

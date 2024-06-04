@@ -11,7 +11,7 @@ import RxCocoa
 
 final class SearchPerfumeViewModel: ViewModelType {
 
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     struct Input {
         let searchText: Observable<String>

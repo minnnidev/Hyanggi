@@ -11,7 +11,7 @@ import RxCocoa
 
 final class HomeViewModel: ViewModelType {
 
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     struct Input {
         let wishButtonSelected: Observable<Bool>

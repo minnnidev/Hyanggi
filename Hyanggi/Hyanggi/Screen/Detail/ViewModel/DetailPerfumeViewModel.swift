@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class DetailPerfumeViewModel: ViewModelType {
+    
     let perfumeRelay: BehaviorRelay<Perfume>
     let wishButtonStateRelay: BehaviorRelay<Bool>
 
