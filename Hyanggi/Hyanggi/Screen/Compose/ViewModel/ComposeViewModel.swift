@@ -11,15 +11,11 @@ import RxCocoa
 
 final class ComposeViewModel: ViewModelType {
     private var perfume: Perfume?
-    let storage: PerfumeStorageType
-
     let updatedPerfume = PublishSubject<Perfume>()
     private let disposeBag = DisposeBag()
 
-    init(perfume: Perfume? = nil,
-         storage: PerfumeStorageType) {
+    init(perfume: Perfume? = nil) {
         self.perfume = perfume
-        self.storage = storage
     }
 
     struct Input {
@@ -139,12 +135,11 @@ final class ComposeViewModel: ViewModelType {
     }
 
     func createPerfume(_ perfume: Perfume) {
-        _ = storage
-            .createPerfume(perfume)
+        _ = RealmService.shared.createPerfume(perfume)
     }
 
     func updatePerfume(_ perfume: Perfume) {
-        _ = storage
+        _ = RealmService.shared
             .updatePerfume(perfume.id, perfume)
             .bind(to: updatedPerfume)
     }

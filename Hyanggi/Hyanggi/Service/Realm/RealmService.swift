@@ -11,7 +11,10 @@ import RxSwift
 
 final class RealmService: PerfumeStorageType {
 
+    static let shared = RealmService()
+
     private var realm: Realm
+
     private lazy var store: BehaviorSubject<[Perfume]> = {
         let perfumes = realm.objects(PerfumeModel.self)
             .map { $0.convertToPerfume() }

@@ -84,7 +84,7 @@ extension SearchViewController {
     }
 
     private func pushDetailViewController(_ perfume: Perfume) {
-        let detailViewModel = DetailPerfumeViewModel(storage: viewModel.storage, perfume: perfume)
+        let detailViewModel = DetailPerfumeViewModel(perfume: perfume)
 
         var detailViewController = DetailViewController()
         detailViewController.bind(viewModel: detailViewModel)

@@ -10,11 +10,6 @@ import RxSwift
 import RxCocoa
 
 final class SearchPerfumeViewModel: ViewModelType {
-    let storage: PerfumeStorageType
-
-    init(storage: PerfumeStorageType) {
-        self.storage = storage
-    }
 
     var disposeBag = DisposeBag()
 
@@ -34,14 +29,14 @@ final class SearchPerfumeViewModel: ViewModelType {
             .distinctUntilChanged()
             .withUnretained(self)
             .flatMapLatest { vm, query in
-                vm.storage.perfumeList().map { perfumes in
-                        perfumes.filter {
-                            $0.brandName.contains(query) ||
-                            $0.perfumeName.contains(query) ||
-                            $0.sentence.contains(query) ||
-                            $0.content.contains(query) ||
-                            $0.date.contains(query)
-                        }
+                RealmService.shared.perfumeList().map { perfumes in
+                    perfumes.filter {
+                        $0.brandName.contains(query) ||
+                        $0.perfumeName.contains(query) ||
+                        $0.sentence.contains(query) ||
+                        $0.content.contains(query) ||
+                        $0.date.contains(query)
+                    }
                 }
             }
             .share(replay: 1)
