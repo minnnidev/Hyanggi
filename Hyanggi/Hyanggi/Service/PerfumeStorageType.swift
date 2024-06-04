@@ -12,7 +12,7 @@ protocol PerfumeStorageType {
     func createPerfume(_ perfume: Perfume) -> Observable<Perfume>
     func perfumeList() -> Observable<[Perfume]>
     func wishedPerfumeList() -> Observable<[Perfume]>
-    func deletePerfume(_ id: UUID)
+    func deletePerfume(_ id: UUID) -> Observable<Perfume>
     func updatePerfume(_ id: UUID, _ perfume: Perfume) -> Observable<Perfume>
-    func updateLikePerfume(_ id: UUID)
+    func updateLikePerfume(_ id: UUID) 
 }

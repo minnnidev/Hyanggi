@@ -69,7 +69,7 @@ final class DetailPerfumeViewModel: ViewModelType {
     }
 
     func deletePerfume() {
-        RealmService.shared.deletePerfume(perfumeRelay.value.id)
+        _ = RealmService.shared.deletePerfume(perfumeRelay.value.id)
 
         if let photoId = self.perfumeRelay.value.photoId {
             ImageFileManager.shared.deleteImage(imageName: photoId)
