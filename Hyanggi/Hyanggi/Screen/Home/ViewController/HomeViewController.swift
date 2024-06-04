@@ -42,9 +42,8 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         )
 
         let output = viewModel.transform(input: input)
-
         output.perfumes
-            .bind(to: layoutView.testPapersCollectionView
+            .drive(layoutView.testPapersCollectionView
                 .rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
                 cell.dataBind(elem)
             }
@@ -65,7 +64,7 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         output.isEmpty
-            .bind(to: layoutView.emptyView.rx.isHidden)
+            .drive(layoutView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
 
         wishButtonState

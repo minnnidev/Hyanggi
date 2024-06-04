@@ -11,7 +11,7 @@ import RxCocoa
 
 final class SearchPerfumeViewModel: ViewModelType {
 
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     struct Input {
         let searchText: Observable<String>
@@ -19,8 +19,8 @@ final class SearchPerfumeViewModel: ViewModelType {
     }
 
     struct Output {
-        let searchedPerfumes: Observable<[Perfume]>
-        let isEmpty: Observable<Bool>
+        let searchedPerfumes: Driver<[Perfume]>
+        let isEmpty: Driver<Bool>
         let pushToDetail: Observable<Perfume>
     }
 
@@ -40,6 +40,7 @@ final class SearchPerfumeViewModel: ViewModelType {
                 }
             }
             .share(replay: 1)
+            .asDriver(onErrorJustReturn: [])
 
         let isEmpty = searchedPerfumes
             .map { !$0.isEmpty }

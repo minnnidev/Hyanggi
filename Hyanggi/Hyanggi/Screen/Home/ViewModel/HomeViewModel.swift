@@ -11,7 +11,7 @@ import RxCocoa
 
 final class HomeViewModel: ViewModelType {
 
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     struct Input {
         let wishButtonSelected: Observable<Bool>
@@ -20,10 +20,10 @@ final class HomeViewModel: ViewModelType {
     }
 
     struct Output {
-        let perfumes: Observable<[Perfume]>
+        let perfumes: Driver<[Perfume]>
         let pushToDetail: Observable<Perfume>
         let presentCompose: Observable<Void>
-        let isEmpty: Observable<Bool>
+        let isEmpty: Driver<Bool>
     }
 
     func transform(input: Input) -> Output {
@@ -36,6 +36,7 @@ final class HomeViewModel: ViewModelType {
                 }
             }
             .share(replay: 1)
+            .asDriver(onErrorJustReturn: [])
 
         let pushToDetail = input.perfumeSelected.asObservable()
 

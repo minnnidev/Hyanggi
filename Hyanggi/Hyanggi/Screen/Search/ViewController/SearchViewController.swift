@@ -36,16 +36,17 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
             searchText: searchText, 
             perfumeSelected: layoutView.searchCollectionView.rx.modelSelected(Perfume.self)
         )
+
         let output = viewModel.transform(input: input)
 
         output.searchedPerfumes
-            .bind(to: layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { row, elem, cell in
+            .drive(layoutView.searchCollectionView.rx.items(cellIdentifier: SearchCollectionViewCell.identifier, cellType: SearchCollectionViewCell.self)) { row, elem, cell in
                 cell.databind(elem)
             }
             .disposed(by: disposeBag)
 
         output.isEmpty
-            .bind(to: layoutView.emptyView.rx.isHidden)
+            .drive(layoutView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
 
         output.pushToDetail
