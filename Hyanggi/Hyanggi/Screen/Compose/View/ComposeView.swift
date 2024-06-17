@@ -63,6 +63,7 @@ final class ComposeView: BaseView {
         deletePhotoButton.do {
             $0.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
             $0.tintColor = .black
+            $0.isHidden = true
         }
     }
 

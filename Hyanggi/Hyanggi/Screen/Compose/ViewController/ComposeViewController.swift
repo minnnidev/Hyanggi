@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxKeyboard
+import RxCocoa
 
 final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
@@ -54,10 +55,10 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
 
-        output.initialPerfumeImage
-            .compactMap { $0 }
+        Driver.merge(output.initialPerfumeImage, output.selectedImage)
             .drive(with: self, onNext: { vc, image in
                 vc.layoutView.photoView.image = image
+                vc.layoutView.deletePhotoButton.isHidden = false
             })
             .disposed(by: disposeBag)
 
@@ -70,12 +71,6 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
         output.isFormValid
             .bind(to: layoutView.completeButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-
-        output.selectedImage
-            .drive(with: self, onNext: { vc, image in
-                vc.layoutView.photoView.image = image
-            })
             .disposed(by: disposeBag)
 
         layoutView.photoView.rx.tapGesture
