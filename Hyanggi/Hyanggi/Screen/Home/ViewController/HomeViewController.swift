@@ -106,8 +106,8 @@ extension HomeViewController {
     }
 }
 
-// TODO: refactor with RxDataSource
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: layoutView.testPapersCollectionView.bounds.height)
     }
