@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxKeyboard
+import RxCocoa
 
 final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
@@ -38,7 +39,8 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             sentenceText: layoutView.sentenceTextField.textField.rx.text.orEmpty.asObservable(),
             dismissButtonTap: layoutView.dismissButton.rx.tap,
             completeButtonTap: layoutView.completeButton.rx.tap,
-            selectImage: selectedImageSubject
+            selectImage: selectedImageSubject,
+            deletePhotoButtonTap: layoutView.deletePhotoButton.rx.tap
         )
 
         let output = viewModel.transform(input: input)
@@ -54,12 +56,14 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
 
-        output.initialPerfumeImage
-            .compactMap { $0 }
-            .drive(with: self, onNext: { vc, image in
+        output.perfumeImage
+            .withUnretained(self)
+            .subscribe(onNext: { vc, image in
                 vc.layoutView.photoView.image = image
+                vc.layoutView.deletePhotoButton.isHidden = (image == nil)
             })
             .disposed(by: disposeBag)
+
 
         output.dismissToPrevious
             .withUnretained(self)
@@ -70,12 +74,6 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
 
         output.isFormValid
             .bind(to: layoutView.completeButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-
-        output.selectedImage
-            .drive(with: self, onNext: { vc, image in
-                vc.layoutView.photoView.image = image
-            })
             .disposed(by: disposeBag)
 
         layoutView.photoView.rx.tapGesture

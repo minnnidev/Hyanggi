@@ -24,6 +24,7 @@ final class ComposeView: BaseView {
     let contentLabel = UILabel()
     let contentTextView = UITextView()
     let sentenceTextField = InputTextField(fieldName: "이 향수를 한 마디로 표현한다면")
+    let deletePhotoButton = UIButton()
 
     override func setViews() {
         photoView.do {
@@ -58,6 +59,12 @@ final class ComposeView: BaseView {
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.hyanggiGray.cgColor
         }
+
+        deletePhotoButton.do {
+            $0.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+            $0.tintColor = .black
+            $0.isHidden = true
+        }
     }
 
     override func setConstraints() {
@@ -74,7 +81,9 @@ final class ComposeView: BaseView {
             $0.top.bottom.equalToSuperview()
         }
 
-        photoView.addSubview(addPhotoButton)
+        [addPhotoButton, deletePhotoButton].forEach {
+            photoView.addSubview($0)
+        }
 
         [photoView, dateTextField, brandTextField, nameTextField, contentLabel, contentTextView, sentenceTextField].forEach {
             contentView.addSubview($0)
@@ -88,6 +97,12 @@ final class ComposeView: BaseView {
 
         addPhotoButton.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+
+        deletePhotoButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-10)
+            $0.trailing.equalToSuperview().offset(10)
+            $0.width.height.equalTo(30)
         }
 
         dateTextField.snp.makeConstraints {
