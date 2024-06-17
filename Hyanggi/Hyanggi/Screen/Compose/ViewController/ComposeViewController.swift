@@ -39,7 +39,8 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             sentenceText: layoutView.sentenceTextField.textField.rx.text.orEmpty.asObservable(),
             dismissButtonTap: layoutView.dismissButton.rx.tap,
             completeButtonTap: layoutView.completeButton.rx.tap,
-            selectImage: selectedImageSubject
+            selectImage: selectedImageSubject,
+            deletePhotoButtonTap: layoutView.deletePhotoButton.rx.tap
         )
 
         let output = viewModel.transform(input: input)
@@ -55,12 +56,14 @@ final class ComposeViewController: BaseViewController, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
 
-        Driver.merge(output.initialPerfumeImage, output.selectedImage)
-            .drive(with: self, onNext: { vc, image in
+        output.perfumeImage
+            .withUnretained(self)
+            .subscribe(onNext: { vc, image in
                 vc.layoutView.photoView.image = image
-                vc.layoutView.deletePhotoButton.isHidden = false
+                vc.layoutView.deletePhotoButton.isHidden = (image == nil)
             })
             .disposed(by: disposeBag)
+
 
         output.dismissToPrevious
             .withUnretained(self)
