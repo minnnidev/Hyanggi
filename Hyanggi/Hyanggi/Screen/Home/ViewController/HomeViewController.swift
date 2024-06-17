@@ -42,9 +42,8 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
         )
 
         let output = viewModel.transform(input: input)
-
         output.perfumes
-            .bind(to: layoutView.testPapersCollectionView
+            .drive(layoutView.testPapersCollectionView
                 .rx.items(cellIdentifier: TestPaperCell.identifier, cellType: TestPaperCell.self)) { row, elem, cell in
                 cell.dataBind(elem)
             }
@@ -65,7 +64,7 @@ final class HomeViewController: BaseViewController, ViewModelBindableType {
             .disposed(by: disposeBag)
 
         output.isEmpty
-            .bind(to: layoutView.emptyView.rx.isHidden)
+            .drive(layoutView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
 
         wishButtonState
@@ -87,7 +86,7 @@ extension HomeViewController {
     }
 
     private func pushDetailViewController(_ perfume: Perfume) {
-        let detailViewModel = DetailPerfumeViewModel(storage: viewModel.storage, perfume: perfume)
+        let detailViewModel = DetailPerfumeViewModel(perfume: perfume)
 
         var detailViewController = DetailViewController()
         detailViewController.bind(viewModel: detailViewModel)
@@ -97,7 +96,7 @@ extension HomeViewController {
     }
 
     private func presentComposeViewController() {
-        let composeViewModel = ComposeViewModel(storage: viewModel.storage)
+        let composeViewModel = ComposeViewModel()
         var composeViewController = ComposeViewController()
         composeViewController.bind(viewModel: composeViewModel)
 
@@ -107,8 +106,8 @@ extension HomeViewController {
     }
 }
 
-// TODO: refactor with RxDataSource
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: layoutView.testPapersCollectionView.bounds.height)
     }

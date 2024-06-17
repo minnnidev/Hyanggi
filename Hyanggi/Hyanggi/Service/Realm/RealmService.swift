@@ -11,7 +11,10 @@ import RxSwift
 
 final class RealmService: PerfumeStorageType {
 
+    static let shared = RealmService()
+
     private var realm: Realm
+
     private lazy var store: BehaviorSubject<[Perfume]> = {
         let perfumes = realm.objects(PerfumeModel.self)
             .map { $0.convertToPerfume() }
@@ -37,8 +40,8 @@ final class RealmService: PerfumeStorageType {
             store.onNext(Array(realm.objects(PerfumeModel.self)
                 .map { $0.convertToPerfume() }))
 
-        } catch let error {
-            return Observable.error(error)
+        } catch {
+            return Observable.error(RealmError.createFailed)
         }
 
         return Observable.just(perfume)
@@ -55,40 +58,48 @@ final class RealmService: PerfumeStorageType {
             }
     }
 
-    func deletePerfume(_ id: UUID) {
+    func deletePerfume(_ id: UUID) -> Observable<Perfume> {
         do {
-            if let perfume = realm.object(ofType: PerfumeModel.self, forPrimaryKey: id) {
-                try realm.write {
-                    realm.delete(perfume)
-                }
-                store.onNext(Array(realm.objects(PerfumeModel.self).map { $0.convertToPerfume() }))
+            guard let perfume = realm.object(ofType: PerfumeModel.self, forPrimaryKey: id) else {
+                return Observable.error(RealmError.perfumeNotFound)
             }
-        } catch let error {
-            print(error.localizedDescription)
+
+            let deletedPerfume = perfume.convertToPerfume()
+
+            try realm.write {
+                realm.delete(perfume)
+            }
+
+            store.onNext(Array(realm.objects(PerfumeModel.self).map { $0.convertToPerfume() }))
+
+            return Observable.just(deletedPerfume)
+        } catch {
+            return Observable.error(RealmError.deleteFailed)
         }
     }
 
+
     func updatePerfume(_ id: UUID, _ perfume: Perfume) -> Observable<Perfume> {
         do {
-            if let existedPerfume = realm.object(ofType: PerfumeModel.self, forPrimaryKey: id) {
-                try realm.write {
-                    existedPerfume.photoId = perfume.photoId
-                    existedPerfume.date = perfume.date
-                    existedPerfume.brandName = perfume.brandName
-                    existedPerfume.perfumeName = perfume.perfumeName
-                    existedPerfume.content = perfume.content
-                    existedPerfume.sentence = perfume.sentence
-                    existedPerfume.isLiked = perfume.isLiked
-                }
-                store.onNext(Array(realm.objects(PerfumeModel.self).map { $0.convertToPerfume() }))
-
-                return Observable.just(existedPerfume.convertToPerfume())
+            guard let existedPerfume = realm.object(ofType: PerfumeModel.self, forPrimaryKey: id) else {
+                return Observable.error(RealmError.perfumeNotFound)
             }
-        } catch let error {
-            return Observable.error(error)
+
+            try realm.write {
+                existedPerfume.photoId = perfume.photoId
+                existedPerfume.date = perfume.date
+                existedPerfume.brandName = perfume.brandName
+                existedPerfume.perfumeName = perfume.perfumeName
+                existedPerfume.content = perfume.content
+                existedPerfume.sentence = perfume.sentence
+                existedPerfume.isLiked = perfume.isLiked
+            }
+            store.onNext(Array(realm.objects(PerfumeModel.self).map { $0.convertToPerfume() }))
+
+            return Observable.just(existedPerfume.convertToPerfume())
+        } catch {
+            return Observable.error(RealmError.updateFailed)
         }
-        
-        return Observable.error(RealmError.updateFailed)
     }
 
     func updateLikePerfume(_ id: UUID) {
@@ -103,5 +114,4 @@ final class RealmService: PerfumeStorageType {
             print(error.localizedDescription)
         }
     }
-
 }

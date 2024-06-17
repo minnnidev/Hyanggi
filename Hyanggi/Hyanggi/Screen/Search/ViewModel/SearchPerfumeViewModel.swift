@@ -10,13 +10,8 @@ import RxSwift
 import RxCocoa
 
 final class SearchPerfumeViewModel: ViewModelType {
-    let storage: PerfumeStorageType
 
-    init(storage: PerfumeStorageType) {
-        self.storage = storage
-    }
-
-    var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     struct Input {
         let searchText: Observable<String>
@@ -24,8 +19,8 @@ final class SearchPerfumeViewModel: ViewModelType {
     }
 
     struct Output {
-        let searchedPerfumes: Observable<[Perfume]>
-        let isEmpty: Observable<Bool>
+        let searchedPerfumes: Driver<[Perfume]>
+        let isEmpty: Driver<Bool>
         let pushToDetail: Observable<Perfume>
     }
 
@@ -34,17 +29,18 @@ final class SearchPerfumeViewModel: ViewModelType {
             .distinctUntilChanged()
             .withUnretained(self)
             .flatMapLatest { vm, query in
-                vm.storage.perfumeList().map { perfumes in
-                        perfumes.filter {
-                            $0.brandName.contains(query) ||
-                            $0.perfumeName.contains(query) ||
-                            $0.sentence.contains(query) ||
-                            $0.content.contains(query) ||
-                            $0.date.contains(query)
-                        }
+                RealmService.shared.perfumeList().map { perfumes in
+                    perfumes.filter {
+                        $0.brandName.contains(query) ||
+                        $0.perfumeName.contains(query) ||
+                        $0.sentence.contains(query) ||
+                        $0.content.contains(query) ||
+                        $0.date.contains(query)
+                    }
                 }
             }
             .share(replay: 1)
+            .asDriver(onErrorJustReturn: [])
 
         let isEmpty = searchedPerfumes
             .map { !$0.isEmpty }

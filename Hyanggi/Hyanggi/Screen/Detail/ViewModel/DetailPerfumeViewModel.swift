@@ -10,15 +10,14 @@ import RxSwift
 import RxCocoa
 
 final class DetailPerfumeViewModel: ViewModelType {
-    let storage: PerfumeStorageType
+    
     let perfumeRelay: BehaviorRelay<Perfume>
     let wishButtonStateRelay: BehaviorRelay<Bool>
 
     let updatedPerfume = PublishRelay<Perfume>()
     private let disposeBag = DisposeBag()
 
-    init(storage: PerfumeStorageType, perfume: Perfume) {
-        self.storage = storage
+    init(perfume: Perfume) {
         self.perfumeRelay = BehaviorRelay(value: perfume)
         self.wishButtonStateRelay = BehaviorRelay(value: perfumeRelay.value.isLiked)
 
@@ -50,7 +49,7 @@ final class DetailPerfumeViewModel: ViewModelType {
             .map { !$0 }
             .withUnretained(self)
             .subscribe(onNext: { vm, isLiked in
-                _ = vm.storage.updateLikePerfume(vm.perfumeRelay.value.id)
+                RealmService.shared.updateLikePerfume(vm.perfumeRelay.value.id)
                 vm.wishButtonStateRelay.accept(isLiked)
             })
             .disposed(by: disposeBag)
@@ -71,7 +70,7 @@ final class DetailPerfumeViewModel: ViewModelType {
     }
 
     func deletePerfume() {
-        storage.deletePerfume(perfumeRelay.value.id)
+        _ = RealmService.shared.deletePerfume(perfumeRelay.value.id)
 
         if let photoId = self.perfumeRelay.value.photoId {
             ImageFileManager.shared.deleteImage(imageName: photoId)

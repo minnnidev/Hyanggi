@@ -32,12 +32,15 @@ class PerfumeStorage: PerfumeStorageType {
             }
     }
 
-    func deletePerfume(_ id: UUID) {
+    func deletePerfume(_ id: UUID) -> Observable<Perfume> {
         if let idx = perfumes.firstIndex(where: { $0.id == id }) {
-            perfumes.remove(at: idx)
-        }
+            let deletedPerfume = perfumes.remove(at: idx)
+            store.onNext(perfumes)
 
-        store.onNext(perfumes)
+            return Observable.just(deletedPerfume)
+        } else {
+            return Observable.error(RealmError.perfumeNotFound)
+        }
     }
 
     func updatePerfume(_ id: UUID, _ perfume: Perfume) -> Observable<Perfume> {

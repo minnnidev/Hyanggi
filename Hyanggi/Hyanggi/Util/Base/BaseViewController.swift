@@ -13,14 +13,9 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         setBackgroundColor()
-        setViews()
-        setConstraints()
     }
 
     func setBackgroundColor() {
         view.backgroundColor = UIColor.backgroundColor
     }
-
-    func setViews() { }
-    func setConstraints() { }
 }

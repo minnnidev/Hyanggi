@@ -10,16 +10,13 @@ import RxSwift
 import RxCocoa
 
 final class ComposeViewModel: ViewModelType {
+    
     private var perfume: Perfume?
-    let storage: PerfumeStorageType
-
     let updatedPerfume = PublishSubject<Perfume>()
     private let disposeBag = DisposeBag()
 
-    init(perfume: Perfume? = nil,
-         storage: PerfumeStorageType) {
+    init(perfume: Perfume? = nil) {
         self.perfume = perfume
-        self.storage = storage
     }
 
     struct Input {
@@ -31,35 +28,42 @@ final class ComposeViewModel: ViewModelType {
         let dismissButtonTap: ControlEvent<Void>
         let completeButtonTap: ControlEvent<Void>
         let selectImage: Observable<UIImage?>
+        let deletePhotoButtonTap: ControlEvent<Void>
     }
 
     struct Output {
         let isFormValid: Observable<Bool>
         let dismissToPrevious: Observable<Void>
         let initialPerfume: Driver<Perfume?>
-        let initialPerfumeImage: Driver<UIImage?>
-        let selectedImage: Driver<UIImage?>
+        let perfumeImage: BehaviorRelay<UIImage?>
     }
 
     func transform(input: Input) -> Output {
         let initialPerfume = Observable.just(perfume)
             .asDriver(onErrorJustReturn: nil)
 
-        let initialPerfumeImage: Driver<UIImage?> = Observable<UIImage?>.create { observer in
-               if let photoId = self.perfume?.photoId {
-                   if let image = ImageFileManager.shared.loadImage(imageName: photoId) {
-                       observer.onNext(image)
-                   } else {
-                       observer.onNext(nil)
-                   }
-               } else {
-                   observer.onNext(nil)
-               }
-               observer.onCompleted()
-               return Disposables.create()
-           }
-           .asDriver(onErrorJustReturn: nil)
+        let perfumeImage = BehaviorRelay<UIImage?>(value: nil)
+        let initialImage = Observable<UIImage?>.create { observer in
+            if let photoId = self.perfume?.photoId {
+                if let image = ImageFileManager.shared.loadImage(imageName: photoId) {
+                    observer.onNext(image)
+                } else {
+                    observer.onNext(nil)
+                }
+            } else {
+                observer.onNext(nil)
+            }
+            observer.onCompleted()
+            return Disposables.create()
+        }
 
+        initialImage
+            .bind(to: perfumeImage)
+            .disposed(by: disposeBag)
+
+        input.selectImage
+            .bind(to: perfumeImage)
+            .disposed(by: disposeBag)
 
         let isFormValid = Observable
             .combineLatest(input.brandNameText,
@@ -126,25 +130,26 @@ final class ComposeViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
-        let selectImage = input.selectImage
-            .asDriver(onErrorJustReturn: nil)
+        input.deletePhotoButtonTap
+            .subscribe(onNext: {
+                perfumeImage.accept(nil)
+            })
+            .disposed(by: disposeBag)
 
         return Output(
             isFormValid: isFormValid,
-            dismissToPrevious: dismissToPrevious, 
-            initialPerfume: initialPerfume, 
-            initialPerfumeImage: initialPerfumeImage,
-            selectedImage: selectImage
+            dismissToPrevious: dismissToPrevious,
+            initialPerfume: initialPerfume,
+            perfumeImage: perfumeImage
         )
     }
 
     func createPerfume(_ perfume: Perfume) {
-        _ = storage
-            .createPerfume(perfume)
+        _ = RealmService.shared.createPerfume(perfume)
     }
 
     func updatePerfume(_ perfume: Perfume) {
-        _ = storage
+        _ = RealmService.shared
             .updatePerfume(perfume.id, perfume)
             .bind(to: updatedPerfume)
     }

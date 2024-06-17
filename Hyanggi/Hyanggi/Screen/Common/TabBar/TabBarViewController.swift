@@ -8,17 +8,6 @@
 import UIKit
 
 final class TabBarViewController: UITabBarController {
-
-    private let storage: PerfumeStorageType
-
-    init(storage: PerfumeStorageType = RealmService()) {
-        self.storage = storage
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +23,11 @@ final class TabBarViewController: UITabBarController {
     }
 
     func setTabBar() {
-        let homeViewModel = HomeViewModel(storage: storage)
+        let homeViewModel = HomeViewModel()
         var homeViewController = HomeViewController()
         homeViewController.bind(viewModel: homeViewModel)
 
-        let searchViewModel = SearchPerfumeViewModel(storage: storage)
+        let searchViewModel = SearchPerfumeViewModel()
         var searchViewController = SearchViewController()
         searchViewController.bind(viewModel: searchViewModel)
 
@@ -52,7 +41,6 @@ final class TabBarViewController: UITabBarController {
         searchVC.tabBarItem = UITabBarItem(title: nil,
                                            image: UIImage(systemName: "magnifyingglass"),
                                            selectedImage: UIImage(systemName: "magnifyingglass"))
-
 
         viewControllers = [homeVC, searchVC]
     }

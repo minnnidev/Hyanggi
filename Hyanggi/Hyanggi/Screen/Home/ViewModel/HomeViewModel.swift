@@ -10,13 +10,8 @@ import RxSwift
 import RxCocoa
 
 final class HomeViewModel: ViewModelType {
-    let storage: PerfumeStorageType
 
-    init(storage: PerfumeStorageType) {
-        self.storage = storage
-    }
-
-    var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     struct Input {
         let wishButtonSelected: Observable<Bool>
@@ -25,22 +20,23 @@ final class HomeViewModel: ViewModelType {
     }
 
     struct Output {
-        let perfumes: Observable<[Perfume]>
+        let perfumes: Driver<[Perfume]>
         let pushToDetail: Observable<Perfume>
         let presentCompose: Observable<Void>
-        let isEmpty: Observable<Bool>
+        let isEmpty: Driver<Bool>
     }
 
     func transform(input: Input) -> Output {
         let perfumes = input.wishButtonSelected
             .flatMapLatest { isSelected -> Observable<[Perfume]> in
                 if isSelected {
-                    return self.storage.wishedPerfumeList()
+                    return RealmService.shared.wishedPerfumeList()
                 } else {
-                    return self.storage.perfumeList()
+                    return RealmService.shared.perfumeList()
                 }
             }
             .share(replay: 1)
+            .asDriver(onErrorJustReturn: [])
 
         let pushToDetail = input.perfumeSelected.asObservable()
 

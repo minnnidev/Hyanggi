@@ -10,4 +10,6 @@ import Foundation
 enum RealmError: Error {
     case perfumeNotFound
     case updateFailed
+    case deleteFailed
+    case createFailed
 }
