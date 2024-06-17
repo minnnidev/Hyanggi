@@ -102,6 +102,7 @@ final class ComposeView: BaseView {
         deletePhotoButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(-10)
             $0.trailing.equalToSuperview().offset(10)
+            $0.width.height.equalTo(30)
         }
 
         dateTextField.snp.makeConstraints {
